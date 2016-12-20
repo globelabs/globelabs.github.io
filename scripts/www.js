@@ -43,30 +43,42 @@
         document.querySelector('footer.panel-footer em').style.display = 'inline-block';
 
         //determine the link
-        var download = '/download/globe-sdk-build-';
+        var download = '/download.php';
         switch(choices.platform) {
             case 'android':
-                download += '1';
+                download += '?type=android';
                 break;
             case 'ios':
-                download += '2';
+                download += '?type=ios';
                 break;
             case 'react':
-                download += '3';
+                download += '?type=react';
                 break;
             case 'phonegap':
-                download += '4';
+                download += '?type=phonegap';
                 break;
         }
 
-        download += choices.api.indexOf('sms') !== -1 ? '1': '0';
-        download += choices.api.indexOf('voice') !== -1 ? '1': '0';
-        download += choices.api.indexOf('location') !== -1 ? '1': '0';
-        download += choices.api.indexOf('charging') !== -1 ? '1': '0';
-        download += choices.api.indexOf('ussd') !== -1 ? '1': '0';
-        download += choices.api.indexOf('rewards') !== -1 ? '1': '0';
+        var files = []
 
-        redirect = window.location.origin + download + '.zip';
+        files.push(choices.api.indexOf('sms') !== -1 ? 4: '');
+        files.push(choices.api.indexOf('voice') !== -1 ? null: '');
+        files.push(choices.api.indexOf('location') !== -1 ? 2: '');
+        files.push(choices.api.indexOf('charging') !== -1 ? 3: '');
+        files.push(choices.api.indexOf('ussd') !== -1 ? 6: '');
+        files.push(choices.api.indexOf('rewards') !== -1 ? '0': '');
+
+        for(var i in files) {
+            if(files[i] == '') {
+                delete files[i];
+            }
+        }
+
+        files = files.sort();
+
+        download += '&files=' + files.join('');
+
+        redirect = window.location.origin + download;
 
         document.querySelector('footer.panel-footer button').disabled = false;
     };

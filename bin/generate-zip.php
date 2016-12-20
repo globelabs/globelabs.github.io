@@ -43,6 +43,11 @@ class SdkZipGenerator {
                 continue;
             }
 
+            if(isset($argv[3])) {
+                $this->generateZip($argv[3], $type, implode(array($argv[1], $type), DIRECTORY_SEPARATOR));
+                exit;
+            }
+
             print 'Getting possible permutations for ' . $type . PHP_EOL;
 
             $permutations = array();
@@ -109,6 +114,8 @@ class SdkZipGenerator {
                 $target,
                 $sdkOut);
 
+            echo $script;
+
             print 'Generating sdk for android with id ' . $key . PHP_EOL;
 
             exec($script);
@@ -159,6 +166,8 @@ class SdkZipGenerator {
                 $target,
                 $sdkOut);
 
+            echo $script;
+
             print 'Generating sdk for ios with id ' . $key . PHP_EOL;
 
             exec($script);
@@ -200,6 +209,8 @@ class SdkZipGenerator {
                 $target,
                 $sdkOut);
 
+            echo $script;
+
             print 'Generating sdk for phonegap with id ' . $key . PHP_EOL;
 
             exec($script);
@@ -240,6 +251,8 @@ class SdkZipGenerator {
                 $files,
                 $target,
                 $sdkOut);
+
+            echo $script;
 
             print 'Generating sdk for react with id ' . $key . PHP_EOL;
 
