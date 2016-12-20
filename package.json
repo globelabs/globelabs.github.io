@@ -1,0 +1,25 @@
+{
+  "name": "globelabs-sdk-builder",
+  "version": "1.0.0",
+  "description": "Globe Labs iOS, Android, PhoneGap, React Native SDK Builder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sdk",
+    "build",
+    "ios",
+    "android",
+    "phonegap",
+    "react-native"
+  ],
+  "author": "Charles Zamora <czamora@openovate.com>",
+  "license": "MIT",
+  "dependencies": {
+    "shelljs": "^0.7.5",
+    "xcode": "^0.8.9",
+    "xml-js": "^0.9.7",
+    "yargs": "^6.5.0"
+  }
+}
