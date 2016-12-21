@@ -44,6 +44,7 @@
 
         //determine the link
         var download = '/download.php';
+
         switch(choices.platform) {
             case 'android':
                 download += '?type=android';
@@ -79,6 +80,10 @@
         download += '&files=' + files.join('');
 
         redirect = window.location.origin + download;
+
+        if(window.location.host === 'globelabs.github.io') {
+            redirect = 'http://208.113.165.186' + download;
+        }
 
         document.querySelector('footer.panel-footer button').disabled = false;
     };
