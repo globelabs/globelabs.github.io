@@ -69,6 +69,8 @@
         files.push(choices.api.indexOf('ussd') !== -1 ? 6: '');
         files.push(choices.api.indexOf('rewards') !== -1 ? '0': '');
 
+        files.push(1);
+
         for(var i in files) {
             if(files[i] == '') {
                 delete files[i];
