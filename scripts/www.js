@@ -91,11 +91,11 @@
     };
 
     var success = function() {
-        // if(!redirect) {
-        //     return;
-        // }
+        if(!redirect) {
+            return;
+        }
 
-        // window.open(redirect, '_blank');
+        window.open(redirect, '_blank');
 
         //be responsible
         document.querySelectorAll('input.choice').forEach(function(input) {
@@ -108,8 +108,6 @@
         var template = document.getElementById('success-template').innerHTML;
         document.querySelector('div.sdk-builder div.panel').innerHTML = template;
     };
-
-    success();
 
     //drivers
     document.querySelectorAll('input.choice').forEach(function(input) {
