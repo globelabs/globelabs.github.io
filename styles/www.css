@@ -63,6 +63,10 @@ html, body {
     padding: 0 20px;
 }
 
+.head .navbar-nav > li > a:hover {
+    opacity: 100;
+}
+
 .head .navbar-nav > li.active > a,
 .head .navbar-nav > li.active > a:hover {
     background-color: transparent;
@@ -90,18 +94,19 @@ html, body {
     font-weight: bold;
     letter-spacing: .15em;
     line-height: 1.7em;
+    opacity: 0.6;
     padding-bottom: 33px;
     padding-top: 36px;
     text-decoration: none;
     text-transform: uppercase;
 }
 
-.head .navbar-right {
-    margin-right: 25px;
+.head .navbar-left > li.active > a {
+    opacity: 100;
 }
 
-.head .navbar-right > li.active {
-    border-bottom: 1px solid #179DFF;
+.head .navbar-right {
+    margin-right: 25px;
 }
 
 .head .navbar-right > li > a {
@@ -109,6 +114,25 @@ html, body {
     font-family: "proxima-bold", Arial, sans-serif;
     padding: 36px 24px 32px 24px;
     text-decoration: none;
+}
+
+.head .navbar-right > li.login > a {
+    display: block;
+    font-family: "proxima", Arial, sans-serif;
+    font-size: 14px;
+    margin-left: 64px;
+    padding: 38px 0px 33px 0px;
+    text-decoration: none;
+}
+
+.head .navbar-right.nav-login { margin-right: 0px; }
+
+.head .navbar-right.nav-login > li > a {
+    font: 0.85em/1em "proxima-semibold", Arial, sans-serif;
+}
+
+.head .navbar-right.navbar-right > li.active {
+    border-bottom: 1px solid #179DFF;
 }
 
 @media (max-width: 1024px) {
@@ -125,9 +149,11 @@ html, body {
     }
 
     .head .navbar-right {
-        clear: both;
-        float: none !important;
+        float: left !important;
     }
+
+    .head .navbar-right.nav-login { clear: both; float: right !important; }
+    .head .navbar-right.nav-login li a { padding: 0px; padding-top 2px; padding-right: 7px; }
 
     .head .navbar-right > li > a {
         padding-bottom: 16px;
@@ -184,7 +210,8 @@ html, body {
 }
 
 .foot .support span {
-    opacity: .8;
+    color: #000e26;
+    font-size: 1em;
 }
 
 .foot .support a {
@@ -196,6 +223,20 @@ html, body {
 .foot .navbar a,
 .foot .navbar .navbar-nav > li > a {
     color: #000E26;
+}
+
+.foot .navbar .navbar-text a:after {
+    border-top: 2px rgba(0, 0, 0, 0.2) solid;
+    border-right: 2px rgba(0, 0, 0, 0.2) solid;
+    content: '';
+    display: inline-block;
+    height: 6px;
+    margin: 10px 24px 0 24px;
+    padding: 0;
+    transform: rotate(45deg);
+    vertical-align: top;
+    width: 6px;
+    -webkit-transform: rotate(45deg);
 }
 
 .foot .navbar {
