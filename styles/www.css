@@ -153,12 +153,7 @@ html, body {
     }
 
     .head .navbar-right.nav-login { clear: both; float: right !important; }
-    .head .navbar-right.nav-login li a { padding: 0px; padding-top 2px; padding-right: 7px; }
-
-    .head .navbar-right > li > a {
-        padding-bottom: 16px;
-        padding-top: 6px;
-    }
+    .head .navbar-right.nav-login li a { padding: 0px; padding-top: 36px; padding-right: 7px; }
 
     .head .navbar-right > li:first-child > a {
         padding-left: 4px;
@@ -181,17 +176,31 @@ html, body {
     }
 
     .head .navbar-right > li {
-        border-bottom: 1px solid #CCCCCC;
+        border: none;
+        float: left;
         padding-top: 16px;
     }
 
-    .head .navbar-right > li:last-child {
-        border-bottom: 0;
-    }
+    .head .navbar-right { margin: 7.5px -25px; }
+    .head .navbar-right > li:first-child > a { padding-left: 24px; }
+    .head .navbar-right.nav-login li a { padding-top: 13px; }
+    .head .navbar-collapse { overflow: hidden; }
+    .head .navbar-right > li > a { padding: 10px 20px 10px 20px; }
+}
 
-    .head .navbar-right > li:first-child > a {
-        padding-left: 24px;
-    }
+@media (max-width: 580px) {
+    .head .navbar-right > li > a { font-size: 13px; padding: 10px 10px 10px 10px; }
+    .head .navbar-right.nav-login li a { font-size: 10px; padding-top: 14px; }
+}
+
+@media (max-width: 420px) {
+    .head .navbar-left > li > a { font-size: 0.518em; }
+    .head .navbar-right > li > a { font-size: 10px; padding: 0px 10px 0px 10px; }
+    .head .navbar-right.nav-login li a { font-size: 10px; padding-top: 4px; }
+}
+
+@media (max-width: 375px) {
+    .head .navbar-right > li.login > a { margin-left: 0px; }
 }
 
 /* Foot Styles */
@@ -277,7 +286,7 @@ html, body {
 
 @media (max-width: 1024px) {
     .body {
-        margin-top: 132px;
+        margin-top: 175px;
     }
 }
 
