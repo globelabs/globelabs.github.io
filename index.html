@@ -234,8 +234,6 @@
                     if(width < 767) {
                         if (scroll >= 50) {
                             navbar.css('background', '#05091b');
-                        } else {
-                            navbar.css('background', 'transparent');
                         }
                     } else {
                         if (scroll >= 50) {
@@ -255,6 +253,8 @@
                         } else {
                             navbar.css('background', 'transparent');
                         }
+                    } else {
+                        navbar.css('background', '#05091b');
                     }
                 });
             });

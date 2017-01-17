@@ -45,9 +45,12 @@
 
 html {
     background-image: url(../images/sdk-bg.png);
-    background-position: center top;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
 }
 
 body { background: transparent; }
@@ -284,7 +287,7 @@ html, body {
 /* Body Styles */
 .body {
     margin-top: 89px;
-    padding: 40px 0 0;
+    padding: 40px 0;
 }
 
 @media (max-width: 1024px) {
