@@ -212,5 +212,52 @@
         <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="./scripts/www.js?v=1.5"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                var width       = $(document.body).width();
+                var navbar      = $('header .navbar');
+                var scroll      = $('body').scrollTop();
+
+                if(scroll >= 50) {
+                    navbar.css('background', '#05091b');
+                }
+
+                if(width < 767) {
+                    navbar.css('background', '#05091b');
+                }
+
+                $(window).resize(function() {
+                    width  = $(document.body).width();
+                    scroll = $('body').scrollTop();
+
+                    if(width < 767) {
+                        if (scroll >= 50) {
+                            navbar.css('background', '#05091b');
+                        } else {
+                            navbar.css('background', 'transparent');
+                        }
+                    } else {
+                        if (scroll >= 50) {
+                            navbar.css('background', '#05091b');
+                        } else {
+                            navbar.css('background', 'transparent');
+                        }
+                    }
+                });
+
+                $(window).scroll(function() {
+                    var scroll = $('body').scrollTop();
+
+                    if (width > 767) {
+                        if (scroll >= 50) {
+                            navbar.css('background', '#05091b');
+                        } else {
+                            navbar.css('background', 'transparent');
+                        }
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

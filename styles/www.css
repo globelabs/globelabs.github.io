@@ -43,6 +43,15 @@
     font-style: normal;
 }
 
+html {
+    background-image: url(../images/sdk-bg.png);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
+body { background: transparent; }
+
 /* General Styles */
 html, body {
     font-family: "proxima-regular", Arial, sans-serif;
@@ -58,9 +67,10 @@ html, body {
 
 /* Head Styles */
 .head .navbar {
-    background-color: #05091b;
+    background-color: transparent;
     border: 0;
     padding: 0 20px;
+    transition: background 200ms ease-out;
 }
 
 .head .navbar-nav > li > a:hover {
@@ -205,9 +215,10 @@ html, body {
 
 /* Foot Styles */
 .foot {
+    background: #FFF;
+    padding-bottom: 1px;
     font-family: "proxima-semibold", Arial, sans-serif;
     font-size: .9em;
-    opacity: 0.6;
 }
 
 .foot .support {
@@ -272,16 +283,8 @@ html, body {
 
 /* Body Styles */
 .body {
-    background-color: #000826;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
     margin-top: 89px;
-    padding: 40px 0;
-}
-
-.page-sdk-builder .body {
-    background-image: url("../images/sdk-bg.png");
+    padding: 40px 0 0;
 }
 
 @media (max-width: 1024px) {
