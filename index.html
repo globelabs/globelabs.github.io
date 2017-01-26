@@ -1,263 +1,236 @@
 <!DOCTYPE html>
-<html lang="en" class="branding page-sdk-builder">
-    <head>
-        <meta charset="utf-8" />
-        <title>Globe Labs</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!--<link href="http://www.globelabs.com.ph/assets/css/shared.navigation.css" rel="stylesheet"/>-->
+    <link href="assets/css/shared.navigation.css" rel="stylesheet"/>
+    <link href="assets/css/bs-lite.css" rel="stylesheet"/>
+    <link href="assets/css/sdk.css" rel="stylesheet"/>
+    <title>Globe Labs</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        * { box-sizing : border-box; }
 
-        <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
-
-        <link rel="icon" href="./favicon.ico" type="image/x-icon">
-
-        <link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" href="./styles/www.css?v=1.3" />
-    </head>
-
-    <body>
-        <header class="head">
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container-fluid">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">
-                            <img alt="Brand" src="./images/logo.svg" />
-                        </a>
-                    </div>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-left">
-                            <li><a href="#">Business</a></li>
-                            <li class="active"><a href="#">Developer</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right nav-login">
-                            <li class="login"><a href="https://developer.globelabs.com.ph/">Login</a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="http://www.globelabs.com.ph/docs/" target="_blank">API</a></li>
-                            <li class="active"><a href="#">Resources</a></li>
-                            <li><a href="#">Community</a></li>
-                            <li><a href="#">Support</a></li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-                </div><!-- /.container-fluid -->
-            </nav>
-        </header>
-
-        <section class="body">
-            <div class="sdk-builder">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Download the SDK</h3>
-                    </div>
-                    <h5>1. Choose the Platform</h5>
-                    <div class="panel-body">
-                        <label>
-                            <input class="choice" type="radio" name="platform" value="android" />
-                            <img src="./images/circle/circle-android.png" />
-                            <strong>Android</strong>
-                        </label>
-                        <label>
-                            <input class="choice" type="radio" name="platform" value="ios" />
-                            <img src="./images/circle/circle-ios.png" />
-                            <strong>iOS</strong>
-                        </label>
-                        <label>
-                            <input class="choice" type="radio" name="platform" value="react" />
-                            <img src="./images/circle/circle-react.png" />
-                            <strong>React</strong>
-                        </label>
-                        <label>
-                            <input class="choice" type="radio" name="platform" value="phonegap" />
-                            <img src="./images/circle/circle-phonegap.png" />
-                            <strong>PhoneGap</strong>
-                        </label>
-                    </div>
-
-                    <h5>2. Choose the APIs</h5>
-                    <div class="panel-body">
-                        <label>
-                            <input class="choice" type="checkbox" name="api[]" value="sms" />
-                            <img src="./images/circle/circle-sms.png" />
-                            <strong>SMS</strong>
-                        </label>
-                        <!--<label>
-                            <input class="choice" type="checkbox" name="api[]" value="voice" />
-                            <img src="./images/circle/circle-voice.png" />
-                            <strong>Voice</strong>
-                        </label>-->
-                        <label>
-                            <input class="choice" type="checkbox" name="api[]" value="location" />
-                            <img src="./images/circle/circle-location.png" />
-                            <strong>Location</strong>
-                        </label>
-                        <label>
-                            <input class="choice" type="checkbox" name="api[]" value="charging" />
-                            <img src="./images/circle/circle-charging.png" />
-                            <strong>Charging</strong>
-                        </label>
-                        <label>
-                            <input class="choice" type="checkbox" name="api[]" value="ussd" />
-                            <img src="./images/circle/circle-ussd.png" />
-                            <strong>USSD</strong>
-                        </label>
-                        <label>
-                            <input class="choice" type="checkbox" name="api[]" value="rewards" />
-                            <img src="./images/circle/circle-rewards.png" />
-                            <strong>Rewards</strong>
-                        </label>
-                    </div>
-                    <footer class="panel-footer clearfix">
-                        <div class="pull-right">
-                            <span class="choices"></span>
-                            <em class="text-info">32 KB</em>
-                            <button class="btn btn-primary" disabled="disabled">Download</button>
-                        </div>
-                    </footer>
-                </div>
-            </div>
-        </section>
-
-        <footer class="foot">
-            <div class="support alert alert-info clearfix">
-                <div class="container">
-                    <a class="pull-right" href="#">Support</a>
-                    <span>Didn't find what you're looking for? Let us know.</span>
-                </div>
-            </div>
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <p class="navbar-text navbar-left">
-                        <a href="#">Home</a>
-                        <a href="#">Resources</a>
-                        <strong>SDK Builder</strong>
-                    </p>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">About Globe Labs</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
-                    </ul>
-                </div><!-- /.container-fluid -->
-            </nav>
-        </footer>
-
-        <script id="success-template" type="text/tpl">
-            <div class="panel-body body-success">
-                <h3>Downloading, but Remember to Top Up!</h3>
-                <p>You are currently downloading the SDK, however you will not
-                be able to use the SDK until you have credits. The next steps are the following.</p>
-
-                <div class="container cleafix">
-                    <div class="step pull-left">
-                        <img src="./images/step-1.png" />
-                        <div>
-                            <h3>Register and create your Globe Labs developer account.</h3>
-                            <a class="btn btn-info">Register Dev Account</a>
-                            <a class="btn btn-default">Login</a>
-                            <em>For new accounts, you automatically get FREE 1,000 API Credits (includes 13,000 cap on incoming SMS) that will enable you to try out and test any of our APIs: Send SMS, Make a Call, Receive a Call, Charge a mobile number a specified rate, or even locate a mobile number.</em>
-                        </div>
-                    </div>
-
-                    <div class="step pull-left">
-                        <img src="./images/step-2.png" />
-                        <div>
-                            <h3>Checkout the sample codes to help get you started.</h3>
-                            <a class="btn btn-default" href="./docs.html">Code Samples</a>
-                            <a href="http://www.globelabs.com.ph/docs/" target="_blank" class="btn btn-default">API Docs</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </script>
-
-        <script id="data-store" type="text/json">{
-            "android": {
-                "sms": 4,
-                "location": 2,
-                "charging": 3,
-                "ussd": 6,
-                "rewards": 1
-            },
-            "ios": {
-                "sms": 4,
-                "location": 2,
-                "charging": 3,
-                "ussd": 6,
-                "rewards": 1
-            },
-            "react": {
-                "sms": 4,
-                "location": 2,
-                "charging": 3,
-                "ussd": 6,
-                "rewards": 1
-            },
-            "phonegap": {
-                "sms": 4,
-                "location": 2,
-                "charging": 3,
-                "ussd": 6,
-                "rewards": 1
-            }
+        body, html {
+            margin     : 0;
+            padding    : 0;
+            background : #fff;
         }
-        </script>
 
-        <script type="text/javascript" src="./bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./scripts/www.js?v=1.5"></script>
+        #site {
+            position : relative;
+            width    : 100%;
+            height   : 100vh;
+        }
+    </style>
+</head>
+<body class="-non-mobile -static">
+<div id="site">
+    <div class="navigation">
+        <div class="navigation-primary"><a class="logo" href="#!/home"><img
+                src="assets/images/logo.svg" alt="Globe Labs"></a>
+            <ul class="context">
+                <li class="business"><a href="#!/business">Business</a></li>
+                <li class="developer -active"><a href="#!/developer">Developer</a></li>
+            </ul>
+            <ul class="main-selection">
+                <li class="nav-api "><a href="#!/developer/api">API</a></li>
+                <li class="nav-resources "><a
+                        href="#!/developer/resources">Resources</a>
+                </li>
+                <li class="nav-community "><a href="#!/community">Community</a></li>
+                <li class="nav-support "><a href="#!/support">Support</a></li>
+            </ul>
+            <a href="http://www.globelabs.com.ph/users/login"
+               class="account-login">Login</a>
+            <img class="mobile-menu-icon -mobile-only"
+                 src="assets/images/mobile-menu-icon.svg">
+        </div>
 
-        <script type="text/javascript">
-            $(document).ready(function() {
-                var width       = $(document.body).width();
-                var navbar      = $('header .navbar');
-                var scroll      = $('body').scrollTop();
+        <div class="mobile-navigation -mobile-only">
+            <img class="close-menu-icon"
+                 src="assets/images/mobile-close-icon.svg">
 
-                if(scroll >= 50) {
-                    navbar.css('background', '#05091b');
-                }
+            <div class="container">
+                <ul class="mobile-context">
+                    <li class="business -active"><a href="#!/business">Business</a>
+                    </li>
+                    <li class="developer"><a href="#!/developer">Developer</a></li>
+                </ul>
+                <ul class="mobile-main-selection">
+                    <li class="nav-api "><a href="#!/developer/api">API</a></li>
+                    <li class="nav-resources "><a
+                            href="#!/developer/resources">Resources</a></li>
+                    <li class="nav-community "><a href="#!/community">Community</a>
+                    </li>
+                    <li class="nav-support "><a href="#!/support">Support</a></li>
+                </ul>
+                <a href="#!/about" class="mobile-account-login">About</a>
+            </div>
+        </div>
 
-                if(width < 767) {
-                    navbar.css('background', '#05091b');
-                }
+        <div class="background-menu-fader -mobile-only"></div>
+    </div>
+    <div class="page-sdk-builder">
+        <div class="sdk-builder-ui">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="btn btn-primary pull-right" href="/docs">Read the API Docs</a>
+                    <h3 class="panel-title">Download the SDK</h3>
+                </div>
+                <h5>1. Choose the Platform</h5>
+                <div class="panel-body">
+                    <label>
+                        <input class="choice" type="radio" name="platform" value="android" />
+                        <img src="assets/images/circle/circle-android.png" />
+                        <strong>Android</strong>
+                    </label>
+                    <label>
+                        <input class="choice" type="radio" name="platform" value="ios" />
+                        <img src="assets/images/circle/circle-ios.png" />
+                        <strong>iOS</strong>
+                    </label>
+                    <label>
+                        <input class="choice" type="radio" name="platform" value="react" />
+                        <img src="assets/images/circle/circle-react.png" />
+                        <strong>React</strong>
+                    </label>
+                    <label>
+                        <input class="choice" type="radio" name="platform" value="phonegap" />
+                        <img src="assets/images/circle/circle-phonegap.png" />
+                        <strong>PhoneGap</strong>
+                    </label>
+                </div>
 
-                $(window).resize(function() {
-                    width  = $(document.body).width();
-                    scroll = $('body').scrollTop();
+                <h5>2. Choose the APIs</h5>
+                <div class="panel-body">
+                    <label>
+                        <input class="choice" type="checkbox" name="api[]" value="sms" />
+                        <img src="assets/images/circle/circle-sms.png" />
+                        <strong>SMS</strong>
+                    </label>
+                    <label>
+                        <input class="choice" type="checkbox" name="api[]" value="voice" />
+                        <img src="assets/images/circle/circle-voice.png" />
+                        <strong>Voice</strong>
+                    </label>
+                    <label>
+                        <input class="choice" type="checkbox" name="api[]" value="location" />
+                        <img src="assets/images/circle/circle-location.png" />
+                        <strong>Location</strong>
+                    </label>
+                    <label>
+                        <input class="choice" type="checkbox" name="api[]" value="charging" />
+                        <img src="assets/images/circle/circle-charging.png" />
+                        <strong>Charging</strong>
+                    </label>
+                    <label>
+                        <input class="choice" type="checkbox" name="api[]" value="ussd" />
+                        <img src="assets/images/circle/circle-ussd.png" />
+                        <strong>USSD</strong>
+                    </label>
+                    <label>
+                        <input class="choice" type="checkbox" name="api[]" value="rewards" />
+                        <img src="assets/images/circle/circle-rewards.png" />
+                        <strong>Rewards</strong>
+                    </label>
+                </div>
+                <footer class="panel-footer clearfix">
+                    <div class="pull-right">
+                        <span class="choices"></span>
+                        <!-- <em class="text-info">32 KB</em> -->
+                        <button class="btn btn-primary" disabled="disabled">Download</button>
+                    </div>
+                </footer>
+            </div>
+        </div>
+    </div>
+    <div class="breadcrumbs">
+        <div class="wrapped">
+            <ul class="crumbs">
+                <li><a href="#!/home">Home</a></li>
+                <li><a href="#!/developer">Developer</a></li>
+                <li><a href="#!/developer/sdk">SDK</a></li>
+            </ul>
+            <ul class="misc">
+                <li><a href="#!/about">About Globe Labs</a></li>
+                <li><a href="#!/contact-us">Contact Us</a></li>
+                <li><a href="#!/terms-conditions">Terms &amp; Conditions</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-                    if(width < 767) {
-                        if (scroll >= 50) {
-                            navbar.css('background', '#05091b');
-                        }
-                    } else {
-                        if (scroll >= 50) {
-                            navbar.css('background', '#05091b');
-                        } else {
-                            navbar.css('background', 'transparent');
-                        }
-                    }
-                });
+<script src="http://www.globelabs.com.ph/assets/js/standalone/mobile-menu.js"></script>
+<script>
+    window.GlobeLabs.MobileMenuComponent.init();
+</script>
+<script id="success-template" type="text/tpl">
+    <div class="panel-body body-success">
+        <div class="step">
+            <h3>Downloading, but Remember to Top Up!</h3>
+            <p>You are currently downloading the SDK, however you will not
+            be able to use the SDK until you have credits. The next steps are the following.</p>
+        </div>
 
-                $(window).scroll(function() {
-                    var scroll = $('body').scrollTop();
+        <div class="container clearfix">
+            <div class="step split pull-left">
+                <img src="assets/images/step-1.png" />
+                <div>
+                    <h3>Register and create your Globe Labs developer account.</h3>
+                    <a class="btn btn-info">Register Dev Account</a>
+                    <a class="btn btn-default">Login</a>
+                    <em>For new accounts, you automatically get FREE 1,000 API Credits (includes 13,000 cap on incoming SMS) that will enable you to try out and test any of our APIs: Send SMS, Make a Call, Receive a Call, Charge a mobile number a specified rate, or even locate a mobile number.</em>
+                </div>
+            </div>
 
-                    if (width > 767) {
-                        if (scroll >= 50) {
-                            navbar.css('background', '#05091b');
-                        } else {
-                            navbar.css('background', 'transparent');
-                        }
-                    } else {
-                        navbar.css('background', '#05091b');
-                    }
-                });
-            });
-        </script>
-    </body>
+            <div class="step split pull-left">
+                <img src="assets/images/step-2.png" />
+                <div>
+                    <h3>Checkout the sample codes to help get you started.</h3>
+                    <a class="btn btn-default" href="/docs#sdk">Code Samples</a>
+                    <a class="btn btn-default" href="/docs">API Docs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="data-store" type="text/json">{
+    "android": {
+        "sms": 4,
+        "location": 2,
+        "charging": 3,
+        "ussd": 6,
+        "rewards": 1
+    },
+    "ios": {
+        "sms": 4,
+        "location": 2,
+        "charging": 3,
+        "ussd": 6,
+        "rewards": 1
+    },
+    "react": {
+        "sms": 4,
+        "location": 2,
+        "charging": 3,
+        "ussd": 6,
+        "rewards": 1
+    },
+    "phonegap": {
+        "sms": 4,
+        "location": 2,
+        "charging": 3,
+        "ussd": 6,
+        "rewards": 1
+    }
+}
+</script>
+
+<script type="text/javascript" src="assets/scripts/jquery.min.js"></script>
+<script type="text/javascript" src="assets/scripts/sdk.js"></script>
+</body>
 </html>

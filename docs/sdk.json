@@ -1,0 +1,1672 @@
+{
+    "Android": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    },
+    "iOS": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    },
+    "React": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    },
+    "PhoneGap": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    },
+    "PHP": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    },
+    "Python": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    },
+    "Ruby": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    },
+    "NodeJS": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    },
+    "Java": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    },
+    "C Sharp": {
+        "Setting Up": "",
+        "Authentication": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "SMS": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Binary": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Voice": {
+            "Overview": "",
+            "Calls": {
+                "Ask": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Ask Answer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Call": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Conference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Event": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Hangup": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Record": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Reject": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Routing": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Say": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Transfer Whisper": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Wait": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "USSD": {
+            "Overview": "",
+            "Calls": {
+                "Sending": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Replying": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                }
+            }
+        },
+        "Payment": {
+            "Overview": "",
+            "Calls": {
+                "Requests": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+                "Last Reference": {
+                    "Overview": "",
+                    "Code": "",
+                    "Parameters": "",
+                    "Results": ""
+                },
+            }
+        },
+        "Amax": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Location": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+        "Subscriber Balance": {
+            "Overview": "",
+            "Code": "",
+            "Parameters": "",
+            "Results": ""
+        },
+    }
+}

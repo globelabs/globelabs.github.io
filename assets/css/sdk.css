@@ -1,0 +1,260 @@
+:checked + img {
+    box-shadow: 0px 0px 35px #FFFF00;
+}
+
+.page-sdk-builder {
+    background-color: #000826;
+    background-image: url("../images/sdk-bg.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    min-height: 100vh;
+    padding-bottom: 40px;
+    padding-top: 88px;
+    width: 100%;
+}
+
+@media (max-width: 1024px) {
+    .page-sdk-builder {
+        padding-top: 123px;
+    }
+}
+
+@media (max-width: 640px) {
+    .page-sdk-builder {
+        padding-top: 90px;
+    }
+}
+
+/* SDK builder styles */
+.sdk-builder-ui {
+    background-color: #FFFFFF;
+    margin: 40px auto 0;
+    width: 900px;
+}
+
+.sdk-builder-ui .panel {
+    border: 0;
+}
+
+.sdk-builder-ui h3 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    padding-bottom: 7px;
+    padding-top: 10px;
+}
+
+.sdk-builder-ui h5 {
+    background-color: #337ab7;
+    color: #FFFFFF;
+    font-family: "proxima-bold", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin: 0;
+    padding: 15px 30px;
+}
+
+.sdk-builder-ui label {
+    width: 134px;
+    text-align: center;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.sdk-builder-ui label input {
+    display: none;
+}
+
+.sdk-builder-ui label img {
+    border-radius: 50%;
+    width: 100px;
+}
+
+.sdk-builder-ui label strong {
+    display: block;
+}
+
+.sdk-builder-ui .panel-footer img {
+    margin-left: 10px;
+    vertical-align: middle;
+    width: 45px;
+}
+
+.sdk-builder-ui .panel-footer em {
+    background-image: url("../images/arrow.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    display: none;
+    margin: 0 15px;
+    padding-bottom: 22px;
+    padding-top: 0px;
+    text-align: center;
+    width: 48px;
+    vertical-align: top;
+}
+
+.sdk-builder-ui button {
+    border-radius: 0;
+    font-size: 18px;
+    padding: 10px 50px;
+}
+
+.sdk-builder-ui .body-success p {
+    margin: 20px 0;
+}
+
+.sdk-builder-ui .body-success .step {
+    max-width: 700px;
+    margin: 20px auto 0;
+}
+
+.sdk-builder-ui .body-success .split {
+    max-width: 400px;
+    margin: 20px 0 0 15px;
+}
+
+.sdk-builder-ui .body-success .step > div {
+    padding-left: 120px;
+}
+
+.sdk-builder-ui .body-success .step h3 {
+    color: #041435;
+    font: 1.3em/1.4em "proxima-semibold", Arial, sans-serif;
+}
+
+.sdk-builder-ui .body-success .step img {
+    border-radius: 50%;
+    float: left;
+    height: 100px;
+}
+
+.sdk-builder-ui .body-success .step .btn {
+    border-radius: 30px;
+    display: block;
+    margin-bottom: 10px;
+    padding: 12px;
+}
+
+.sdk-builder-ui .body-success .step .btn-info {
+    background: #00AFEC;
+    border-color: #00AFEC;
+    color: #FFFFFF;
+}
+
+.sdk-builder-ui .body-success .step em {
+    color: #041435;
+    display: block;
+    font-family: "proxima-regular", Arial, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    margin-left: 8px;
+    max-width: 443px;
+    opacity: .7;
+}
+
+@media (max-width: 910px) {
+    .sdk-builder-ui {
+        width: 700px;
+    }
+
+    .sdk-builder-ui label {
+        width: 105px;
+    }
+
+    .sdk-builder-ui label img {
+        width: 90px;
+    }
+}
+
+@media (max-width: 720px) {
+    .sdk-builder-ui {
+        width: 500px;
+    }
+
+    .sdk-builder-ui label {
+        width: 70px;
+    }
+
+    .sdk-builder-ui label img {
+        width: 60px;
+    }
+
+    .sdk-builder-ui .panel-footer img {
+        margin-left: 5px;
+        width: 40px;
+    }
+
+    .sdk-builder-ui .panel-footer em {
+        background-size: 35px;
+        font-size: 11px;
+        margin: 0 5px;
+        padding-bottom: 8px;
+        width: 32px;
+    }
+
+    .sdk-builder-ui button {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 520px) {
+    .sdk-builder-ui {
+        width: 360px;
+    }
+
+    .sdk-builder-ui label {
+        width: 50px;
+    }
+
+    .sdk-builder-ui label img {
+        width: 40px;
+    }
+
+    .sdk-builder-ui label strong {
+        font-size: 12px;
+    }
+
+    .sdk-builder-ui .panel-footer img {
+        margin-left: 5px;
+        width: 25px;
+    }
+
+    .sdk-builder-ui .panel-footer em {
+        background-size: 25px;
+        font-size: 11px;
+        margin: 0 5px;
+        padding-bottom: 6px;
+        width: 24px;
+    }
+
+    .sdk-builder-ui button {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    .sdk-builder-ui .body-success .split {
+        margin: 20px 0 0;
+    }
+
+    .sdk-builder-ui .body-success .step > div {
+        padding-left: 75px;
+    }
+
+    .sdk-builder-ui .body-success .step img {
+        height: 60px;
+    }
+
+    .sdk-builder-ui .body-success .step h3 {
+        font: 1.0em/1.4em "proxima-semibold", Arial, sans-serif;
+    }
+
+    .sdk-builder-ui .body-success .step .btn {
+        font-size: 12px;
+        padding: 6px;
+    }
+}
