@@ -1,5 +1,5 @@
 {
-  "name": "globelabs-sdk-builder",
+  "name": "globelabs-sdk-generator",
   "version": "1.0.0",
   "description": "Globe Labs iOS, Android, PhoneGap, React Native SDK Builder",
   "main": "index.js",

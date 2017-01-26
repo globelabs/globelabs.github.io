@@ -95,7 +95,7 @@
             return;
         }
 
-        // window.open(redirect, '_blank');
+        window.open(redirect, '_blank');
 
         //be responsible
         document.querySelectorAll('input.choice').forEach(function(input) {
@@ -109,7 +109,7 @@
         document.querySelector('div.sdk-builder-ui div.panel').innerHTML = template;
     };
 
-    success();
+    // success();
 
     //drivers
     document.querySelectorAll('input.choice').forEach(function(input) {

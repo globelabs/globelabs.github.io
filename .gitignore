@@ -1,5 +1,5 @@
-node_modules/
-zips/
-tmp/
-repo/
-out/
+sdk-generator/node_modules/
+sdk-generator/out/
+sdk-generator/repo/
+sdk-generator/tmp/
+sdk-generator/zips/

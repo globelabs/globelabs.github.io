@@ -1,10 +1,17 @@
 #!/bin/sh
 
 HOST="https://github.com/globelabs"
-PATH="$(pwd)/repo"
+REPO="$(pwd)/repo"
 ANDROID="$HOST/globe-connect-android"
 IOS="$HOST/globe-connect-ios"
 PHONEGAP="$HOST/globe-connect-phonegap"
 REACT="$HOST/globe-connect-react-native"
 
-echo $REACT
+if [ ! -d "$REPO" ]; then
+    mkdir $REPO
+fi
+
+git clone $ANDROID "$REPO/globe-connect-android"
+git clone $IOS "$REPO/globe-connect-ios"
+git clone $PHONEGAP "$REPO/globe-connect-phonegap"
+git clone $REACT "$REPO/globe-connect-react-native"
