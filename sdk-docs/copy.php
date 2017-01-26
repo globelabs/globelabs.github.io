@@ -15,6 +15,8 @@ $samples = [
     'cli' => include(__DIR__ . '/samples/cli.php'),
 ];
 
+$output = include(__DIR__ . '/samples/output.php');
+
 $copy = [
     'Authentication' => 'If you haven\'t signed up yet, please follow the instructions found in [Getting Started](http://www.globelabs.com.ph/docs/#getting-started-create-an-app) to obtain an `App ID` and `App Secret` these tokens will be used to validate most of your interaction requests with the Globe APIs.
 
@@ -78,7 +80,7 @@ return [
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['android']['Authentication'],
-            'Results' => ''
+            'Results' => $output['Authentication']
         ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
@@ -86,12 +88,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['android']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['android']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -101,12 +103,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['android']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['android']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -116,24 +118,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['android']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['android']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['android']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['android']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -141,30 +143,35 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['android']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['android']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
     ],
     'iOS 10' => [
         'Setting Up' => '',
+        'Authentication' => [
+            'Overview' => $copy['Authentication'],
+            'Code' => $samples['ios']['Authentication'],
+            'Results' => $output['Authentication']
+        ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
             'Calls' => [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['ios']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['ios']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -174,12 +181,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['ios']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['ios']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -189,24 +196,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['ios']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['ios']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['ios']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['ios']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -214,12 +221,12 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['ios']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['ios']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
@@ -229,7 +236,7 @@ return [
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['react']['Authentication'],
-            'Results' => ''
+            'Results' => $output['Authentication']
         ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
@@ -237,12 +244,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['react']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['react']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -252,12 +259,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['react']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['react']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -267,24 +274,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['react']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['react']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['react']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['react']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -292,12 +299,12 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['react']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['react']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
@@ -307,7 +314,7 @@ return [
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['phonegap']['Authentication'],
-            'Results' => ''
+            'Results' => $output['Authentication']
         ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
@@ -315,12 +322,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['phonegap']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['phonegap']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -330,12 +337,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['phonegap']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['phonegap']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -345,24 +352,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['phonegap']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['phonegap']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['phonegap']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['phonegap']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -370,31 +377,51 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['phonegap']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['phonegap']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
     ],
     'CLI' => [
         'Setting Up' => '',
+        'Authentication' => [
+            'Overview' => $copy['Authentication'],
+            'Code' => $samples['cli']['Authentication'],
+            'Results' => $output['Authentication']
+        ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
             'Calls' => [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['cli']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['cli']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
+            ]
+        ],
+        'USSD' => [
+            'Overview' => $copy['USSD']['Overview'],
+            'Calls' => [
+                'Sending' => [
+                    'Overview' => $copy['USSD']['Calls']['Sending'],
+                    'Code' => $samples['cli']['USSD Send'],
+                    'Results' => $output['USSD Send']
+                ],
+                'Replying' => [
+                    'Overview' => $copy['USSD']['Calls']['Replying'],
+                    'Code' => $samples['cli']['USSD Reply'],
+                    'Results' => $output['USSD Reply']
+                ]
             ]
         ],
         'Payment' => [
@@ -403,19 +430,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['cli']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['cli']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
+        ],
+        'Amax' => [
+            'Overview' => $copy['Amax'],
+            'Code' => $samples['cli']['Amax'],
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['cli']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -423,12 +455,12 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['cli']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['cli']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
@@ -438,7 +470,7 @@ return [
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['php']['Authentication'],
-            'Results' => ''
+            'Results' => $output['Authentication']
         ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
@@ -446,12 +478,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['php']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['php']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -461,72 +493,72 @@ return [
                 'Ask' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['php']['Voice Ask'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask']
                 ],
                 'Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['php']['Voice Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Answer']
                 ],
                 'Ask Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask Answer'],
                     'Code' => $samples['php']['Voice Ask-Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask-Answer']
                 ],
                 'Call' => [
                     'Overview' => $copy['Voice']['Calls']['Call'],
                     'Code' => $samples['php']['Voice Call'],
-                    'Results' => ''
+                    'Results' => $output['Voice Call']
                 ],
                 'Conference' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['php']['Voice Conference'],
-                    'Results' => ''
+                    'Results' => $output['Voice Conference']
                 ],
                 'Event' => [
                     'Overview' => $copy['Voice']['Calls']['Event'],
                     'Code' => $samples['php']['Voice Event'],
-                    'Results' => ''
+                    'Results' => $output['Voice Event']
                 ],
                 'Hangup' => [
                     'Overview' => $copy['Voice']['Calls']['Hangup'],
                     'Code' => $samples['php']['Voice Hangup'],
-                    'Results' => ''
+                    'Results' => $output['Voice Hangup']
                 ],
                 'Record' => [
                     'Overview' => $copy['Voice']['Calls']['Record'],
                     'Code' => $samples['php']['Voice Record'],
-                    'Results' => ''
+                    'Results' => $output['Voice Record']
                 ],
                 'Reject' => [
                     'Overview' => $copy['Voice']['Calls']['Reject'],
                     'Code' => $samples['php']['Voice Reject'],
-                    'Results' => ''
+                    'Results' => $output['Voice Reject']
                 ],
                 'Routing' => [
                     'Overview' => $copy['Voice']['Calls']['Routing'],
                     'Code' => $samples['php']['Voice Routing'],
-                    'Results' => ''
+                    'Results' => $output['Voice Routing']
                 ],
                 'Say' => [
                     'Overview' => $copy['Voice']['Calls']['Say'],
                     'Code' => $samples['php']['Voice Say'],
-                    'Results' => ''
+                    'Results' => $output['Voice Say']
                 ],
                 'Transfer' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer'],
                     'Code' => $samples['php']['Voice Transfer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer']
                 ],
                 'Transfer Whisper' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer Whisper'],
                     'Code' => $samples['php']['Voice Transfer Whisper'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer Whisper']
                 ],
                 'Wait' => [
                     'Overview' => $copy['Voice']['Calls']['Wait'],
                     'Code' => $samples['php']['Voice Wait'],
-                    'Results' => ''
+                    'Results' => $output['Voice Wait']
                 ]
             ]
         ],
@@ -536,12 +568,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['php']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['php']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -551,24 +583,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['php']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['php']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['php']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['php']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -576,12 +608,12 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['php']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['php']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
@@ -591,7 +623,7 @@ return [
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['python']['Authentication'],
-            'Results' => ''
+            'Results' => $output['Authentication']
         ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
@@ -599,12 +631,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['python']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['python']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -614,72 +646,72 @@ return [
                 'Ask' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['python']['Voice Ask'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask']
                 ],
                 'Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['python']['Voice Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Answer']
                 ],
                 'Ask Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask Answer'],
                     'Code' => $samples['python']['Voice Ask-Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask-Answer']
                 ],
                 'Call' => [
                     'Overview' => $copy['Voice']['Calls']['Call'],
                     'Code' => $samples['python']['Voice Call'],
-                    'Results' => ''
+                    'Results' => $output['Voice Call']
                 ],
                 'Conference' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['python']['Voice Conference'],
-                    'Results' => ''
+                    'Results' => $output['Voice Conference']
                 ],
                 'Event' => [
                     'Overview' => $copy['Voice']['Calls']['Event'],
                     'Code' => $samples['python']['Voice Event'],
-                    'Results' => ''
+                    'Results' => $output['Voice Event']
                 ],
                 'Hangup' => [
                     'Overview' => $copy['Voice']['Calls']['Hangup'],
                     'Code' => $samples['python']['Voice Hangup'],
-                    'Results' => ''
+                    'Results' => $output['Voice Hangup']
                 ],
                 'Record' => [
                     'Overview' => $copy['Voice']['Calls']['Record'],
                     'Code' => $samples['python']['Voice Record'],
-                    'Results' => ''
+                    'Results' => $output['Voice Record']
                 ],
                 'Reject' => [
                     'Overview' => $copy['Voice']['Calls']['Reject'],
                     'Code' => $samples['python']['Voice Reject'],
-                    'Results' => ''
+                    'Results' => $output['Voice Reject']
                 ],
                 'Routing' => [
                     'Overview' => $copy['Voice']['Calls']['Routing'],
                     'Code' => $samples['python']['Voice Routing'],
-                    'Results' => ''
+                    'Results' => $output['Voice Routing']
                 ],
                 'Say' => [
                     'Overview' => $copy['Voice']['Calls']['Say'],
                     'Code' => $samples['python']['Voice Say'],
-                    'Results' => ''
+                    'Results' => $output['Voice Say']
                 ],
                 'Transfer' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer'],
                     'Code' => $samples['python']['Voice Transfer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer']
                 ],
                 'Transfer Whisper' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer Whisper'],
                     'Code' => $samples['python']['Voice Transfer Whisper'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer Whisper']
                 ],
                 'Wait' => [
                     'Overview' => $copy['Voice']['Calls']['Wait'],
                     'Code' => $samples['python']['Voice Wait'],
-                    'Results' => ''
+                    'Results' => $output['Voice Wait']
                 ]
             ]
         ],
@@ -689,12 +721,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['python']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['python']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -704,24 +736,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['python']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['python']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['python']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['python']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -729,12 +761,12 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['python']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['python']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
@@ -744,7 +776,7 @@ return [
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['ruby']['Authentication'],
-            'Results' => ''
+            'Results' => $output['Authentication']
         ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
@@ -752,12 +784,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['ruby']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['ruby']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -767,72 +799,72 @@ return [
                 'Ask' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['ruby']['Voice Ask'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask']
                 ],
                 'Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['ruby']['Voice Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Answer']
                 ],
                 'Ask Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask Answer'],
                     'Code' => $samples['ruby']['Voice Ask-Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask-Answer']
                 ],
                 'Call' => [
                     'Overview' => $copy['Voice']['Calls']['Call'],
                     'Code' => $samples['ruby']['Voice Call'],
-                    'Results' => ''
+                    'Results' => $output['Voice Call']
                 ],
                 'Conference' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['ruby']['Voice Conference'],
-                    'Results' => ''
+                    'Results' => $output['Voice Conference']
                 ],
                 'Event' => [
                     'Overview' => $copy['Voice']['Calls']['Event'],
                     'Code' => $samples['ruby']['Voice Event'],
-                    'Results' => ''
+                    'Results' => $output['Voice Event']
                 ],
                 'Hangup' => [
                     'Overview' => $copy['Voice']['Calls']['Hangup'],
                     'Code' => $samples['ruby']['Voice Hangup'],
-                    'Results' => ''
+                    'Results' => $output['Voice Hangup']
                 ],
                 'Record' => [
                     'Overview' => $copy['Voice']['Calls']['Record'],
                     'Code' => $samples['ruby']['Voice Record'],
-                    'Results' => ''
+                    'Results' => $output['Voice Record']
                 ],
                 'Reject' => [
                     'Overview' => $copy['Voice']['Calls']['Reject'],
                     'Code' => $samples['ruby']['Voice Reject'],
-                    'Results' => ''
+                    'Results' => $output['Voice Reject']
                 ],
                 'Routing' => [
                     'Overview' => $copy['Voice']['Calls']['Routing'],
                     'Code' => $samples['ruby']['Voice Routing'],
-                    'Results' => ''
+                    'Results' => $output['Voice Routing']
                 ],
                 'Say' => [
                     'Overview' => $copy['Voice']['Calls']['Say'],
                     'Code' => $samples['ruby']['Voice Say'],
-                    'Results' => ''
+                    'Results' => $output['Voice Say']
                 ],
                 'Transfer' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer'],
                     'Code' => $samples['ruby']['Voice Transfer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer']
                 ],
                 'Transfer Whisper' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer Whisper'],
                     'Code' => $samples['ruby']['Voice Transfer Whisper'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer Whisper']
                 ],
                 'Wait' => [
                     'Overview' => $copy['Voice']['Calls']['Wait'],
                     'Code' => $samples['ruby']['Voice Wait'],
-                    'Results' => ''
+                    'Results' => $output['Voice Wait']
                 ]
             ]
         ],
@@ -842,12 +874,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['ruby']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['ruby']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -857,24 +889,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['ruby']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['ruby']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['ruby']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['ruby']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -882,12 +914,12 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['ruby']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['ruby']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
@@ -897,7 +929,7 @@ return [
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['nodejs']['Authentication'],
-            'Results' => ''
+            'Results' => $output['Authentication']
         ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
@@ -905,12 +937,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['nodejs']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['nodejs']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -920,72 +952,72 @@ return [
                 'Ask' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['nodejs']['Voice Ask'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask']
                 ],
                 'Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['nodejs']['Voice Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Answer']
                 ],
                 'Ask Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask Answer'],
                     'Code' => $samples['nodejs']['Voice Ask-Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask-Answer']
                 ],
                 'Call' => [
                     'Overview' => $copy['Voice']['Calls']['Call'],
                     'Code' => $samples['nodejs']['Voice Call'],
-                    'Results' => ''
+                    'Results' => $output['Voice Call']
                 ],
                 'Conference' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['nodejs']['Voice Conference'],
-                    'Results' => ''
+                    'Results' => $output['Voice Conference']
                 ],
                 'Event' => [
                     'Overview' => $copy['Voice']['Calls']['Event'],
                     'Code' => $samples['nodejs']['Voice Event'],
-                    'Results' => ''
+                    'Results' => $output['Voice Event']
                 ],
                 'Hangup' => [
                     'Overview' => $copy['Voice']['Calls']['Hangup'],
                     'Code' => $samples['nodejs']['Voice Hangup'],
-                    'Results' => ''
+                    'Results' => $output['Voice Hangup']
                 ],
                 'Record' => [
                     'Overview' => $copy['Voice']['Calls']['Record'],
                     'Code' => $samples['nodejs']['Voice Record'],
-                    'Results' => ''
+                    'Results' => $output['Voice Record']
                 ],
                 'Reject' => [
                     'Overview' => $copy['Voice']['Calls']['Reject'],
                     'Code' => $samples['nodejs']['Voice Reject'],
-                    'Results' => ''
+                    'Results' => $output['Voice Reject']
                 ],
                 'Routing' => [
                     'Overview' => $copy['Voice']['Calls']['Routing'],
                     'Code' => $samples['nodejs']['Voice Routing'],
-                    'Results' => ''
+                    'Results' => $output['Voice Routing']
                 ],
                 'Say' => [
                     'Overview' => $copy['Voice']['Calls']['Say'],
                     'Code' => $samples['nodejs']['Voice Say'],
-                    'Results' => ''
+                    'Results' => $output['Voice Say']
                 ],
                 'Transfer' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer'],
                     'Code' => $samples['nodejs']['Voice Transfer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer']
                 ],
                 'Transfer Whisper' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer Whisper'],
                     'Code' => $samples['nodejs']['Voice Transfer Whisper'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer Whisper']
                 ],
                 'Wait' => [
                     'Overview' => $copy['Voice']['Calls']['Wait'],
                     'Code' => $samples['nodejs']['Voice Wait'],
-                    'Results' => ''
+                    'Results' => $output['Voice Wait']
                 ]
             ]
         ],
@@ -995,12 +1027,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['nodejs']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['nodejs']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -1010,24 +1042,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['nodejs']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['nodejs']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['nodejs']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['nodejs']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -1035,12 +1067,12 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['nodejs']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['nodejs']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
@@ -1050,7 +1082,7 @@ return [
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['java']['Authentication'],
-            'Results' => ''
+            'Results' => $output['Authentication']
         ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
@@ -1058,12 +1090,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['java']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['java']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -1073,72 +1105,72 @@ return [
                 'Ask' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['java']['Voice Ask'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask']
                 ],
                 'Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['java']['Voice Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Answer']
                 ],
                 'Ask Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask Answer'],
                     'Code' => $samples['java']['Voice Ask-Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask-Answer']
                 ],
                 'Call' => [
                     'Overview' => $copy['Voice']['Calls']['Call'],
                     'Code' => $samples['java']['Voice Call'],
-                    'Results' => ''
+                    'Results' => $output['Voice Call']
                 ],
                 'Conference' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['java']['Voice Conference'],
-                    'Results' => ''
+                    'Results' => $output['Voice Conference']
                 ],
                 'Event' => [
                     'Overview' => $copy['Voice']['Calls']['Event'],
                     'Code' => $samples['java']['Voice Event'],
-                    'Results' => ''
+                    'Results' => $output['Voice Event']
                 ],
                 'Hangup' => [
                     'Overview' => $copy['Voice']['Calls']['Hangup'],
                     'Code' => $samples['java']['Voice Hangup'],
-                    'Results' => ''
+                    'Results' => $output['Voice Hangup']
                 ],
                 'Record' => [
                     'Overview' => $copy['Voice']['Calls']['Record'],
                     'Code' => $samples['java']['Voice Record'],
-                    'Results' => ''
+                    'Results' => $output['Voice Record']
                 ],
                 'Reject' => [
                     'Overview' => $copy['Voice']['Calls']['Reject'],
                     'Code' => $samples['java']['Voice Reject'],
-                    'Results' => ''
+                    'Results' => $output['Voice Reject']
                 ],
                 'Routing' => [
                     'Overview' => $copy['Voice']['Calls']['Routing'],
                     'Code' => $samples['java']['Voice Routing'],
-                    'Results' => ''
+                    'Results' => $output['Voice Routing']
                 ],
                 'Say' => [
                     'Overview' => $copy['Voice']['Calls']['Say'],
                     'Code' => $samples['java']['Voice Say'],
-                    'Results' => ''
+                    'Results' => $output['Voice Say']
                 ],
                 'Transfer' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer'],
                     'Code' => $samples['java']['Voice Transfer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer']
                 ],
                 'Transfer Whisper' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer Whisper'],
                     'Code' => $samples['java']['Voice Transfer Whisper'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer Whisper']
                 ],
                 'Wait' => [
                     'Overview' => $copy['Voice']['Calls']['Wait'],
                     'Code' => $samples['java']['Voice Wait'],
-                    'Results' => ''
+                    'Results' => $output['Voice Wait']
                 ]
             ]
         ],
@@ -1148,12 +1180,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['java']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['java']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -1163,24 +1195,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['java']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['java']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['java']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['java']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -1188,12 +1220,12 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['java']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['java']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],
@@ -1203,7 +1235,7 @@ return [
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['csharp']['Authentication'],
-            'Results' => ''
+            'Results' => $output['Authentication']
         ],
         'SMS' => [
             'Overview' => $copy['SMS']['Overview'],
@@ -1211,12 +1243,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['SMS']['Calls']['Sending'],
                     'Code' => $samples['csharp']['SMS Send'],
-                    'Results' => ''
+                    'Results' => $output['SMS Send']
                 ],
                 'Binary' => [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['csharp']['SMS Binary'],
-                    'Results' => ''
+                    'Results' => $output['SMS Binary']
                 ],
             ]
         ],
@@ -1226,72 +1258,72 @@ return [
                 'Ask' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['csharp']['Voice Ask'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask']
                 ],
                 'Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['csharp']['Voice Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Answer']
                 ],
                 'Ask Answer' => [
                     'Overview' => $copy['Voice']['Calls']['Ask Answer'],
                     'Code' => $samples['csharp']['Voice Ask-Answer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Ask-Answer']
                 ],
                 'Call' => [
                     'Overview' => $copy['Voice']['Calls']['Call'],
                     'Code' => $samples['csharp']['Voice Call'],
-                    'Results' => ''
+                    'Results' => $output['Voice Call']
                 ],
                 'Conference' => [
                     'Overview' => $copy['Voice']['Calls']['Ask'],
                     'Code' => $samples['csharp']['Voice Conference'],
-                    'Results' => ''
+                    'Results' => $output['Voice Conference']
                 ],
                 'Event' => [
                     'Overview' => $copy['Voice']['Calls']['Event'],
                     'Code' => $samples['csharp']['Voice Event'],
-                    'Results' => ''
+                    'Results' => $output['Voice Event']
                 ],
                 'Hangup' => [
                     'Overview' => $copy['Voice']['Calls']['Hangup'],
                     'Code' => $samples['csharp']['Voice Hangup'],
-                    'Results' => ''
+                    'Results' => $output['Voice Hangup']
                 ],
                 'Record' => [
                     'Overview' => $copy['Voice']['Calls']['Record'],
                     'Code' => $samples['csharp']['Voice Record'],
-                    'Results' => ''
+                    'Results' => $output['Voice Record']
                 ],
                 'Reject' => [
                     'Overview' => $copy['Voice']['Calls']['Reject'],
                     'Code' => $samples['csharp']['Voice Reject'],
-                    'Results' => ''
+                    'Results' => $output['Voice Reject']
                 ],
                 'Routing' => [
                     'Overview' => $copy['Voice']['Calls']['Routing'],
                     'Code' => $samples['csharp']['Voice Routing'],
-                    'Results' => ''
+                    'Results' => $output['Voice Routing']
                 ],
                 'Say' => [
                     'Overview' => $copy['Voice']['Calls']['Say'],
                     'Code' => $samples['csharp']['Voice Say'],
-                    'Results' => ''
+                    'Results' => $output['Voice Say']
                 ],
                 'Transfer' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer'],
                     'Code' => $samples['csharp']['Voice Transfer'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer']
                 ],
                 'Transfer Whisper' => [
                     'Overview' => $copy['Voice']['Calls']['Transfer Whisper'],
                     'Code' => $samples['csharp']['Voice Transfer Whisper'],
-                    'Results' => ''
+                    'Results' => $output['Voice Transfer Whisper']
                 ],
                 'Wait' => [
                     'Overview' => $copy['Voice']['Calls']['Wait'],
                     'Code' => $samples['csharp']['Voice Wait'],
-                    'Results' => ''
+                    'Results' => $output['Voice Wait']
                 ]
             ]
         ],
@@ -1301,12 +1333,12 @@ return [
                 'Sending' => [
                     'Overview' => $copy['USSD']['Calls']['Sending'],
                     'Code' => $samples['csharp']['USSD Send'],
-                    'Results' => ''
+                    'Results' => $output['USSD Send']
                 ],
                 'Replying' => [
                     'Overview' => $copy['USSD']['Calls']['Replying'],
                     'Code' => $samples['csharp']['USSD Reply'],
-                    'Results' => ''
+                    'Results' => $output['USSD Reply']
                 ]
             ]
         ],
@@ -1316,24 +1348,24 @@ return [
                 'Requests' => [
                     'Overview' => $copy['Payment']['Calls']['Requests'],
                     'Code' => $samples['csharp']['Payment Send'],
-                    'Results' => ''
+                    'Results' => $output['Payment Send']
                 ],
                 'Last Reference' => [
                     'Overview' => $copy['Payment']['Calls']['Last Reference'],
                     'Code' => $samples['csharp']['Payment Reference'],
-                    'Results' => ''
+                    'Results' => $output['Payment Reference']
                 ],
             ]
         ],
         'Amax' => [
             'Overview' => $copy['Amax'],
             'Code' => $samples['csharp']['Amax'],
-            'Results' => ''
+            'Results' => $output['Amax']
         ],
         'Location' => [
             'Overview' => $copy['Location'],
             'Code' => $samples['csharp']['Location'],
-            'Results' => ''
+            'Results' => $output['Location']
         ],
         'Subscriber' => [
             'Overview' => $copy['Subscriber']['Overview'],
@@ -1341,12 +1373,12 @@ return [
                 'Balance' => [
                     'Overview' => $copy['Subscriber']['Calls']['Balance'],
                     'Code' => $samples['csharp']['Subscriber Balance'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Balance']
                 ],
                 'Reload' => [
                     'Overview' => $copy['Subscriber']['Calls']['Reload'],
                     'Code' => $samples['csharp']['Subscriber Reload'],
-                    'Results' => ''
+                    'Results' => $output['Subscriber Reload']
                 ],
             ]
         ],

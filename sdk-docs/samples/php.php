@@ -9,5 +9,19 @@
     'Subscriber Balance' => '',
     'Subscriber Reload' => '',
     'USSD Send' => '',
-    'USSD Reply' => ''
+    'USSD Reply' => '',
+    'Voice Ask' => '',
+    'Voice Answer' => '',
+    'Voice Ask-Answer' => '',
+    'Voice Call' => '',
+    'Voice Conference' => '',
+    'Voice Event' => '',
+    'Voice Hangup' => '',
+    'Voice Record' => '',
+    'Voice Reject' => '',
+    'Voice Routing' => '',
+    'Voice Say' => '',
+    'Voice Transfer' => '',
+    'Voice Transfer Whisper' => '',
+    'Voice Wait' => ''
 );

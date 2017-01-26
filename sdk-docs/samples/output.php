@@ -1,5 +1,7 @@
-<?php return array (
-  'SMS Send' => '
+<?php
+$output = array (
+
+'SMS Send' => '
 {
     "outboundSMSMessageRequest": {
         "address": "tel:+639175595283",
@@ -20,7 +22,8 @@
     }
 }
 ',
-  'SMS Binary' => '
+
+'SMS Binary' => '
 {
     "outboundBinaryMessageRequest": {
         "address": "9171234567",
@@ -42,7 +45,8 @@
     }
 }
 ',
-  'Location' => '
+
+'Location' => '
 {
     "terminalLocationList": {
         "terminalLocation": {
@@ -59,7 +63,8 @@
     }
 }
 ',
-  'Payment Send' => '
+
+'Payment Send' => '
 {
     "amountTransaction":
     {
@@ -80,14 +85,16 @@
     }
 }
 ',
-  'Payment Reference' => '
+
+'Payment Reference' => '
 {
     "referenceCode": "12341000005",
     "status": "SUCCESS",
     "shortcode": "21581234"
 }
 ',
-  'Subscriber Balance' => '
+
+'Subscriber Balance' => '
 {
     terminalLocationList:
     {
@@ -101,7 +108,8 @@
     }
 }
 ',
-  'Subscriber Reload' => '
+
+'Subscriber Reload' => '
 {
     terminalLocationList:
     {
@@ -115,7 +123,8 @@
     }
 }
 ',
-  'USSD Send' => '
+
+'USSD Send' => '
 {
     "outboundUSSDMessageRequest": {
         "address": "639954895489",
@@ -135,7 +144,8 @@
     }
 }
 ',
-  'USSD Reply' => '
+
+'USSD Reply' => '
 {
     "outboundUSSDMessageRequest": {
         "address": "639954895489",
@@ -156,7 +166,8 @@
     }
 }
 ',
-  'Amax' => '
+
+'Amax' => '
 {
     "outboundRewardRequest": {
         "transaction_id": 566,
@@ -166,13 +177,15 @@
     }
 }
 ',
-  'Authentication' => '
+
+'Authentication' => '
 {
     "access_token":"1ixLbltjWkzwqLMXT-8UF-UQeKRma0hOOWFA6o91oXw",
     "subscriber_number":"9171234567"
 }
 ',
-  'Voice Answer' => '
+
+'Voice Answer' => '
 {
     tropo: [
         {
@@ -186,7 +199,8 @@
     ]
 }
 ',
-  'Voice Ask' => '
+
+'Voice Ask' => '
 {
     tropo: [
         {
@@ -219,7 +233,8 @@
     ]
 }
 ',
-  'Voice Ask-Answer' => '
+
+'Voice Ask-Answer' => '
 if path is ask?
 
 {
@@ -266,7 +281,8 @@ if path is answer?
     ]
 }
 ',
-  'Voice Call' => '
+
+'Voice Call' => '
 {
     tropo: [
         {
@@ -283,7 +299,8 @@ if path is answer?
     ]
 }
 ',
-  'Voice Conference' => '
+
+'Voice Conference' => '
 {
     tropo: [
         {
@@ -309,7 +326,8 @@ if path is answer?
     ]
 }
 ',
-  'Voice Event' => '
+
+'Voice Event' => '
 {
 tropo: [
     {
@@ -356,7 +374,8 @@ tropo: [
     ]
 }
 ',
-  'Voice Hangup' => '
+
+'Voice Hangup' => '
 {
     tropo: [
         {
@@ -370,7 +389,8 @@ tropo: [
     ]
 }
 ',
-  'Voice Record' => '
+
+'Voice Record' => '
 {
     tropo: [
         {
@@ -408,7 +428,8 @@ tropo: [
     ]
 }
 ',
-  'Voice Reject' => '
+
+'Voice Reject' => '
 {
     tropo: [
         {
@@ -417,7 +438,81 @@ tropo: [
     ]
 }
 ',
-  'Voice Transfer' => '
+
+'Voice Routing' => '
+
+if path is routing?
+
+{
+    tropo: [
+        {
+            say: {
+                value: "Welcome to my Tropo Web API."
+            }
+        },
+        {
+            on: {
+                next: "/VoiceSample/RoutingTest1",
+                event: "continue"
+            }
+        }
+    ]
+}
+
+if path is routing1?
+
+{
+    tropo: [
+        {
+            say: {
+                value: "Hello from resource one!"
+            }
+        },
+        {
+            on: {
+                next: "/VoiceSample/RoutingTest2",
+                event: "continue"
+            }
+        }
+    ]
+}
+
+if path is routing2?
+
+{
+    tropo: [
+        {
+            say: {
+                value: "Hello from resource two! thank you."
+            }
+        }
+    ]
+}
+',
+
+'Voice Say' => '
+{
+    tropo: [
+        {
+            say: {
+                value: "Welcome to my Tropo Web API."
+            }
+        },
+        {
+            say: {
+                value: "I will play an audio file for you, please wait."
+            }
+        },
+        {
+            say: {
+                value: "http://openovate.com/tropo-rocks.mp3"
+            }
+        }
+    ]
+}
+',
+
+'Voice Transfer' => '
 {
     tropo: [
         {
@@ -472,7 +567,8 @@ tropo: [
     ]
 }
 ',
-  'Voice Transfer Whisper' => '
+
+'Voice Transfer Whisper' => '
 if transfer whisper?
 
 {
@@ -540,7 +636,8 @@ if hangup?
     ]
 }
 ',
-  'Voice Wait' => '
+
+'Voice Wait' => '
 {
     tropo: [
         {
@@ -563,3 +660,9 @@ if hangup?
 }
 ',
 );
+
+foreach($output as $key => $value) {
+    $output[$key] = trim($value);
+}
+
+return $output;

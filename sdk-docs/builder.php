@@ -83,7 +83,9 @@ foreach ($contents as $language => $sections) {
             if(!$content['Results']) {
                 $documentation[] = 'TODO';
             } else {
+                $documentation[] = '```json';
                 $documentation[] = $content['Results'];
+                $documentation[] = '```';
             }
         }
 
@@ -116,7 +118,9 @@ foreach ($contents as $language => $sections) {
                     if(!$content['Results']) {
                         $documentation[] = 'TODO';
                     } else {
+                        $documentation[] = '```json';
                         $documentation[] = $content['Results'];
+                        $documentation[] = '```';
                     }
                 }
             }
