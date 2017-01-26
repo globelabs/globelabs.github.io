@@ -31,7 +31,7 @@ try {
 ',
 
 'Authentication' => '
-Please go to `https://github.com/globelabs/globe-connect-android/blob/master/instructions/authentication-flow.md`
+Please go to `https://github.com/globelabs/globe-connect-android/blob/master/instructions/authentication-activity.md`
 for more detailed explanation on how to do the android sdk authentication flow process.
 ',
 

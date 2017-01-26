@@ -3,7 +3,8 @@
 
 ### Setting Up
 
-TODO
+Please refer to this [link](https://github.com/globelabs/globe-connect-android/blob/master/instructions/manual-installation.md) for manual installation of the Globe Connect Android SDK.
+        <br />Please refer to this [link](https://github.com/globelabs/globe-connect-android/blob/master/instructions/installation-via-maven.md) to install the Globe Connect Android SDK via Maven Central.
 
 ### Authentication
 
@@ -16,7 +17,7 @@ If you haven't signed up yet, please follow the instructions found in [Getting S
 #### Sample Code
 
 ```java
-Please go to `https://github.com/globelabs/globe-connect-android/blob/master/instructions/authentication-flow.md`
+Please go to `https://github.com/globelabs/globe-connect-android/blob/master/instructions/authentication-activity.md`
 for more detailed explanation on how to do the android sdk authentication flow process.
 ```
 

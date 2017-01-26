@@ -76,7 +76,8 @@ $copy = [
 
 return [
     'Android' => [
-        'Setting Up' => '',
+        'Setting Up' => 'Please refer to this [link](https://github.com/globelabs/globe-connect-android/blob/master/instructions/manual-installation.md) for manual installation of the Globe Connect Android SDK.
+        <br />Please refer to this [link](https://github.com/globelabs/globe-connect-android/blob/master/instructions/installation-via-maven.md) to install the Globe Connect Android SDK via Maven Central.',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['android']['Authentication'],
