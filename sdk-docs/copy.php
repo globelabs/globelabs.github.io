@@ -312,7 +312,7 @@ return [
         ],
     ],
     'PhoneGap' => [
-        'Setting Up' => '',
+        'Setting Up' => 'Please refer to this [link](https://github.com/globelabs/globe-connect-phonegap/blob/master/instructions/installation.md) for detailed installation instructions of Globe Connect Phonegap SDK.',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['phonegap']['Authentication'],

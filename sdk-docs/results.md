@@ -1676,7 +1676,7 @@ subscriber
 
 ### Setting Up
 
-TODO
+Please refer to this [link](https://github.com/globelabs/globe-connect-phonegap/blob/master/instructions/installation.md) for detailed installation instructions of Globe Connect Phonegap SDK.
 
 ### Authentication
 
