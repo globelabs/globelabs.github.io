@@ -10,6 +10,7 @@ amax.setAddress("[address]")
 amax.setToken("[token]")
 amax.setPromo("[promo]")
 amax.sendReward()
+
 print amax.getResponse()
 ',
 
@@ -32,6 +33,7 @@ loc = location.Location("[token]")
 loc.setAddress("[address]")
 loc.setRequestedAccuracy("[accuracy]")
 loc.getLocation()
+
 print loc.getResponse()
 ',
 
@@ -45,6 +47,7 @@ payment.setEndUserId("[number]")
 payment.setReferenceCode("[referenceCode]")
 payment.setTransactionOperationStatus("[status]")
 payment.sendPaymentRequest()
+
 print payment.getResponse()
 ',
 
@@ -55,6 +58,7 @@ payment = payment.Payment("[token]")
 payment.setAppKey("[app_key]")
 payment.setAppSecret("[app_secret]")
 payment.getLastReferenceCode()
+
 print payment.getResponse()
 ',
 
@@ -65,6 +69,7 @@ sms = sms.Sms("[shortcode]","[token]")
 sms.setReceiverAddress("[receiver_address]")
 sms.setMessage("[message]")
 sms.setClientCorrelator("[correlator]")
+
 print sms.getResponse()
 ',
 
@@ -76,6 +81,7 @@ sms.setDataEncodingScheme("[encoding]")
 sms.setReceiverAddress("[address]")
 sms.setMessage("[msg]")
 sms.sendBinaryMessage()
+
 print sms.getResponse()
 ',
 
@@ -85,6 +91,7 @@ from globe.connect import subscriber
 subscriber = subscriber.Subscriber("[token]")
 subscriber.setAddress("[address]")
 subscriber.getSubscriberBalance()
+
 print subscriber.getResponse()
 ',
 
@@ -94,6 +101,7 @@ from globe.connect import subscriber
 subscriber = subscriber.Subscriber("[token]")
 subscriber.setAddress("[address]")
 subscriber.getReloadAmount()
+
 print subscriber.getResponse()
 ',
 
@@ -105,6 +113,7 @@ ussd.setAddress("[address]")
 ussd.setMessage("[message]")
 ussd.setFlash("[flash]")
 ussd.sendUsssdRequest()
+
 print ussd.getResponse()
 ',
 
@@ -117,6 +126,7 @@ ussd.setMessage("[message]")
 ussd.setFlash("[flash]")
 ussd.setSessionId("[session_id]")
 ussd.replyUssdRequest()
+
 print ussd.getResponse()
 ',
 
@@ -144,6 +154,7 @@ on.setRequired(true)
 voice.addSay(askSay)
 voice.addAsk(ask)
 voice.addOn(on)
+
 print voice.getObject()
 ',
 
@@ -184,7 +195,7 @@ if url == "/ask":
     voice.addOn(on)
 
     obj = voice.getObject()
-elif url == '/answer':
+elif url == "/answer":
     result = voice.result(data).getObject()
     interpretation = result.actions.interpretation
 
@@ -327,6 +338,7 @@ from globe.connect import voice
 voice = voice.Voice()
 
 voice.addReject()
+
 print voice.getObject()
 ',
 
@@ -467,6 +479,7 @@ if url == "/whisper":
     print voice.getObject()
 elif url == "/whisperIncomplete":
     voice.addHangup()
+    
     print voice.getObject()
 ',
 
