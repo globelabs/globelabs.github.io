@@ -6705,7 +6705,21 @@ If you haven't signed up yet, please follow the instructions found in [Getting S
 #### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var oauth = globe.Oauth('[app_key]', '[app_secret]');
+
+// get redirect url
+var url = oauth.getRedirectUrl();
+
+console.log(url);
+
+// get access access_token
+oauth.getAccessToken('[code]', function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body)
+});
 ```
 
 #### Sample Results
@@ -6732,7 +6746,17 @@ Send an SMS message to one or more mobile terminals:
 ##### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var sms = globe.Sms('[short_code]', '[access_token]');
+
+sms.setReceiverAddress('[subscriber_number]]');
+sms.setMessage('[message]')
+sms.sendMessage(function(resCode, body){
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 ##### Sample Results
@@ -6766,7 +6790,19 @@ Send binary data through SMS:
 ##### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var sms = globe.Sms('[short_code]', '[access_token]');
+
+sms.setUserDataHeader('[data_header]');
+sms.setDataEncodingScheme([coding_scheme])
+sms.setReceiverAddress('[subscriber_number]')
+sms.setMessage('[message]')
+sms.sendBinaryMessage(function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 ##### Sample Results
@@ -6807,7 +6843,31 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var say = voice.say('Welcome to my Tropo Web API');
+var choices = voice.choices('[5 DIGITS]')
+var askSay = voice.say('Please enter your 5 digit zip code.')
+
+var ask = voice.ask(askSay);
+ask.setChoices(choices);
+ask.setAttempts(3);
+ask.setBargein(false);
+ask.setName('foo');
+ask.setRequired(true);
+ask.setTimeount(10);
+
+var on = voice.on('continue');
+on.setNext('http://somfakehost.com:8080/');
+on.setRequired(true);
+
+voice.addSay(askSay);
+voice.addAsk(ask);
+voice.addOn(on);
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -6853,7 +6913,11 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
+var say = voice.say('Welcome to my Tropo Web API')
 
+console.log(JSON.stringify(voice.addSay(say).getObject()));
 ```
 
 ##### Sample Results
@@ -6880,7 +6944,43 @@ A better sample of the Ask and Answer dialog would look like the following.
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var say = voice.say('Welcome to my Tropo Web API.');
+
+if(url == '/ask') {
+    var choices = voice.choices('[5 DIGITS]');
+    var askSay = voice.say('Please enter your 5 digit zip code.');
+
+    var ask = voice.ask(askSay);
+    ask.setChoices(choices);
+    ask.setAttempts(3);
+    ask.setBargein(false);
+    ask.setName(foo);
+    ask.setRequired(true);
+    ask.setTimeout(10);
+
+    var on = voice.on('continue');
+    on.setNext('/answer');
+    on.setRequired(true);
+
+    voice.addSay(say);
+    voice.addAsk(ask);
+    voice.addOn(on);
+
+    var obj = voice.getObject();
+} else if(url == '/answer') {
+    var result = voice.result(data).getObject();
+    var interpretation = result.actions.interpretation;
+
+    var say = voice.say('Your zip is ' + interpretation + ', thank you!');
+    voice.setSay(say);
+
+    var obj = voice.getObject();
+}
+
+console.log(JSON.stringify(obj.getObject()));
 ```
 
 ##### Sample Results
@@ -6940,7 +7040,20 @@ You can connect your app to also call a customer to initiate the Ask and Answer 
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var say = voice.say('Hello World');
+
+var call = voice.call('9065263453');
+call.setFrom('sip:21584130@sip.tropo.net');
+
+voice.addCall(call);
+voice.addSay(say);
+
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -6970,7 +7083,28 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var say = voice.say('Welcome to my Tropo Web API Conference Call.');
+
+var jPrompt = voice.joinPrompt('http://openovate.com/hold-music.mp3');
+var lPrompt = voice.leavePrompt('http://openovate.com/hold-music.mp3');
+
+var conference = voice.conference('12345');
+conference.setMute(false);
+conference.setName('foo');
+conference.setPlayTones(true);
+conference.setTerminator('#');
+conference.setJoinPrompt(jPrompt);
+conference.setLeavePrompt(lPrompt);
+
+voice.addSay(say);
+voice.addConference(conference);
+
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -7009,7 +7143,42 @@ Call events are triggered depending on the response of the receiving person. Eve
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var e1 = voice.say('sorry, I did not hear anything.');
+e1.setEvent('timeout');
+
+var e2 = voice.say('sorry, that was not a valid option.');
+e2.setEvent('nomatch:1');
+
+var e3 = voice.say('Nope, still not a valid response.');
+e3.setEvent('nomatch:3');
+
+var say = voice.say('Welcome to my tropo web API.');
+var eSay = voice.say('Please enter your 5 digit zip code.');
+eSay.event([e1, e2, e3]);
+
+var choices = voice.choices('[5 DIGITS]');
+var ask = voice.ask(eSay);
+ask.setChoices(choices);
+ask.setAttempts(3);
+ask.setBargein(false);
+ask.setName('foo');
+ask.setRequired(true);
+ask.setTimeout(10);
+
+var on = voice.on('continue');
+on.setNext('/answer');
+on.setRequired(true);
+
+voice.addSay(say);
+voice.addAsk(ask);
+voice.addOn(on);
+
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -7069,7 +7238,16 @@ Between your automated dialogs (Ask and Answer) you can automatically close the 
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var say = voice.say('Welcome to my Tropo Web API, thank you');
+voice.addSay(say);
+voice.addHangup();
+
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -7096,7 +7274,38 @@ It is helpful to sometime record conversations, for example to help improve on t
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var say = voice.say('Welcome to my Tropo Web API.');
+var e1 = voice.say('Sorry, I did not hear anything. Please call back.');
+e1.setEvent('timeout');
+
+var say2 = voice.say('Please leave a message');
+say2.setEvent([e1]);
+
+var choices = voice.choices();
+choices.setTerminator('#');
+
+var transcription = voice.transcription('1234');
+transcription.setUrl('mailto:charles.andacc@gmail.com');
+
+var record = voice.record('foo', 'http://openovate.com/globe.php');
+record.setFormat('wav');
+record.setAttempts(3);
+record.setBargein(false);
+record.setMethod('POST');
+record.setRequired(true);
+record.setSay(say2);
+record.setChoices(choices);
+record.setTranscription(transcription);
+
+voice.addSay(say);
+voice.addRecord(record);
+
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -7147,7 +7356,13 @@ To filter incoming calls automatically, you can use the following example below.
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+voice.addReject();
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -7169,7 +7384,33 @@ To help integrate Globe Voice with web applications, this API using routing whic
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+if(url == '/routing') {
+    var say = voice.say('Welcome to my Tropo Web API.');
+
+    var on = voice.on('continue');
+    on.setNext('/routing1');
+
+    voice.addSay(say);
+    voice.addOn(on);
+} else if(url == '/routing1') {
+    var say = voice.say('Hello from resource one.');
+
+    var on = voice.on('continue');
+    on.setNext('/routing2');
+
+    voice.addSay(say);
+    voice.on(on);
+} else if(url == '/routing2') {
+    var say = voice.say('Hello from resource two! Thank you.');
+    voice.addSay(say);
+}
+
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -7231,7 +7472,20 @@ The message you pass to `say` will be transformed to an automated voice.
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var say = voice.say('Welcome to my Tropo Web API.');
+var say2 = voice.say('I will play an audio file for you, please wait.');
+var say3 = voice.say('http://openovate.com/tropo-rocks.mp3');
+
+voice.addSay(say);
+voice.addSay(say2);
+voice.addSay(say3);
+
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -7265,7 +7519,50 @@ The following sample explains the dialog needed to transfer the receiver to anot
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var say = voice.say('Welcome to my Tropo Web API, you are now being transfered.');
+
+var e1 = voice.say('Sorry, I did not hear anything');
+e1.setEvent('timeout');
+
+var e2 = voice.say('Sorry, that was an invalid option.');
+e2.setEvent('nomatch:1');
+
+var eventSay = voice.say('Please enter your 5 digit zip code.');
+eventSay.setEvent([e1, e2]);
+
+var choices = voice.choices('[5 DIGITS]');
+
+var ask = voice.ask(eventSay);
+ask.setChoices(choices);
+ask.setAttempts(3);
+ask.setBargein(false);
+ask.setName('foo');
+ask.setRequired(true);
+ask.setTimeout(10);
+
+var ringSay = voice.say('http://openovate.com/hold-music.mp3');
+
+var onRing = voice.on('ring');
+onRing.setSay(ringSay);
+
+var onConnect = voice.on('connect');
+onConnect.setSay(ringSay);
+
+var on = [onRing, onConnect];
+
+var transfer = voice.transfer('9053801178');
+transfer.setRingRepeat(2);
+transfer.setOn(on);
+
+voice.addSay(say);
+voice.addTransfer(transfer);
+
+var obj = voice.getObject();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -7333,7 +7630,56 @@ TODO
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+if(url == '/whisper') {
+    var say = voice.say('Welcome to my Tropo Web API');
+    var askSay = voice.say('Press 1 to continue this call or any other to reject');
+    var choices = voice.choices('1');
+    choices.setMode('DTMF');
+
+    var ask = voice.ask(askSay);
+    ask.setChoices(choices);
+    ask.setName('color');
+    ask.setTimeout(60);
+
+    onConnect1 = voice.on('connect');
+    onConnect1.setAsk(ask);
+
+    var sayCon2 = voice.say('You are now being connected');
+    var onConnect2 = voice.on('connect');
+    onConnect2.setSay(sayCon2);
+
+    sayRing = voice.say('http://openovate.com/hold-music.mp3');
+    var onRing = voice.on('ring');
+    onRing.setSay(say);
+
+    on = [onRing, onConnect1, onConnect2];
+    transfer = voice.transfer('9054799241');
+    transfer.setName('foo');
+    transfer.setOn(on);
+    transfer.setRequired(true);
+    transfer.terminator('*');
+
+    var incompleteSay = voice.say('Your are now being disconnected');
+    var onIncomplete = voice.on('incomplete');
+    onIncomplete.setNext('/whisperIncomplete');
+    onIncomplete.setSay(incompleteSay);
+
+    voice.addSay(say);
+    voice.addTransfer(transfer);
+    voice.addOn(onIncomplete);
+
+    var obj = voice.getObject();
+    
+    console.log(JSON.stringify(obj));
+} else if(url == '/whisperIncomplete') {
+    voice.addHangup();
+    var obj = voice.getObject();
+
+    console.log(JSON.stringify(obj));
+}
 ```
 
 ##### Sample Results
@@ -7414,7 +7760,22 @@ To put a receiver on hold, you can use the following sample.
 ##### Sample Code
 
 ```js
+var globe = require ('globe-connect');
+var voice = globe.Voice();
 
+var say = voice.say('Welcome to my Tropo Web API.');
+var wait = voice.wait(5000);
+wait.setAllowSignals(true);
+
+var say2 = voice.say('Thank you for waiting.');
+
+voice.addSay(say);
+voice.addWait(wait);
+voice.addSay(say2);
+
+var obj = voice.getObjet();
+
+console.log(JSON.stringify(obj));
 ```
 
 ##### Sample Results
@@ -7455,7 +7816,18 @@ The following example shows how to send a USSD request.
 ##### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var ussd = globe.Ussd('[access_token]', '[short_code]');
+
+ussd.setAddress('[subscriber_number]]');
+ussd.setUssdMessage('[message]');
+ussd.setFlash('[flash]');
+ussd.sendUssdRequest(function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 ##### Sample Results
@@ -7488,7 +7860,19 @@ The following example shows how to send a USSD reply.
 ##### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var ussd = globe.Ussd('[access_token]', '[short_code]');
+
+ussd.setAddress('[subscriber_number]]');
+ussd.setUssdMessage('[message]');
+ussd.setFlash('[flash]');
+ussd.setSessionId('[session_id]')
+ussd.replyUssdRequest(function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 ##### Sample Results
@@ -7528,7 +7912,20 @@ The following example shows how you can request for a payment from a customer.
 ##### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var payment = globe.Payment('[access_token]');
+
+payment.setAmount('[amount]');
+payment.setDescription('[desciption]');
+payment.setEndUserId('[subscriber_number]');
+payment.setReferenceCode('[reference]');
+payment.setTransactionOperationStatus('[status]');
+payment.sendPaymentRequest(function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 ##### Sample Results
@@ -7562,7 +7959,17 @@ The following example shows how you can get the last reference of payment.
 ##### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var payment = globe.Payment('[access_token]');
+
+payment.setAppKey('[app_key]');
+payment.setAppSecret('[app_secret]');
+payment.getLastReferenceCode(function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 ##### Sample Results
@@ -7584,7 +7991,18 @@ Amax is an automated promo builder you can use with your app to award customers 
 #### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var amax = globe.Amax('[app_id]', '[app_secret]');
+
+amax.setToken('[rewards_token]');
+amax.setAddress('[subscriber_number]]');
+amax.setPromo('[promo]');
+amax.sendReward(function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 #### Sample Results
@@ -7609,7 +8027,17 @@ To determine a general area (lat,lng) of your customers you can utilize this fea
 #### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var location = globe.Location('[access_token]');
+
+location.setAddress('[subscriber_number]]');
+location.setRequestedAccuracy('[accuracy]');
+location.getLocation(function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 #### Sample Results
@@ -7645,7 +8073,16 @@ The following example shows how you can get the subscriber balance.
 ##### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var subscriber = globe.Subscriber('[access_token]');
+
+subscriber.setAddres('[subscriber_number]]');
+subscriber.getSubscriberBalance(function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 ##### Sample Results
@@ -7672,7 +8109,16 @@ The following example shows how you can get the subscriber reload amount.
 ##### Sample Code
 
 ```js
+var globe = require('globe-connect');
 
+var subscriber = globe.Subscriber('[access_token]');
+
+subscriber.setAddres('[subscriber_number]]');
+subscriber.getReloadAmount(function(resCode, body) {
+    // some code here
+    console.log(resCode);
+    console.log(body);
+});
 ```
 
 ##### Sample Results
@@ -7709,7 +8155,20 @@ If you haven't signed up yet, please follow the instructions found in [Getting S
 #### Sample Code
 
 ```java
+import ph.com.globe.connect.Authentication;
+import org.json.JSONObject;
 
+Authentication auth = new Authentication([app_id], [app_secret]);
+
+String dialogUrl = auth.getDialogUrl();
+
+// redirect the user, process the code then ...
+
+JSONObject response = auth
+    .getAccessToken("[code]")
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 #### Sample Results
@@ -7736,7 +8195,19 @@ Send an SMS message to one or more mobile terminals:
 ##### Sample Code
 
 ```java
+import ph.com.globe.connect.Sms;
+import org.json.JSONObject;
 
+Sms sms = new Sms("[short_code]", "[access_token]");
+
+JSONObject response = sms
+    .setClientCorrelator("[client_correlator]")
+    .setReceiverAddress("[receiver_address]")
+    .setMessage("[message]")
+    .sendMessage()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 ##### Sample Results
@@ -7770,7 +8241,20 @@ Send binary data through SMS:
 ##### Sample Code
 
 ```java
+import ph.com.globe.connect.BinarySms;
+import org.json.JSONObject;
 
+BinarySms sms = new BinarySms("[short_code]", "[access_token]");
+
+JSONObject response = sms
+    .setUserDataHeader("[data_header]")
+    .setDataCodingScheme([coding_scheme])
+    .setReceiverAddress("[receiver_address]")
+    .setBinaryMessage("[message]")
+    .sendBinaryMessage()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 ##### Sample Results
@@ -7811,7 +8295,49 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import ph.com.globe.connect.voice.Choices;
+import ph.com.globe.connect.voice.Say;
+
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API.");
+
+    Say say = new Say("Please enter your 5 digit zip code.");
+    Choices choices = new Choices("[5 DIGITS]");
+
+    voice.ask(
+        INSTANCE(choices),
+        ATTEMPTS(3),
+        BARGEIN(false),
+        NAME("foo"),
+        REQUIRED(true),
+        INSTANCE(say),
+        TIMEOUT(10)
+    );
+
+    voice.on(
+        EVENT("continue"),
+        NEXT("http://somefakehost.com:8000/"),
+        REQUIRED(true)
+    );
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -7857,7 +8383,27 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API.");
+    voice.hangup();
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -7884,7 +8430,79 @@ A better sample of the Ask and Answer dialog would look like the following.
 ##### Sample Code
 
 ```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import ph.com.globe.connect.voice.Choices;
+import ph.com.globe.connect.voice.Say;
+import ph.com.globe.connect.voice.Result;
+
+import static ph.com.globe.connect.voice.Key.*;
+
+import org.json.JSONObject;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API.");
+
+    if("/VoiceSample/AskZipTest".equals(request.getRequestURI())) {
+        Say say = new Say("Please enter your 5 digit zip code.");
+        Choices choices = new Choices("[5 DIGITS]");
+
+        voice.ask(
+            INSTANCE(choices),
+            ATTEMPTS(3),
+            BARGEIN(false),
+            NAME("foo"),
+            REQUIRED(true),
+            INSTANCE(say),
+            TIMEOUT(10)
+        );
+
+        voice.on(
+            EVENT("continue"),
+            NEXT("/VoiceSample/AnswerZipTest"),
+            REQUIRED(true)
+        );
+    } else if("/VoiceSample/AnswerZipTest".equals(request.getRequestURI())) {
+        StringBuilder builder = new StringBuilder();
+        String line = "";
+
+        try {
+           BufferedReader reader = request.getReader();
+
+            while ((line = reader.readLine()) != null) {
+                builder.append(line);
+            }
+
+        } catch (IOException e) { }
+
+        JSONObject json = new JSONObject(builder.toString());
+
+        // parse result as flat data
+        JSONObject result = new Result(json).getResult();
+
+        // get interpretation
+        String interpretation = (String) result.get("interpretation");
+
+        voice = new Voice();
+
+        voice.say("Your zip code is " + interpretation + ", thank you!");
+    }
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -7944,7 +8562,33 @@ You can connect your app to also call a customer to initiate the Ask and Answer 
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import ph.com.globe.connect.voice.Say;
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.call(
+        TO("9065263453"),
+        FROM("sip:21584130@sip.tropo.net")
+    );
+
+    voice.say(ARRAY(new Say("Hello World")));
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -7974,7 +8618,46 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import ph.com.globe.connect.voice.Conference;
+import ph.com.globe.connect.voice.JoinPrompt;
+import ph.com.globe.connect.voice.LeavePrompt;
+import ph.com.globe.connect.voice.Session;
+
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API Conference Call.");
+
+    voice.conference(
+        ID("12345"),
+        MUTE(false),
+        NAME("foo"),
+        PLAY_TONES(true),
+        TERMINATOR("#"),
+        INSTANCE(new JoinPrompt(
+            VALUE("http://openovate.com/hold-music.mp3")
+        )),
+        INSTANCE(new LeavePrompt(
+            VALUE("http://openovate.com/hold-music.mp3")
+        ))
+    );
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8013,7 +8696,68 @@ Call events are triggered depending on the response of the receiving person. Eve
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import ph.com.globe.connect.voice.Choices;
+import ph.com.globe.connect.voice.Say;
+
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API.");
+
+    Say e1 = new Say(
+        VALUE("Sorry, I did not hear anything."),
+        EVENT("timeout")
+    );
+
+    Say e2 = new Say(
+        VALUE("Sorry, that was not a valid option."),
+        EVENT("nomatch:1")
+    );
+
+    Say e3 = new Say(
+        VALUE("Nope, still not a valid response"),
+        EVENT("nomatch:2")
+    );
+
+    Say say = new Say(
+        VALUE("Please enter your 5 digit zip code."),
+        ARRAY(e1, e2, e3)
+    );
+
+    Choices choices = new Choices("[5 DIGITS]");
+
+    voice.ask(
+        INSTANCE(choices),
+        ATTEMPTS(3),
+        BARGEIN(false),
+        NAME("foo"),
+        REQUIRED(true),
+        INSTANCE(say),
+        TIMEOUT(5)
+    );
+
+    voice.on(
+        EVENT("continue"),
+        NEXT("http://somefakehost:8000/"),
+        REQUIRED(true)
+    );
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8073,7 +8817,27 @@ Between your automated dialogs (Ask and Answer) you can automatically close the 
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API, thank you!");
+    voice.hangup();
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8100,7 +8864,59 @@ It is helpful to sometime record conversations, for example to help improve on t
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import ph.com.globe.connect.voice.Choices;
+import ph.com.globe.connect.voice.Say;
+import ph.com.globe.connect.voice.Transcription;
+import ph.com.globe.connect.voice.enums.*;
+
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API.");
+
+    Say timeout = new Say(
+        VALUE("Sorry, I did not hear anything. Please call back."),
+        EVENT("timeout")
+    );
+
+    Say say = new Say(VALUE("Please leave a message"), ARRAY(timeout));
+
+    Choices choices = new Choices(TERMINATOR("#"));
+
+    Transcription transcription = new Transcription(
+        ID("1234"),
+        URL("mailto:charles.andacc@gmail.com")
+    );
+
+    voice.record(
+        ATTEMPTS(3),
+        BARGEIN(false),
+        METHOD("POST"),
+        REQUIRED(true),
+        INSTANCE(say),
+        NAME("foo"),
+        URL("http://openovate.com/globe.php"),
+        FORMAT(Format.WAV),
+        INSTANCE(choices),
+        INSTANCE(transcription)
+    );
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8151,7 +8967,26 @@ To filter incoming calls automatically, you can use the following example below.
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.reject();
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8173,7 +9008,43 @@ To help integrate Globe Voice with web applications, this API using routing whic
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    String path = request.getRequestURI();
+
+    Voice voice = new Voice();
+
+    if("/VoiceSample/RoutingTest".equals(path)) {
+        voice.say("Welcome to my Tropo Web API.");
+        voice.on(
+            EVENT("continue"),
+            NEXT("/VoiceSample/RoutingTest1")
+        );
+    } else if("/VoiceSample/RoutingTest1".equals(path)) {
+        voice.say("Hello from resource one!");
+        voice.on(
+            EVENT("continue"),
+            NEXT("/VoiceSample/RoutingTest2")
+        );
+    } else if("/VoiceSample/RoutingTest2".equals(path)) {
+        voice.say("Hello from resource two! thank you.");
+    }
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8235,7 +9106,31 @@ The message you pass to `say` will be transformed to an automated voice.
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API.");
+    voice.say("I will play an audio file for you, please wait.");
+    voice.say(
+        VALUE("http://openovate.com/tropo-rocks.mp3")
+    );
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8269,7 +9164,83 @@ The following sample explains the dialog needed to transfer the receiver to anot
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import ph.com.globe.connect.voice.Ask;
+import ph.com.globe.connect.voice.Choices;
+import ph.com.globe.connect.voice.Say;
+import ph.com.globe.connect.voice.Transfer;
+import ph.com.globe.connect.voice.On;
+import ph.com.globe.connect.voice.enums.*;
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API, you are now being transferred.");
+
+    Say e1 = new Say(
+        VALUE("Sorry, I did not hear anything."),
+        EVENT("timeout")
+    );
+
+    Say e2 = new Say(
+        VALUE("Sorry, that was not a valid option."),
+        EVENT("nomatch:1")
+    );
+
+    Say e3 = new Say(
+        VALUE("Nope, still not a valid response"),
+        EVENT("nomatch:2")
+    );
+
+    Say say = new Say(
+        VALUE("Please enter your 5 digit zip code."),
+        ARRAY(e1, e2, e3)
+    );
+
+    Choices choices = new Choices("[5 DIGITS]");
+
+    Ask ask = new Ask(
+        INSTANCE(choices),
+        ATTEMPTS(3),
+        BARGEIN(false),
+        NAME("foo"),
+        REQUIRED(true),
+        INSTANCE(say),
+        TIMEOUT(5)
+    );
+
+    On ring = new On(
+        EVENT("ring"),
+        INSTANCE(new Say("http://openovate.com/hold-music.mp3"))
+    );
+
+    On connect = new On(
+       EVENT("connect"),
+       INSTANCE(ask)
+    );
+
+    On on = new On(ARRAY(ring, connect));
+
+    voice.transfer(
+        TO("9053801178"),
+        RING_REPEAT(2),
+        INSTANCE(on)
+    );
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8337,7 +9308,82 @@ TODO
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import ph.com.globe.connect.voice.Ask;
+import ph.com.globe.connect.voice.Choices;
+import ph.com.globe.connect.voice.Say;
+import ph.com.globe.connect.voice.Transfer;
+import ph.com.globe.connect.voice.On;
+import ph.com.globe.connect.voice.enums.*;
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    if("/VoiceSample/TransferWhisperTest".equals(request.getRequestURI())) {
+        voice.say("Welcome to my Tropo Web API, please hold while you are being transferred.");
+
+        Say say = new Say("Press 1 to accept this call or any other number to reject");
+
+        Choices choices = new Choices(
+            VALUE("1"),
+            MODE(Mode.DTMF)
+        );
+
+        Ask ask = new Ask(
+            INSTANCE(choices),
+            NAME("color"),
+            INSTANCE(say),
+            TIMEOUT(60)
+        );
+
+        On connect1 = new On(
+            EVENT("connect"),
+            INSTANCE(ask)
+        );
+
+        On connect2 = new On(
+            EVENT("connect"),
+            INSTANCE(new Say("You are now being connected."))
+        );
+
+        On ring = new On(
+            EVENT("ring"),
+            INSTANCE(new Say("http://openovate.com/hold-music.mp3"))
+        );
+
+        On connect = new On(ARRAY(ring, connect1, connect2));
+
+        voice.transfer(
+            TO("9054799241"),
+            NAME("foo"),
+            INSTANCE(connect),
+            REQUIRED(true),
+            TERMINATOR("*")
+        );
+
+        voice.on(
+            EVENT("incomplete"),
+            NEXT("/VoiceSample/TransferWhisperHangupTest"),
+            INSTANCE(new Say("You are now being disconnected."))
+        );
+    } else if("/VoiceSample/TransferWhisperHangupTest".equals(request.getRequestURI())) {
+        voice.hangup();
+    }
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8418,7 +9464,29 @@ To put a receiver on hold, you can use the following sample.
 ##### Sample Code
 
 ```java
+import java.io.IOException;
+import java.io.PrintWriter;
 
+import ph.com.globe.connect.Voice;
+import static ph.com.globe.connect.voice.Key.*;
+
+...
+
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    response.setContentType("application/json;charset=UTF-8");
+
+    Voice voice = new Voice();
+
+    voice.say("Welcome to my Tropo Web API, please wait for a while.");
+    voice.wait(MILLISECONDS(5000), ALLOW_SIGNALS(true));
+    voice.say("Thank you for waiting!");
+
+    try (PrintWriter out = response.getWriter()) {
+        out.println(voice.render());
+    }
+}
 ```
 
 ##### Sample Results
@@ -8459,7 +9527,20 @@ The following example shows how to send a USSD request.
 ##### Sample Code
 
 ```java
+import ph.com.globe.connect.Ussd;
+import org.json.JSONObject;
 
+Ussd ussd = new Ussd("[access_token]");
+
+JSONObject response = ussd
+    .setSenderAddress("[short_code]")
+    .setUssdMessage("[message]")
+    .setAddress("[subscriber_number]")
+    .setFlash([flash])
+    .sendUssdRequest()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 ##### Sample Results
@@ -8492,7 +9573,21 @@ The following example shows how to send a USSD reply.
 ##### Sample Code
 
 ```java
+import ph.com.globe.connect.Ussd;
+import org.json.JSONObject;
 
+Ussd ussd = new Ussd("[access_token]");
+
+JSONObject response = ussd
+    .setSessionId([session_id])
+    .setAddress("[subscriber_number]")
+    .setSenderAddress("[short_code]")
+    .setUssdMessage("[message]")
+    .setFlash([flash])
+    .replyUssdRequest()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 ##### Sample Results
@@ -8532,7 +9627,21 @@ The following example shows how you can request for a payment from a customer.
 ##### Sample Code
 
 ```java
+import ph.com.globe.connect.Payment;
+import org.json.JSONObject;
 
+Payment payment = new Payment("[access_token]");
+
+JSONObject response = payment
+    .setAmount([amount])
+    .setDescription("[description]")
+    .setEndUserId("[subscriber_number]")
+    .setReferenceCode("[reference]")
+    .setTransactionOperationStatus("[status]")
+    .sendPaymentRequest()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 ##### Sample Results
@@ -8566,7 +9675,18 @@ The following example shows how you can get the last reference of payment.
 ##### Sample Code
 
 ```java
+import ph.com.globe.connect.Payment;
+import org.json.JSONObject;
 
+Payment payment = new Payment("[access_token]");
+
+JSONObject response = payment
+    .setAppId("[app_id]")
+    .setAppSecret("[app_secret]")
+    .getLastReferenceCode()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 ##### Sample Results
@@ -8588,7 +9708,19 @@ Amax is an automated promo builder you can use with your app to award customers 
 #### Sample Code
 
 ```java
+import ph.com.globe.connect.Amax;
+import org.json.JSONObject;
 
+Amax amax = new Amax([app_id], [app_secret]);
+
+JSONObject response = amax
+    .setRewardsToken("[rewards_token]")
+    .setAddress("[subscriber_number]")
+    .setPromo("[promo]")
+    .sendRewardRequest()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 #### Sample Results
@@ -8613,7 +9745,18 @@ To determine a general area (lat,lng) of your customers you can utilize this fea
 #### Sample Code
 
 ```java
+import ph.com.globe.connect.Location;
+import org.json.JSONObject;
 
+Location location = new Location("[access_token]");
+
+JSONObject response = location
+    .setAddress("[subscriber_number]")
+    .setRequestedAccuracy([accuracy])
+    .getLocation()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 #### Sample Results
@@ -8649,7 +9792,17 @@ The following example shows how you can get the subscriber balance.
 ##### Sample Code
 
 ```java
+import ph.com.globe.connect.Subscriber;
+import org.json.JSONObject;
 
+Subscriber subscriber = new Subscriber("[access_token]");
+
+JSONObject response = subscriber
+    .setAddress("[subscriber_number]")
+    .getSubscriberBalance()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 ##### Sample Results
@@ -8676,7 +9829,17 @@ The following example shows how you can get the subscriber reload amount.
 ##### Sample Code
 
 ```java
+import ph.com.globe.connect.Subscriber;
+import org.json.JSONObject;
 
+Subscriber subscriber = new Subscriber("[access_token]");
+
+JSONObject response = subscriber
+    .setAddress("[subscriber_number]")
+    .getSubscriberReloadAmount()
+    .getJsonResponse();
+
+System.out.println(response);
 ```
 
 ##### Sample Results
