@@ -2155,7 +2155,7 @@ subscriber
 
 ### Setting Up
 
-TODO
+```npm install -g globe-connect-cli```
 
 ### Authentication
 
@@ -2511,7 +2511,7 @@ globe-connect subscr-reload-amt -a [subscriber_number] -t "[access_token]" --ver
 
 ### Setting Up
 
-TODO
+```composer install globe-connect-php```
 
 ### Authentication
 
@@ -3874,7 +3874,7 @@ print $subscriber->getReloadAmount();
 
 ### Setting Up
 
-TODO
+```pip install globe```
 
 ### Authentication
 
@@ -5277,7 +5277,7 @@ print subscriber.getResponse()
 
 ### Setting Up
 
-TODO
+```gem install globe_connect```
 
 ### Authentication
 
@@ -6745,7 +6745,7 @@ response = subscriber.get_subscriber_reload_amount('[subscriber_number]')
 
 ### Setting Up
 
-TODO
+```npm install globe-connect-nodejs```
 
 ### Authentication
 
@@ -8195,7 +8195,23 @@ subscriber.getReloadAmount(function(resCode, body) {
 
 ### Setting Up
 
-TODO
+
+        Install via Maven:
+        <!-- https://mvnrepository.com/artifact/ph.com.globe.connect/globe-connect-java -->
+        <dependency>
+            <groupId>ph.com.globe.connect</groupId>
+            <artifactId>globe-connect-java</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+
+        Install via Gradle:
+        // https://mvnrepository.com/artifact/ph.com.globe.connect/globe-connect-java
+        compile group: 'ph.com.globe.connect', name: 'globe-connect-java', version: '0.0.5'
+
+        Install via Ivy:
+        <!-- https://mvnrepository.com/artifact/ph.com.globe.connect/globe-connect-java -->
+        <dependency org="ph.com.globe.connect" name="globe-connect-java" rev="0.0.5"/>
+        
 
 ### Authentication
 
@@ -9916,7 +9932,7 @@ System.out.println(response);
 
 ### Setting Up
 
-TODO
+```PM> Install-Package Globe.Connect```
 
 ### Authentication
 

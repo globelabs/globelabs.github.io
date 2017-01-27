@@ -390,7 +390,7 @@ return [
         ],
     ],
     'CLI' => [
-        'Setting Up' => '',
+        'Setting Up' => '```npm install -g globe-connect-cli```',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['cli']['Authentication'],
@@ -468,7 +468,7 @@ return [
         ],
     ],
     'PHP' => [
-        'Setting Up' => '',
+        'Setting Up' => '```composer install globe-connect-php```',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['php']['Authentication'],
@@ -621,7 +621,7 @@ return [
         ],
     ],
     'Python' => [
-        'Setting Up' => '',
+        'Setting Up' => '```pip install globe```',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['python']['Authentication'],
@@ -774,7 +774,7 @@ return [
         ],
     ],
     'Ruby' => [
-        'Setting Up' => '',
+        'Setting Up' => '```gem install globe_connect```',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['ruby']['Authentication'],
@@ -927,7 +927,7 @@ return [
         ],
     ],
     'NodeJS' => [
-        'Setting Up' => '',
+        'Setting Up' => '```npm install globe-connect-nodejs```',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['nodejs']['Authentication'],
@@ -1080,7 +1080,23 @@ return [
         ],
     ],
     'Java' => [
-        'Setting Up' => '',
+        'Setting Up' => '
+        Install via Maven:
+        <!-- https://mvnrepository.com/artifact/ph.com.globe.connect/globe-connect-java -->
+        <dependency>
+            <groupId>ph.com.globe.connect</groupId>
+            <artifactId>globe-connect-java</artifactId>
+            <version>0.0.5</version>
+        </dependency>
+
+        Install via Gradle:
+        // https://mvnrepository.com/artifact/ph.com.globe.connect/globe-connect-java
+        compile group: \'ph.com.globe.connect\', name: \'globe-connect-java\', version: \'0.0.5\'
+
+        Install via Ivy:
+        <!-- https://mvnrepository.com/artifact/ph.com.globe.connect/globe-connect-java -->
+        <dependency org="ph.com.globe.connect" name="globe-connect-java" rev="0.0.5"/>
+        ',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['java']['Authentication'],
@@ -1233,7 +1249,7 @@ return [
         ],
     ],
     'C Sharp' => [
-        'Setting Up' => '',
+        'Setting Up' => '```PM> Install-Package Globe.Connect```',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['csharp']['Authentication'],
