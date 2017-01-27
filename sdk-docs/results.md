@@ -1177,7 +1177,7 @@ globeConnect.getSubscriberReloadAmount(
 
 ### Setting Up
 
-TODO
+Please refer to this [link](https://github.com/globelabs/globe-connect-react-native/blob/master/react-native-globeconnect/instructions/installation.md) for the detailed installation of Globe Connect React Native SDK.
 
 ### Authentication
 
