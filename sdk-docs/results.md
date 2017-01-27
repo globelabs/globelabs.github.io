@@ -1635,7 +1635,15 @@ If you haven't signed up yet, please follow the instructions found in [Getting S
 #### Sample Code
 
 ```js
+var auth = globeconnect.Authentication(
+    '[app_id]',
+    '[app_secret]');
 
+auth.startAuthActivity(function() {
+    console.log(arguments);
+}, function() {
+    console.log(arguments);
+});
 ```
 
 #### Sample Results
@@ -1662,7 +1670,21 @@ Send an SMS message to one or more mobile terminals:
 ##### Sample Code
 
 ```js
+var sms = globeconnect.Sms(
+    '[short_code]',
+    '[app_secret]'
+);
 
+sms
+    .setClientCorrelator('[client_correlator]')
+    .setReceiverAddress('[subscriber_number]')
+    .setMessage('[message]');
+
+sms.sendMessage(function() {
+    console.log(arguments);
+}, function() {
+    console.log(arguments);
+});
 ```
 
 ##### Sample Results
@@ -1696,7 +1718,22 @@ Send binary data through SMS:
 ##### Sample Code
 
 ```js
+var binary = globeconnect.BinarySms(
+    '[short_code]',
+    '[access_token]'
+);
 
+binary
+    .setUserDataHeader('[data_header]')
+    .setDataCodingScheme([coding_scheme])
+    .setReceiverAddress('[receiver_address]')
+    .setBinaryMessage('[message]');
+
+binary.sendBinaryMessage(function() {
+    console.log(arguments);
+}, function() {
+    console.log(arguments);
+});
 ```
 
 ##### Sample Results
@@ -1737,7 +1774,18 @@ The following example shows how to send a USSD request.
 ##### Sample Code
 
 ```js
+var ussd = globeconnect.Ussd('[app_secret]');
 
+ussd
+    .setSenderAddress('[short_code]')
+    .setUssdMessage('[message]')
+    .setAddress('[subscriber_number]')
+    .setFlash([flash])
+    .sendUssdRequest(function() {
+        console.log(arguments);
+    }, function() {
+        console.log(arguments);
+    });
 ```
 
 ##### Sample Results
@@ -1770,7 +1818,19 @@ The following example shows how to send a USSD reply.
 ##### Sample Code
 
 ```js
+var ussd = globeconnect.Ussd('[app_secret]');
 
+ussd
+    .setSessionId('[session_id]')
+    .setAddress('[subscriber_number]')
+    .setSenderAddress('[short_code]')
+    .setUssdMessage('[message]')
+    .setFlash([flash])
+    .replyUssdRequest(function() {
+        console.log(arguments);
+    }, function() {
+        console.log(arguments);
+    });
 ```
 
 ##### Sample Results
@@ -1810,7 +1870,21 @@ The following example shows how you can request for a payment from a customer.
 ##### Sample Code
 
 ```js
+var payment = globeconnect.Payment('[app_secret]');
 
+payment
+    .setAppId('[app_id]')
+    .setAppSecret('[app_secret]')
+    .setAmount(0.00)
+    .setDescription('[description]')
+    .setEndUserId('[subscriber_number]')
+    .setReferenceCode('[reference]')
+    .setTransactionOperationStatus('[status]')
+    .sendPaymentRequest(function() {
+        console.log(arguments);
+    }, function() {
+        console.log(arguments);
+    });
 ```
 
 ##### Sample Results
@@ -1844,7 +1918,16 @@ The following example shows how you can get the last reference of payment.
 ##### Sample Code
 
 ```js
+var payment = globeconnect.Payment('[app_secret]');
 
+payment
+    .setAppId('[app_id]')
+    .setAppSecret('[app_secret]')
+    .getLastReferenceCode(function() {
+        console.log(arguments);
+    }, function() {
+        console.log(arguments);
+    });
 ```
 
 ##### Sample Results
@@ -1866,7 +1949,21 @@ Amax is an automated promo builder you can use with your app to award customers 
 #### Sample Code
 
 ```js
+var amax = globeconnect.Amax(
+    '[app_id]',
+    '[app_secret]'
+);
 
+amax
+    .setAddress('[subscriber_number]')
+    .setRewardsToken('[rewards_token]')
+    .setPromo('[promo]');
+
+amax.sendRewardRequest(function() {
+    console.log(arguments);
+}, function() {
+    console.log(arguments);
+});
 ```
 
 #### Sample Results
@@ -1891,7 +1988,17 @@ To determine a general area (lat,lng) of your customers you can utilize this fea
 #### Sample Code
 
 ```js
+var location = globeconnect.Location('[app_secret]');
 
+location
+    .setAddress('[subscriber_number]')
+    .setRequestedAccuracy([accuracy]);
+
+location.getLocation(function() {
+    console.log(arguments);
+}, function() {
+    console.log(arguments);
+});
 ```
 
 #### Sample Results
@@ -1927,7 +2034,15 @@ The following example shows how you can get the subscriber balance.
 ##### Sample Code
 
 ```js
+var subscriber = globeconnect.Subscriber('[app_secret]');
 
+subscriber
+    .setAddress('[subscriber_number]')
+    .getSubscriberBalance(function() {
+        console.log(arguments);
+    }, function() {
+        console.log(arguments);
+    });
 ```
 
 ##### Sample Results
@@ -1954,7 +2069,15 @@ The following example shows how you can get the subscriber reload amount.
 ##### Sample Code
 
 ```js
+var subscriber = globeconnect.Subscriber('[app_secret]');
 
+subscriber
+    .setAddress('[subscriber_number]')
+    .getSubscriberReloadAmount(function() {
+        console.log(arguments);
+    }, function() {
+        console.log(arguments);
+    });
 ```
 
 ##### Sample Results
@@ -1991,7 +2114,7 @@ If you haven't signed up yet, please follow the instructions found in [Getting S
 #### Sample Code
 
 ```bash
-
+Authentication is not available in Globe Connect CLI.
 ```
 
 #### Sample Results
@@ -2018,7 +2141,7 @@ Send an SMS message to one or more mobile terminals:
 ##### Sample Code
 
 ```bash
-
+globe-connect sms -a [subscriber_number] -m "[message]" -s [short_code] -c [client_correlator] -t "[access_token]"
 ```
 
 ##### Sample Results
@@ -2052,7 +2175,7 @@ Send binary data through SMS:
 ##### Sample Code
 
 ```bash
-
+globe-connect binarysms -c "[short_code]" -t "[access_token]" -u "[data_header]" -d [coding_scheme] -a "[subscriber_number]" -m "[message]" --verbose
 ```
 
 ##### Sample Results
@@ -2093,7 +2216,7 @@ The following example shows how to send a USSD request.
 ##### Sample Code
 
 ```bash
-
+globe-connect ussd-send -m [message] -a [address] -s [short_code] -f [flash] -t [access_token]
 ```
 
 ##### Sample Results
@@ -2126,7 +2249,7 @@ The following example shows how to send a USSD reply.
 ##### Sample Code
 
 ```bash
-
+globe-connect ussd-send -m [message] -a [address] -s [short_code] -f [flash] -t [access_token] -i [session_id]
 ```
 
 ##### Sample Results
@@ -2166,7 +2289,7 @@ The following example shows how you can request for a payment from a customer.
 ##### Sample Code
 
 ```bash
-
+globe-connect payment -a [amount] -d "[description]" -e [subscriber_number] -r [reference] -s [status] -t "[access_token]" --verbose
 ```
 
 ##### Sample Results
@@ -2200,7 +2323,7 @@ The following example shows how you can get the last reference of payment.
 ##### Sample Code
 
 ```bash
-
+globe-connect get-last-reference -ai "[app_id]" -as "[app_secret]" --verbose
 ```
 
 ##### Sample Results
@@ -2222,7 +2345,7 @@ Amax is an automated promo builder you can use with your app to award customers 
 #### Sample Code
 
 ```bash
-
+globe-cli.js amax -i "[app_id]" -s "[app_secret]" -t "[rewards_token]" -p "[promo]" -a [subscriber_number] --verbose
 ```
 
 #### Sample Results
@@ -2247,7 +2370,7 @@ To determine a general area (lat,lng) of your customers you can utilize this fea
 #### Sample Code
 
 ```bash
-
+globe-connect location -a [subscriber_number] -c [accuracy] -t "[access_token]" --verbose
 ```
 
 #### Sample Results
@@ -2283,7 +2406,7 @@ The following example shows how you can get the subscriber balance.
 ##### Sample Code
 
 ```bash
-
+globe-connect subscr-bal -a [subscriber_number] -t "[access_token]" --verbose
 ```
 
 ##### Sample Results
@@ -2310,7 +2433,7 @@ The following example shows how you can get the subscriber reload amount.
 ##### Sample Code
 
 ```bash
-
+globe-connect subscr-reload-amt -a [subscriber_number] -t "[access_token]" --verbose
 ```
 
 ##### Sample Results
