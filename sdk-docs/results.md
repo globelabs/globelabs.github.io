@@ -4838,7 +4838,21 @@ If you haven't signed up yet, please follow the instructions found in [Getting S
 #### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+authenticate = Authentication.new
+url = authenticate.get_access_url('[app_id]')
+
+print url
+
+response = authenticate
+  .get_access_token(
+    '[app_id]',
+    '[app_secret]',
+    '[code]'
+  )
+
+puts response
 ```
 
 #### Sample Results
@@ -4865,7 +4879,12 @@ Send an SMS message to one or more mobile terminals:
 ##### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+sms = Sms.new('[access_token]', [short_code])
+response = sms.send_message('[subscriber_number]', '[message]')
+
+puts response
 ```
 
 ##### Sample Results
@@ -4899,7 +4918,12 @@ Send binary data through SMS:
 ##### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+binary = Sms.new('[access_token]', [short_code])
+response = binary.send_binary_message('[subscriber_number]', '[message]', '[data_header]')
+
+puts response
 ```
 
 ##### Sample Results
@@ -4940,7 +4964,36 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```ruby
+require 'sinatra'
+require 'connect_ruby'
 
+get '/' do
+  voice = Voice.new
+
+  voice.say('Welcome to my Tropo Web API.');
+
+  say = voice.say('Please enter your 5 digit zip code.', {}, true)
+  choices = voice.choices({ :value => '[5 DIGITS]' }, true)
+
+  voice.ask({
+      :choices => choices,
+      :attempts => 3,
+      :bargein => false,
+      :name => 'foo',
+      :required => true,
+      :say => say,
+      :timeout => 10
+    })
+
+  voice.on({
+      :name => 'continue',
+      :next => 'http://somefakehost.com:8000',
+      :required => true
+    })
+
+  content_type :json
+  voice.render
+end
 ```
 
 ##### Sample Results
@@ -4986,7 +5039,18 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```ruby
+require 'sinatra'
+require 'connect_ruby'
 
+get '/' do
+  voice = Voice.new
+
+  voice.say('Welcome to my Tropo Web API.')
+  voice.hangup
+
+  content_type :json
+  voice.render
+end
 ```
 
 ##### Sample Results
@@ -5013,7 +5077,46 @@ A better sample of the Ask and Answer dialog would look like the following.
 ##### Sample Code
 
 ```ruby
+require 'sinatra'
+require 'connect_ruby'
+require 'json'
 
+get '/ask-test' do
+  voice = Voice.new
+
+  say = voice.say('Please enter your 5 digit zip code.', {}, true)
+  choices = voice.choices({:value => '[5 DIGITS]'})
+
+  voice.ask({
+      :choices => choices,
+      :attempts => 3,
+      :bargein => false,
+      :name => 'foo',
+      :required => true,
+      :say => say,
+      :timeout => 10
+    })
+
+  voice.on({
+      :name => 'continue',
+      :next => 'http://somefakehost.com:8000',
+      :required => true
+    })
+
+  content_type :json
+  voice.render
+end
+
+post '/ask-answer' do
+  # get data from post
+  payload = JSON.parse(request.body.read)
+
+  voice = Voice.new
+  voice.say('Your zip code is ' + payload[:result][:actions][:disposition] + ', thank you!')
+
+  content_type :json
+  voice.render
+end
 ```
 
 ##### Sample Results
@@ -5588,7 +5691,12 @@ The following example shows how to send a USSD request.
 ##### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+ussd = Ussd.new('[access_token]', [short_code])
+response = ussd.send_ussd_request('[subscriber_number]', '[message]', [flash])
+
+puts response
 ```
 
 ##### Sample Results
@@ -5621,7 +5729,12 @@ The following example shows how to send a USSD reply.
 ##### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+ussd = Ussd.new('[access_token]', [short_code])
+response = ussd.reply_ussd_request('[subscriber_number]', '[message]', '[session_id]', [flash])
+
+puts response
 ```
 
 ##### Sample Results
@@ -5661,7 +5774,17 @@ The following example shows how you can request for a payment from a customer.
 ##### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+payment = Payment.new(
+  '[app_id]',
+  '[app_secret]',
+  '[access_token]'
+)
+
+response = payment.send_payment_request([amount], '[description]', '[subscriber_number]', '[reference]', '[status]')
+
+puts response
 ```
 
 ##### Sample Results
@@ -5695,7 +5818,12 @@ The following example shows how you can get the last reference of payment.
 ##### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+payment = Payment.new('[app_id]', '[app_secret]')
+response = payment.get_last_reference_code
+
+puts response
 ```
 
 ##### Sample Results
@@ -5717,7 +5845,12 @@ Amax is an automated promo builder you can use with your app to award customers 
 #### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+amax = Amax.new('[app_id]', '[app_secret]')
+response = amax.send_reward_request('[subscriber_number]', '[promo]', '[rewards_token]')
+
+puts response
 ```
 
 #### Sample Results
@@ -5742,7 +5875,12 @@ To determine a general area (lat,lng) of your customers you can utilize this fea
 #### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+location = LocationQuery.new('[access_token]')
+response = location.get_location('[subscriber_number]', [accuracy])
+
+puts response
 ```
 
 #### Sample Results
@@ -5778,7 +5916,12 @@ The following example shows how you can get the subscriber balance.
 ##### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+subscriber = Subscriber.new('[access_token]')
+response = subscriber.get_subscriber_balance('[subscriber_number]')
+
+puts response
 ```
 
 ##### Sample Results
@@ -5805,7 +5948,10 @@ The following example shows how you can get the subscriber reload amount.
 ##### Sample Code
 
 ```ruby
+require 'globe_connect'
 
+subscriber = Subscriber.new('[access_token]')
+response = subscriber.get_subscriber_reload_amount('[subscriber_number]')
 ```
 
 ##### Sample Results
