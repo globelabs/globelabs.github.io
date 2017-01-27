@@ -612,7 +612,8 @@ try {
 
 ### Setting Up
 
-TODO
+Please refer to this [link](https://github.com/globelabs/globe-connect-ios/blob/feature/documentation-installation/installation/manual.md) for manual installation of Globe Connect iOS SDK.
+        <br/>Please refer to this [link](https://github.com/globelabs/globe-connect-ios/blob/feature/documentation-installation/installation/cocoapods.md) for Globe Connect iOS SDK installtion via CocoaPods.
 
 ### Authentication
 
@@ -2470,7 +2471,18 @@ If you haven't signed up yet, please follow the instructions found in [Getting S
 #### Sample Code
 
 ```php
+use Globe\Connect\Oauth;
 
+$oauth = new Oauth("[key]", "[secret]");
+
+// get redirect url
+echo $oauth->getRedirectUrl();
+
+// redirect to dialog and process the code then ...
+
+// get access token
+$oauth->setCode("[code]");
+echo $oauth->getAccessToken();
 ```
 
 #### Sample Results
@@ -2497,7 +2509,14 @@ Send an SMS message to one or more mobile terminals:
 ##### Sample Code
 
 ```php
+use Globe\Connect\Sms;
 
+$sms = new Sms("[sender]", "[token]");
+
+$sms->setReceiverAddress("[address]");
+$sms->setMessage("[message]");
+$sms->setClientCorrelator("[correlator]");
+echo $sms->sendMessage();
 ```
 
 ##### Sample Results
@@ -2531,7 +2550,14 @@ Send binary data through SMS:
 ##### Sample Code
 
 ```php
+use Globe\Connect\Sms;
 
+$sms = new Sms("[sender]", "[token]");
+$sms->setReceiverAddress("[address]");
+$sms->setUserDataHeader("[header]");
+$sms->setDataEncodingScheme("[scheme]");
+$sms->setMessage("[message]");
+echo $sms->sendBinaryMessage();
 ```
 
 ##### Sample Results
@@ -2572,7 +2598,29 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+
+$say = $voice->say("Welcome to my Tropo Web Api");
+$choices = $voice->choices("[5 DIGITS]");
+$askSay = $voice->say("Please enter yout 5 digit zip code.");
+
+$ask = $voice->ask($askSay)
+    ->setChoices($choices)
+    ->setAttempts(3)
+    ->setBargein(false)
+    ->setName("foo")
+    ->setRequired(true)
+    ->setTimeout(10);
+
+$on = $voice->on("continue")
+    ->setNext("http://somefakehost.com:8000/")
+    ->setRequired(true);
+
+echo $voice->addSay($say)
+    ->addAsk($ask)
+    ->addOn($on);
 ```
 
 ##### Sample Results
@@ -2618,7 +2666,11 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+$say = $voice->say("Welcome to my Tropo Web Api.");
+echo $voice->addSay($say);
 ```
 
 ##### Sample Results
@@ -2645,7 +2697,44 @@ A better sample of the Ask and Answer dialog would look like the following.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+
+$say = $voice->say("Welcome to my Tropo Web API");
+
+$voice->addSay($say);
+
+if($url == "/ask") {
+    $choices = $voice->choices("[5 DIGITS]");
+    $askSay = $voice->say("Please enter yout 5 digit zip code.");
+
+    $ask = $voice->ask($askSay)
+        ->setChoices($choices)
+        ->setAttempts(3)
+        ->setBargein(false)
+        ->setName("foo")
+        ->setRequired(true)
+        ->setTimeout(10);
+
+    $on = $voice->on("continue")
+        ->setNext("/answer")
+        ->setRequired(true);
+
+    $voice->addSay($say)
+        ->addAsk($ask)
+        ->addOn($on);
+} elseif($url == "/answer") {
+    $result = $voice->result($data)
+        ->getObject();
+
+    $interprertation = $result["actions"]["ineterpretation"];
+    $say = $voice->say("Your zip is " . $interpretation . ", thank you!");
+
+    $voice->addSay($say);
+}
+
+echo $voice;
 ```
 
 ##### Sample Results
@@ -2705,7 +2794,16 @@ You can connect your app to also call a customer to initiate the Ask and Answer 
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+$call = $voice->call("9065263453")
+    ->setFrom("sip:21584130@sip.tropo.net");
+
+$say = $voice->say("Hello World");
+
+echo $voice->addCall($call)
+    ->addSay($say);
 ```
 
 ##### Sample Results
@@ -2735,7 +2833,24 @@ You can take advantage of Globe's automated Ask protocols to help service your c
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+$say = $voice->say("Welcome to my Tropo Web API Conference Call.");
+
+$jPrompt = $voice->joinPrompt("http://openovate.com/hold-music.mp3");
+$lPrompt = $voice->leavePrompt("http://openovate.com/hold-music.mp3");
+
+$conference = $voice->conference("12345")
+    ->setMute(false)
+    ->setName("foo")
+    ->setPlayTones(true)
+    ->setTerminator("#")
+    ->setJoinPrompt($jPrompt)
+    ->setLeavePrompt($lPrompt);
+
+echo $voice->addSay($say)
+    ->addConference($conference);
 ```
 
 ##### Sample Results
@@ -2774,7 +2889,39 @@ Call events are triggered depending on the response of the receiving person. Eve
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+
+$e1 = $voice->say("Sorry, I did not hear anything.")
+    ->setEvent("timeout");
+
+$e2 = $voice->say("Sorry, that was not a valid option.")
+    ->setEvent("nomatch:1");
+
+$e3 = $voice->say("Nope, still not a valid response.")
+    ->setEvent("nomatch:2");
+
+$say = $voice->say("Welcome to my Tropo Web API");
+$eventSay = $voice->say("Please enter your 5 digit zip code.")
+    ->setEvent(array($e1, $e2, $e3));
+
+$choices = $voice->choices("[5 DIGITS]");
+$ask = $voice->ask($eventSay)
+    ->setChoices($choices)
+    ->setAttempts(3)
+    ->setBargein(false)
+    ->setName("foo")
+    ->setRequired(true)
+    ->setTimeout(10);
+
+$on = $voice->on("continue")
+    ->setNext("/answer")
+    ->setRequired(true);
+
+echo $voice->addSay($say)
+    ->addAsk($ask)
+    ->addOn($on);
 ```
 
 ##### Sample Results
@@ -2834,7 +2981,13 @@ Between your automated dialogs (Ask and Answer) you can automatically close the 
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+
+$say = $voice->say("Welcome to my Tropo Web Api, Thank you");
+echo $say->addSay($say)
+    ->addHangup("");
 ```
 
 ##### Sample Results
@@ -2861,7 +3014,35 @@ It is helpful to sometime record conversations, for example to help improve on t
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+
+$say = $voice->say("Welcome to my Tropo Web API.");
+$sayTimeout = $voice->say("Sorry, I did not here anything. Please call back.")
+    ->setEvent("timeout");
+
+$say2 = $voice->say("Please leave a message")
+    ->setEvent(array($sayTimeout));
+
+$choices = $voice->choices()
+    ->setTerminator("#");
+
+$transcription = $voice->transcription("1234")
+    ->setUrl("mailto:charles.andacc@gmail.com");
+
+$record = $voice->record("foo", "http://openovate.com/globe.php")
+    ->setFormat("wav")
+    ->setAttempts(3)
+    ->setBargein(false)
+    ->setMethod("POST")
+    ->setRequired(true)
+    ->setSay($say2)
+    ->setChoices($choices)
+    ->setTranscription($transcription);
+
+echo $voice->addSay($say)
+    ->addRecord($record);
 ```
 
 ##### Sample Results
@@ -2912,7 +3093,11 @@ To filter incoming calls automatically, you can use the following example below.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice
 
+$voice = new Voice();
+
+echo $voice->addreject("");
 ```
 
 ##### Sample Results
@@ -2934,7 +3119,30 @@ To help integrate Globe Voice with web applications, this API using routing whic
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice
 
+$voice = new Voice();
+
+if($url == "/routing") {
+    $say = $voice->say("Welcome to my Tropo Web API.");
+    $on = $voice->on("continue")
+        ->setNext("/routing1");
+
+    $voice->addSay($say)
+        ->addOn($on);
+} else if($url == "/routing1") {
+    $say = $voice->say("Hello from resource one.");
+    $on = $voice->on("continue")
+        ->setNext("/routing2");
+
+    $voice->addSay($say)
+        ->addOn($on);
+} else if($url == "/routing2") {
+    $say = $voice->say("Hello from resource two! Thank you.");
+    $voice->addSay($say);
+}
+
+echo $voice;
 ```
 
 ##### Sample Results
@@ -2996,7 +3204,16 @@ The message you pass to `say` will be transformed to an automated voice.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+$say = $voice->say("Welcome to my Tropo web API");
+$say2 = $voice->say("I will play an audio file for you, please wait.");
+$say3 = $voice->say("http://openovate.com/tropo-rocks.mp3");
+
+echo $voice->addSay($say)
+    ->addSay($say2)
+    ->addSay($say3);
 ```
 
 ##### Sample Results
@@ -3030,7 +3247,44 @@ The following sample explains the dialog needed to transfer the receiver to anot
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+
+$say = $voice->say("Welcome to my Tropo Web API, you are now being transfered.");
+
+$e1 = $voice->say("Sorry I did not hear anything")
+    ->setEvent("timeout");
+
+$e2 = $voice->say("Sorry, that was an invalid option")
+    ->setEvent("nomatch:1");
+
+$eventSay = $voice->say("Please enter your 5 digit zip code")
+    ->setEvent(array($e1, $e2));
+
+$choices = $voice->choices("[5 DIGITS]");
+$ask = $voice->ask($eventSay)
+    ->setChoices($choices)
+    ->setAttempts(3)
+    ->setBargein(false)
+    ->setName("foo")
+    ->setRequired(true)
+    ->setTimeout(5);
+
+$ringSay = $voice->say("http://openovate.com/hold-music.mp3");
+$onRing = $voice->on("ring")
+    ->setSay($ringSay);
+
+$onConnect = $voice->on("connect")
+    ->setAsk($ask);
+
+$on = array($onRing, $onConnect);
+$transfer = $voice->transfer("9053801178")
+    ->setRingRepeat(2)
+    ->setOn($on);
+
+echo $voice->addSay($say)
+    ->addTransfer($transfer);
 ```
 
 ##### Sample Results
@@ -3098,7 +3352,50 @@ TODO
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+
+if($url == "/whisper") {
+    $say = $voice->say("Welcome to my Tropo Web API");
+    $askSay = $voice->say("Press 1 to continue this call or any other to reject");
+    $choices = $voice->choices("1")
+        ->setMode("DTMF");
+
+    $ask = $voice->ask($askSay)
+        ->setChoices($choices)
+        ->setName("color")
+        ->setTimeout(60);
+
+    $onConnect1 = $voice->on("connect")
+        ->setAsk($ask);
+
+    $sayCon2 = $voice->say("You are now being connected");
+    $onConnect2 = $voice->on("connect")
+        ->setSay($sayCon2);
+
+    $sayRing = $voice->say("http://openovate.com/hold-music.mp3");
+    $onRing = $voice->on("ring")
+        ->setSay($say);
+
+    $on = array($onRing, $onConnect1, $onConnect2);
+    $transfer = $voice->transfer("9054799241")
+        ->setName("foo")
+        ->setOn($on)
+        ->setRequired(true)
+        ->terminator("*")
+
+    $incompleteSay = $voice->say("Your are now being disconnected");
+    $onIncomplete = $voice->on("incomplete")
+        ->setNext("/whisperIncomplete")
+        ->setSay($incompleteSay);
+
+    echo $voice->addSay($say)
+        ->addTransfer($transfer)
+        ->addOn($onIncomplete);
+} else if($url == "/whisperIncomplete") {
+    echo $voice->addHangup("");
+}
 ```
 
 ##### Sample Results
@@ -3179,7 +3476,18 @@ To put a receiver on hold, you can use the following sample.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Voice;
 
+$voice = new Voice();
+$say = $voice->say("Welcome to my Tropo Web API.");
+$wait = $voice->wait(5000)
+    ->setAllowSignals(true);
+
+$say2 = $voice->say("Thank you for waiting.");
+
+echo $voice->addSay($say)
+    ->addWait($wait)
+    ->addSay($say2);
 ```
 
 ##### Sample Results
@@ -3220,7 +3528,16 @@ The following example shows how to send a USSD request.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Ussd;
 
+$ussd = new Ussd("[token]", "[shortcode]");
+
+// send ussd request
+$ussd->setAddress("[address]");
+$ussd->setUssdMessage("[message]");
+$ussd->setFlash("[flash]");
+
+print $ussd->sendUssdRequest();
 ```
 
 ##### Sample Results
@@ -3253,7 +3570,16 @@ The following example shows how to send a USSD reply.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Ussd;
 
+$ussd = new Ussd("[token]", "[shortcode]");
+
+$ussd->setAddress("[address]");
+$ussd->setUssdMessage("[message]");
+$ussd->setFlash("[flash]");
+$ussd->setSessionId("[session_id]");
+
+print $ussd->replyUssdRequest();
 ```
 
 ##### Sample Results
@@ -3293,7 +3619,17 @@ The following example shows how you can request for a payment from a customer.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Payment;
 
+$payment = new Payment("[token]");
+
+// payment request
+$payment->setEndUserId("[user_id]");
+$payment->setAmount("[amount]");
+$payment->setDescription("[description]");
+$payment->setReferenceCode("[reference_code]");
+$payment->setTransactionOperationStatus("[status]");
+print $payment->sendPaymentRequest();
 ```
 
 ##### Sample Results
@@ -3327,7 +3663,12 @@ The following example shows how you can get the last reference of payment.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Payment;
 
+// get last reference code request
+$payment->setAppKey("[key]");
+$payment->setAppSecret("[secret]");
+print $payment->getLastReferenceCode();
 ```
 
 ##### Sample Results
@@ -3349,7 +3690,13 @@ Amax is an automated promo builder you can use with your app to award customers 
 #### Sample Code
 
 ```php
+use Globe\Connect\Amax;
 
+$amax = new Amax("[app_id]", "[app_secret]");
+$amax->setToken("[token]");
+$amax->setAddress("[address]");
+$amax->setPromo("[promo]");
+echo $amax->sendReward();
 ```
 
 #### Sample Results
@@ -3374,7 +3721,12 @@ To determine a general area (lat,lng) of your customers you can utilize this fea
 #### Sample Code
 
 ```php
+use Globe\Connect\Location;
 
+$location = new Location("[token]");
+$location->setAddress("[address]");
+$location->setRequestedAccuracy("[accuracy]");
+echo $location->getLocation();
 ```
 
 #### Sample Results
@@ -3410,7 +3762,11 @@ The following example shows how you can get the subscriber balance.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Subscriber;
 
+$subscriber = new Subscriber("[token]");
+$subscriber->setAddress("[address]");
+print $subscriber->getSubscriberBalance();
 ```
 
 ##### Sample Results
@@ -3437,7 +3793,11 @@ The following example shows how you can get the subscriber reload amount.
 ##### Sample Code
 
 ```php
+use Globe\Connect\Subscriber;
 
+$subscriber = new Subscriber("[token]");
+$subscriber->setAddress("[address]");
+print $subscriber->getReloadAmount();
 ```
 
 ##### Sample Results

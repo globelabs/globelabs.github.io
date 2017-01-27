@@ -155,7 +155,8 @@ return [
         ],
     ],
     'iOS 10' => [
-        'Setting Up' => '',
+        'Setting Up' => 'Please refer to this [link](https://github.com/globelabs/globe-connect-ios/blob/feature/documentation-installation/installation/manual.md) for manual installation of Globe Connect iOS SDK.
+        <br/>Please refer to this [link](https://github.com/globelabs/globe-connect-ios/blob/feature/documentation-installation/installation/cocoapods.md) for Globe Connect iOS SDK installtion via CocoaPods.',
         'Authentication' => [
             'Overview' => $copy['Authentication'],
             'Code' => $samples['ios']['Authentication'],
