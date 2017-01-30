@@ -178,6 +178,9 @@
         }
 
         if(files.length == 0) {
+            document.querySelector('footer.panel-footer button').disabled = true;
+            document.querySelector('footer.panel-footer em').style.display = 'none';
+            
             return;
         }
 
