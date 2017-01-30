@@ -182,6 +182,8 @@ try {
 }
 ',
 
+'SMS Mobile Originating (SMS-MO)' => '',
+
 'Subscriber Balance' => '
 import ph.com.globe.connect.*;
 import org.json.JSONObject;

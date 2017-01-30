@@ -56,6 +56,10 @@ class SdkZipGenerator {
 
             unset($permutations[0]);
 
+            foreach($names as $value) {
+                $permutations[] = $value;
+            }
+
             $permutations = array_unique($permutations);
 
             $copy = array();
@@ -88,17 +92,6 @@ class SdkZipGenerator {
         if(!file_exists($out)) {
             mkdir($out);
         }
-
-        $tmp = explode(' ', $files);
-
-        $sms    = array_search('Sms', $tmp);
-        $binary = array_search('BinarySms', $tmp);
-
-        if($sms >= 0 && $binary === false) {
-            $tmp[] = 'BinarySms';
-        }
-
-        $files = implode(' ', $tmp);
 
         if($type == 'android') {
             $script = $script . ' android -i %s -f %s -p %s -n %s -s %s -o %s';

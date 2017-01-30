@@ -107,6 +107,8 @@ dynamic response = sms
 Console.WriteLine(response);
 ',
 
+'SMS Mobile Originating (SMS-MO)' => '',
+
 'Subscriber Balance' => '
 using Globe.Connect;
 

@@ -28,6 +28,8 @@ globe-connect sms -a [subscriber_number] -m "[message]" -s [short_code] -c [clie
 globe-connect binarysms -c "[short_code]" -t "[access_token]" -u "[data_header]" -d [coding_scheme] -a "[subscriber_number]" -m "[message]" --verbose
 ',
 
+'SMS Mobile Originating (SMS-MO)' => '',
+
 'Subscriber Balance' => '
 globe-connect subscr-bal -a [subscriber_number] -t "[access_token]" --verbose
 ',

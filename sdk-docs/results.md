@@ -159,6 +159,20 @@ try {
 }
 ```
 
+#### SMS Mobile Originating (SMS-MO)
+
+TODO
+
+##### Sample Code
+
+```java
+
+```
+
+##### Sample Results
+
+TODO
+
 ### USSD
 
 #### Overview

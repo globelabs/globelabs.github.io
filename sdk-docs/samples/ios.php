@@ -179,6 +179,8 @@ globeConnect.sendBinaryMessage(
 )
 ',
 
+'SMS Mobile Originating (SMS-MO)' => '',
+
 'Subscriber Balance' => '
 import GlobeConnect
 

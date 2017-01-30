@@ -96,6 +96,11 @@ return [
                     'Code' => $samples['android']['SMS Binary'],
                     'Results' => $output['SMS Binary']
                 ],
+                'Mobile Originating (SMS-MO)' => [
+                    'Overview' => '',
+                    'Code' => '',
+                    'Results' => ''
+                ]
             ]
         ],
         'USSD' => [
