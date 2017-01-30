@@ -113,7 +113,7 @@ class SdkZipGenerator {
             $script = sprintf($script,
                 $key,
                 $files,
-                'GlobeConnectIOS',
+                'GlobeConnect',
                 'ph.com.globe.connect',
                 $target,
                 $sdkOut);
@@ -166,7 +166,7 @@ class SdkZipGenerator {
             $script = sprintf($script,
                 $key,
                 $files,
-                'GlobeConnect',
+                'GlobeConnectIOS',
                 $target,
                 $sdkOut);
 
