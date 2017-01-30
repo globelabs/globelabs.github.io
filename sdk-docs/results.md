@@ -159,20 +159,6 @@ try {
 }
 ```
 
-#### SMS Mobile Originating (SMS-MO)
-
-TODO
-
-##### Sample Code
-
-```java
-
-```
-
-##### Sample Results
-
-TODO
-
 ### USSD
 
 #### Overview
@@ -2652,6 +2638,20 @@ echo $sms->sendBinaryMessage();
 }
 ```
 
+#### SMS Mobile Originating (SMS-MO)
+
+TODO
+
+##### Sample Code
+
+```php
+
+```
+
+##### Sample Results
+
+TODO
+
 ### Voice
 
 #### Overview
@@ -4012,6 +4012,20 @@ print sms.getResponse()
     }
 }
 ```
+
+#### SMS Mobile Originating (SMS-MO)
+
+TODO
+
+##### Sample Code
+
+```python
+
+```
+
+##### Sample Results
+
+TODO
 
 ### Voice
 
@@ -5416,6 +5430,20 @@ puts response
     }
 }
 ```
+
+#### SMS Mobile Originating (SMS-MO)
+
+TODO
+
+##### Sample Code
+
+```ruby
+
+```
+
+##### Sample Results
+
+TODO
 
 ### Voice
 
@@ -6897,6 +6925,20 @@ sms.sendBinaryMessage(function(resCode, body) {
 }
 ```
 
+#### SMS Mobile Originating (SMS-MO)
+
+TODO
+
+##### Sample Code
+
+```js
+
+```
+
+##### Sample Results
+
+TODO
+
 ### Voice
 
 #### Overview
@@ -8362,6 +8404,84 @@ System.out.println(response);
         },
         "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}"
     }
+}
+```
+
+#### SMS Mobile Originating (SMS-MO)
+
+Receiving an SMS from globe (Mobile Originating - Subscriber to Application):
+
+##### Sample Code
+
+```java
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+import org.json.JSONException;
+
+...
+
+/**
+ * Handles the HTTP <code>POST</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    StringBuilder raw = new StringBuilder();
+
+    try {
+      BufferedReader reader = request.getReader();
+      String line = null;
+
+      while ((line = reader.readLine()) != null) {
+        raw.append(line);
+      }
+    } catch (IOException e) {
+        throw new IOException(e.getMessage());
+    }
+
+    try {
+      JSONObject json =  new JSONObject(raw.toString());
+
+      System.out.println(json.toString(5));
+    } catch (JSONException e) {
+      throw new IOException("An error occured while parsing json string.");
+    }
+
+    processRequest(request, response);
+}
+```
+
+##### Sample Results
+
+```json
+{
+  "inboundSMSMessageList":{
+      "inboundSMSMessage":[
+         {
+            "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
+            "destinationAddress":"tel:21581234",
+            "messageId":null,
+            "message":"Hello",
+            "resourceURL":null,
+            "senderAddress":"9171234567"
+         }
+       ],
+       "numberOfMessagesInThisBatch":1,
+       "resourceURL":null,
+       "totalNumberOfPendingMessages":null
+   }
 }
 ```
 
@@ -10075,6 +10195,50 @@ Console.WriteLine(response);
         },
         "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}"
     }
+}
+```
+
+#### SMS Mobile Originating (SMS-MO)
+
+Receiving an SMS from globe (Mobile Originating - Subscriber to Application):
+
+##### Sample Code
+
+```csharp
+using Newtonsoft.Json.Linq;
+
+...
+
+public ActionResult Index()
+{
+	String data = new System.IO.StreamReader(Request.InputStream).ReadToEnd();
+	JObject result = JObject.Parse(data);
+
+	Console.WriteLine(result);
+
+	return Content(result.ToString(), "application/json");
+}
+```
+
+##### Sample Results
+
+```json
+{
+  "inboundSMSMessageList":{
+      "inboundSMSMessage":[
+         {
+            "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
+            "destinationAddress":"tel:21581234",
+            "messageId":null,
+            "message":"Hello",
+            "resourceURL":null,
+            "senderAddress":"9171234567"
+         }
+       ],
+       "numberOfMessagesInThisBatch":1,
+       "resourceURL":null,
+       "totalNumberOfPendingMessages":null
+   }
 }
 ```
 

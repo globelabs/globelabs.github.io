@@ -107,7 +107,21 @@ dynamic response = sms
 Console.WriteLine(response);
 ',
 
-'SMS Mobile Originating (SMS-MO)' => '',
+'SMS Receiving' => '
+using Newtonsoft.Json.Linq;
+
+...
+
+public ActionResult Index()
+{
+	String data = new System.IO.StreamReader(Request.InputStream).ReadToEnd();
+	JObject result = JObject.Parse(data);
+
+	Console.WriteLine(result);
+
+	return Content(result.ToString(), "application/json");
+}
+',
 
 'Subscriber Balance' => '
 using Globe.Connect;

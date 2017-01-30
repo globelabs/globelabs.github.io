@@ -116,6 +116,56 @@ JSONObject response = sms
 System.out.println(response);
 ',
 
+'SMS Receiving' => '
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+import org.json.JSONException;
+
+...
+
+/**
+ * Handles the HTTP <code>POST</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+
+    StringBuilder raw = new StringBuilder();
+
+    try {
+      BufferedReader reader = request.getReader();
+      String line = null;
+
+      while ((line = reader.readLine()) != null) {
+        raw.append(line);
+      }
+    } catch (IOException e) {
+        throw new IOException(e.getMessage());
+    }
+
+    try {
+      JSONObject json =  new JSONObject(raw.toString());
+
+      System.out.println(json.toString(5));
+    } catch (JSONException e) {
+      throw new IOException("An error occured while parsing json string.");
+    }
+
+    processRequest(request, response);
+}
+',
+
 'Subscriber Balance' => '
 import ph.com.globe.connect.Subscriber;
 import org.json.JSONObject;

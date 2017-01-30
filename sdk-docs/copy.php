@@ -28,6 +28,7 @@ $copy = [
         'Calls' => [
             'Sending' => 'Send an SMS message to one or more mobile terminals:',
             'Binary' => 'Send binary data through SMS:',
+            'Receiving' => 'Receiving an SMS from globe (Mobile Originating - Subscriber to Application):'
         ]
     ],
     'Voice' => [
@@ -95,11 +96,6 @@ return [
                     'Overview' => $copy['SMS']['Calls']['Binary'],
                     'Code' => $samples['android']['SMS Binary'],
                     'Results' => $output['SMS Binary']
-                ],
-                'Mobile Originating (SMS-MO)' => [
-                    'Overview' => '',
-                    'Code' => '',
-                    'Results' => ''
                 ]
             ]
         ],
@@ -492,6 +488,11 @@ return [
                     'Code' => $samples['php']['SMS Binary'],
                     'Results' => $output['SMS Binary']
                 ],
+                'Mobile Originating (SMS-MO)' => [
+                    'Overview' => '',
+                    'Code' => '',
+                    'Results' => ''
+                ]
             ]
         ],
         'Voice' => [
@@ -645,6 +646,11 @@ return [
                     'Code' => $samples['python']['SMS Binary'],
                     'Results' => $output['SMS Binary']
                 ],
+                'Mobile Originating (SMS-MO)' => [
+                    'Overview' => '',
+                    'Code' => '',
+                    'Results' => ''
+                ]
             ]
         ],
         'Voice' => [
@@ -798,6 +804,11 @@ return [
                     'Code' => $samples['ruby']['SMS Binary'],
                     'Results' => $output['SMS Binary']
                 ],
+                'Mobile Originating (SMS-MO)' => [
+                    'Overview' => '',
+                    'Code' => '',
+                    'Results' => ''
+                ]
             ]
         ],
         'Voice' => [
@@ -951,6 +962,11 @@ return [
                     'Code' => $samples['nodejs']['SMS Binary'],
                     'Results' => $output['SMS Binary']
                 ],
+                'Mobile Originating (SMS-MO)' => [
+                    'Overview' => '',
+                    'Code' => '',
+                    'Results' => ''
+                ]
             ]
         ],
         'Voice' => [
@@ -1120,6 +1136,11 @@ return [
                     'Code' => $samples['java']['SMS Binary'],
                     'Results' => $output['SMS Binary']
                 ],
+                'Mobile Originating (SMS-MO)' => [
+                    'Overview' => $copy['SMS']['Calls']['Receiving'],
+                    'Code' => $samples['java']['SMS Receiving'],
+                    'Results' => $output['SMS Receiving']
+                ]
             ]
         ],
         'Voice' => [
@@ -1273,6 +1294,11 @@ return [
                     'Code' => $samples['csharp']['SMS Binary'],
                     'Results' => $output['SMS Binary']
                 ],
+                'Mobile Originating (SMS-MO)' => [
+                    'Overview' => $copy['SMS']['Calls']['Receiving'],
+                    'Code' => $samples['csharp']['SMS Receiving'],
+                    'Results' => $output['SMS Receiving']
+                ]
             ]
         ],
         'Voice' => [
