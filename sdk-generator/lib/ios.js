@@ -105,7 +105,7 @@ var Ios = function(options) {
 
     project.parse(function(err) {
         if(err) {
-            console.log('An error occured while parsing project: ' + err);
+            console.log('An error occured while parsing project: ' + JSON.stringify(err));
             return;
         }
 
