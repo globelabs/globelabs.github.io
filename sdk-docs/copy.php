@@ -489,9 +489,9 @@ return [
                     'Results' => $output['SMS Binary']
                 ],
                 'Mobile Originating (SMS-MO)' => [
-                    'Overview' => '',
-                    'Code' => '',
-                    'Results' => ''
+                    'Overview' => $copy['SMS']['Calls']['Receiving'],
+                    'Code' => $samples['php']['SMS Receiving'],
+                    'Results' => $output['SMS Receiving']
                 ]
             ]
         ],
@@ -805,9 +805,9 @@ return [
                     'Results' => $output['SMS Binary']
                 ],
                 'Mobile Originating (SMS-MO)' => [
-                    'Overview' => '',
-                    'Code' => '',
-                    'Results' => ''
+                    'Overview' => $copy['SMS']['Calls']['Receiving'],
+                    'Code' => $samples['ruby']['SMS Receiving'],
+                    'Results' => $output['SMS Receiving']
                 ]
             ]
         ],

@@ -79,6 +79,19 @@ response = binary.send_binary_message('[subscriber_number]', '[message]', '[data
 puts response
 ",
 
+'SMS Receiving' => "
+require 'sinatra'
+require 'globe_connect'
+
+post '/inbound-sms' do
+  payload = JSON.parse(request.body.read)
+
+  print(payload)
+
+  # do things here...
+end
+",
+
 'Subscriber Balance' => "
 require 'globe_connect'
 

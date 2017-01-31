@@ -82,6 +82,11 @@ $sms->setMessage("[message]");
 echo $sms->sendBinaryMessage();
 ',
 
+'SMS Receiving' => '
+// print post data from your callback url
+print_r(json_encode($_POST));
+',
+
 'Subscriber Balance' => '
 use Globe\Connect\Subscriber;
 

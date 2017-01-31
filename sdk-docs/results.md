@@ -2640,17 +2640,36 @@ echo $sms->sendBinaryMessage();
 
 #### SMS Mobile Originating (SMS-MO)
 
-TODO
+Receiving an SMS from globe (Mobile Originating - Subscriber to Application):
 
 ##### Sample Code
 
 ```php
-
+// print post data from your callback url
+print_r(json_encode($_POST));
 ```
 
 ##### Sample Results
 
-TODO
+```json
+{
+  "inboundSMSMessageList":{
+      "inboundSMSMessage":[
+         {
+            "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
+            "destinationAddress":"tel:21581234",
+            "messageId":null,
+            "message":"Hello",
+            "resourceURL":null,
+            "senderAddress":"9171234567"
+         }
+       ],
+       "numberOfMessagesInThisBatch":1,
+       "resourceURL":null,
+       "totalNumberOfPendingMessages":null
+   }
+}
+```
 
 ### Voice
 
@@ -5433,17 +5452,44 @@ puts response
 
 #### SMS Mobile Originating (SMS-MO)
 
-TODO
+Receiving an SMS from globe (Mobile Originating - Subscriber to Application):
 
 ##### Sample Code
 
 ```ruby
+require 'sinatra'
+require 'globe_connect'
 
+post '/inbound-sms' do
+  payload = JSON.parse(request.body.read)
+
+  print(payload)
+
+  # do things here...
+end
 ```
 
 ##### Sample Results
 
-TODO
+```json
+{
+  "inboundSMSMessageList":{
+      "inboundSMSMessage":[
+         {
+            "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
+            "destinationAddress":"tel:21581234",
+            "messageId":null,
+            "message":"Hello",
+            "resourceURL":null,
+            "senderAddress":"9171234567"
+         }
+       ],
+       "numberOfMessagesInThisBatch":1,
+       "resourceURL":null,
+       "totalNumberOfPendingMessages":null
+   }
+}
+```
 
 ### Voice
 
