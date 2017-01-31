@@ -90,7 +90,7 @@
         redirect = window.location.origin + download;
 
         if(window.location.host === 'globelabs.github.io') {
-            redirect = 'https://ec2-54-254-220-204.ap-southeast-1.compute.amazonaws.com' + download;
+            redirect = 'http://ec2-54-254-220-204.ap-southeast-1.compute.amazonaws.com' + download;
         }
 
         document.querySelector('footer.panel-footer button').disabled = false;
@@ -174,7 +174,7 @@
         redirect = window.location.origin + download + '&size=1';
 
         if(window.location.host === 'globelabs.github.io') {
-            redirect = 'https://ec2-54-254-220-204.ap-southeast-1.compute.amazonaws.com' + download + '&size=1';
+            redirect = 'http://ec2-54-254-220-204.ap-southeast-1.compute.amazonaws.com' + download + '&size=1';
         }
 
         if(files.length == 0) {
