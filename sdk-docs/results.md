@@ -4034,17 +4034,60 @@ print sms.getResponse()
 
 #### SMS Mobile Originating (SMS-MO)
 
-TODO
+Receiving an SMS from globe (Mobile Originating - Subscriber to Application):
 
 ##### Sample Code
 
 ```python
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+import SocketServer
+import json
 
+...
+
+def _set_headers(self):
+    # set response code as 200
+    self.send_response(200)
+    # set content-type to text/html,
+    # we can also set it as application/json ;)
+    self.send_header("Content-type", "text/html")
+    # end header
+    self.end_headers()
+
+def do_POST(self):
+    # set http header
+    self._set_headers()
+    # store post data
+    self.data_string = self.rfile.read(int(self.headers["Content-Length"]))
+    # load post data as json
+    data = json.loads(self.data_string)
+    # write data to response
+    self.wfile.write(data)
+
+...
 ```
 
 ##### Sample Results
 
-TODO
+```json
+{
+  "inboundSMSMessageList":{
+      "inboundSMSMessage":[
+         {
+            "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
+            "destinationAddress":"tel:21581234",
+            "messageId":null,
+            "message":"Hello",
+            "resourceURL":null,
+            "senderAddress":"9171234567"
+         }
+       ],
+       "numberOfMessagesInThisBatch":1,
+       "resourceURL":null,
+       "totalNumberOfPendingMessages":null
+   }
+}
+```
 
 ### Voice
 
@@ -4885,7 +4928,7 @@ if url == "/whisper":
     print voice.getObject()
 elif url == "/whisperIncomplete":
     voice.addHangup()
-    
+
     print voice.getObject()
 ```
 

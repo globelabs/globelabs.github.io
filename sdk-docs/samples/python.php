@@ -97,7 +97,7 @@ def _set_headers(self):
     self.send_response(200)
     # set content-type to text/html,
     # we can also set it as application/json ;)
-    self.send_header("Content-type', 'text/html")
+    self.send_header("Content-type", "text/html")
     # end header
     self.end_headers()
 
