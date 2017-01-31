@@ -85,6 +85,35 @@ sms.sendBinaryMessage()
 print sms.getResponse()
 ',
 
+'SMS Receiving' => '
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+import SocketServer
+import json
+
+...
+
+def _set_headers(self):
+    # set response code as 200
+    self.send_response(200)
+    # set content-type to text/html,
+    # we can also set it as application/json ;)
+    self.send_header("Content-type', 'text/html")
+    # end header
+    self.end_headers()
+
+def do_POST(self):
+    # set http header
+    self._set_headers()
+    # store post data
+    self.data_string = self.rfile.read(int(self.headers["Content-Length"]))
+    # load post data as json
+    data = json.loads(self.data_string)
+    # write data to response
+    self.wfile.write(data)
+
+...
+',
+
 'Subscriber Balance' => '
 from globe.connect import subscriber
 
@@ -479,7 +508,7 @@ if url == "/whisper":
     print voice.getObject()
 elif url == "/whisperIncomplete":
     voice.addHangup()
-    
+
     print voice.getObject()
 ',
 
