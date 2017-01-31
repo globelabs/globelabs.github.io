@@ -6973,17 +6973,55 @@ sms.sendBinaryMessage(function(resCode, body) {
 
 #### SMS Mobile Originating (SMS-MO)
 
-TODO
+Receiving an SMS from globe (Mobile Originating - Subscriber to Application):
 
 ##### Sample Code
 
 ```js
+var http = require('http');
 
+var server = http.createServer(function(request, response) {
+    if(request.method === 'POST') {
+        var body = '';
+
+        request.on('data', function(chunks) {
+            body += chunks;
+        });
+
+        request.on('end', function() {
+            response.statusCode = 200;
+            response.setHeader('Content-Type', 'application/json');
+            response.end(body);
+        });
+    }
+});
+
+server.listen(8080, '127.0.0.1', function() {
+    console.log('Server running at http://127.0.0.1:8080');
+});
 ```
 
 ##### Sample Results
 
-TODO
+```json
+{
+  "inboundSMSMessageList":{
+      "inboundSMSMessage":[
+         {
+            "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
+            "destinationAddress":"tel:21581234",
+            "messageId":null,
+            "message":"Hello",
+            "resourceURL":null,
+            "senderAddress":"9171234567"
+         }
+       ],
+       "numberOfMessagesInThisBatch":1,
+       "resourceURL":null,
+       "totalNumberOfPendingMessages":null
+   }
+}
+```
 
 ### Voice
 
@@ -7827,7 +7865,7 @@ if(url == '/whisper') {
     voice.addOn(onIncomplete);
 
     var obj = voice.getObject();
-    
+
     console.log(JSON.stringify(obj));
 } else if(url == '/whisperIncomplete') {
     voice.addHangup();

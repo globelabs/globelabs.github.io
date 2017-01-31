@@ -110,6 +110,30 @@ sms.sendBinaryMessage(function(resCode, body) {
 });
 ",
 
+'SMS Receiving' => "
+var http = require('http');
+
+var server = http.createServer(function(request, response) {
+    if(request.method === 'POST') {
+        var body = '';
+
+        request.on('data', function(chunks) {
+            body += chunks;
+        });
+
+        request.on('end', function() {
+            response.statusCode = 200;
+            response.setHeader('Content-Type', 'application/json');
+            response.end(body);
+        });
+    }
+});
+
+server.listen(8080, '127.0.0.1', function() {
+    console.log('Server running at http://127.0.0.1:8080');
+});
+",
+
 'Subscriber Balance' => "
 var globe = require('globe-connect');
 
@@ -519,7 +543,7 @@ if(url == '/whisper') {
     voice.addOn(onIncomplete);
 
     var obj = voice.getObject();
-    
+
     console.log(JSON.stringify(obj));
 } else if(url == '/whisperIncomplete') {
     voice.addHangup();
