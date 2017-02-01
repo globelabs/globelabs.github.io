@@ -35,7 +35,7 @@ class SdkZipSizeGenerator {
             }
         }
 
-        $path = $argv[1] . DIRECTORY_SEPARATOR . 'sizes.js';
+        $path = '../' . DIRECTORY_SEPARATOR . 'sizes.js';
 
         if(!file_exists($path)) {
             touch($path);
