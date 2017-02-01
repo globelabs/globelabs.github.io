@@ -90,7 +90,7 @@
         redirect = window.location.origin + download;
 
         if(window.location.host === 'globelabs.github.io') {
-            redirect = 'http://ec2-54-254-220-204.ap-southeast-1.compute.amazonaws.com' + download;
+            redirect = 'https://ec2-54-254-220-204.ap-southeast-1.compute.amazonaws.com' + download;
         }
 
         document.querySelector('footer.panel-footer button').disabled = false;
