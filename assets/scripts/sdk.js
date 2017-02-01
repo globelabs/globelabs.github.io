@@ -127,22 +127,22 @@
         });
 
         //determine the link
-        var download = '/sdk-generator/download.php';
-
-        switch(choices.platform) {
-            case 'android':
-                download += '?type=android';
-                break;
-            case 'ios':
-                download += '?type=ios';
-                break;
-            case 'react':
-                download += '?type=react';
-                break;
-            case 'phonegap':
-                download += '?type=phonegap';
-                break;
-        }
+        // var download = '/sdk-generator/download.php';
+        //
+        // switch(choices.platform) {
+        //     case 'android':
+        //         download += '?type=android';
+        //         break;
+        //     case 'ios':
+        //         download += '?type=ios';
+        //         break;
+        //     case 'react':
+        //         download += '?type=react';
+        //         break;
+        //     case 'phonegap':
+        //         download += '?type=phonegap';
+        //         break;
+        // }
 
         var files = []
 
@@ -169,36 +169,50 @@
 
         files = files.sort();
 
-        download += '&files=' + files.join('');
+        // download += '&files=' + files.join('');
+        //
+        // redirect = window.location.origin + download + '&size=1';
+        //
+        // if(window.location.host === 'globelabs.github.io') {
+        //     redirect = 'https://ec2-54-254-220-204.ap-southeast-1.compute.amazonaws.com' + download + '&size=1';
+        // }
+        //
+        // if(files.length == 0) {
+        //     document.querySelector('footer.panel-footer button').disabled = true;
+        //     document.querySelector('footer.panel-footer em').style.display = 'none';
+        //
+        //     return;
+        // }
+        //
+        // $.get(redirect, function(response) {
+        //     try {
+        //         var json = JSON.parse(response);
+        //
+        //         if(json.size == '0 KB') {
+        //             update(null);
+        //
+        //             return;
+        //         }
+        //
+        //         update(parseInt(json.size));
+        //     } catch(e) {
+        //         update(null);
+        //     }
+        // });
 
-        redirect = window.location.origin + download + '&size=1';
+        var key = choices.platform + '-' + files.join('');
 
-        if(window.location.host === 'globelabs.github.io') {
-            redirect = 'https://ec2-54-254-220-204.ap-southeast-1.compute.amazonaws.com' + download + '&size=1';
-        }
+        if(window.sdkSize && choices.platform in window.sdkSize) {
+            if(key in window.sdkSize[choices.platform]) {
+                var size = window.sdkSize[choices.platform][key];
 
-        if(files.length == 0) {
-            document.querySelector('footer.panel-footer button').disabled = true;
-            document.querySelector('footer.panel-footer em').style.display = 'none';
+                update(parseInt(size));
 
-            return;
-        }
-
-        $.get(redirect, function(response) {
-            try {
-                var json = JSON.parse(response);
-
-                if(json.size == '0 KB') {
-                    update(null);
-
-                    return;
-                }
-
-                update(parseInt(json.size));
-            } catch(e) {
-                update(null);
+                return;
             }
-        });
+        }
+
+        update(null);
     };
 
     var success = function() {
