@@ -159,3 +159,12 @@ foreach ($contents as $language => $sections) {
 
 $documentation[] = '';
 file_put_contents(__DIR__ . '/results.md', implode("\n", $documentation));
+
+$original = file_get_contents(__DIR__ . '/../docs/docs.md');
+$current  = file_get_contents(__DIR__ . '/results.md');
+
+$original .= PHP_EOL;
+$original .= 'SDK\'s & Libraries' . PHP_EOL . '===================' . PHP_EOL;
+$original .= $current;
+
+file_put_contents(__DIR__ . '/../docs/docs-all.md', $original);
