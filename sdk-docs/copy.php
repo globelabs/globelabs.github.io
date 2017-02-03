@@ -1432,4 +1432,83 @@ return [
             ]
         ],
     ],
+    'Swift' => [
+        'Setting Up' => 'Please refer to this [link](https://github.com/globelabs/globe-connect-swift/blob/master/instructions/cocoapods.md)
+        for the installation of Globe Connect Swift via CocoaPods.',
+        'Authentication' => [
+            'Overview' => $copy['Authentication'],
+            'Code' => $samples['swift']['Authentication'],
+            'Results' => $output['Authentication']
+        ],
+        'SMS' => [
+            'Overview' => $copy['SMS']['Overview'],
+            'Calls' => [
+                'Sending' => [
+                    'Overview' => $copy['SMS']['Calls']['Sending'],
+                    'Code' => $samples['swift']['SMS Send'],
+                    'Results' => $output['SMS Send']
+                ],
+                'Binary' => [
+                    'Overview' => $copy['SMS']['Calls']['Binary'],
+                    'Code' => $samples['swift']['SMS Binary'],
+                    'Results' => $output['SMS Binary']
+                ]
+            ]
+        ],
+        'USSD' => [
+            'Overview' => $copy['USSD']['Overview'],
+            'Calls' => [
+                'Sending' => [
+                    'Overview' => $copy['USSD']['Calls']['Sending'],
+                    'Code' => $samples['swift']['USSD Send'],
+                    'Results' => $output['USSD Send']
+                ],
+                'Replying' => [
+                    'Overview' => $copy['USSD']['Calls']['Replying'],
+                    'Code' => $samples['swift']['USSD Reply'],
+                    'Results' => $output['USSD Reply']
+                ]
+            ]
+        ],
+        'Payment' => [
+            'Overview' => $copy['Payment']['Overview'],
+            'Calls' => [
+                'Requests' => [
+                    'Overview' => $copy['Payment']['Calls']['Requests'],
+                    'Code' => $samples['swift']['Payment Send'],
+                    'Results' => $output['Payment Send']
+                ],
+                'Last Reference' => [
+                    'Overview' => $copy['Payment']['Calls']['Last Reference'],
+                    'Code' => $samples['swift']['Payment Reference'],
+                    'Results' => $output['Payment Reference']
+                ],
+            ]
+        ],
+        'Amax' => [
+            'Overview' => $copy['Amax'],
+            'Code' => $samples['swift']['Amax'],
+            'Results' => $output['Amax']
+        ],
+        'Location' => [
+            'Overview' => $copy['Location'],
+            'Code' => $samples['swift']['Location'],
+            'Results' => $output['Location']
+        ],
+        'Subscriber' => [
+            'Overview' => $copy['Subscriber']['Overview'],
+            'Calls' => [
+                'Balance' => [
+                    'Overview' => $copy['Subscriber']['Calls']['Balance'],
+                    'Code' => $samples['swift']['Subscriber Balance'],
+                    'Results' => $output['Subscriber Balance']
+                ],
+                'Reload' => [
+                    'Overview' => $copy['Subscriber']['Calls']['Reload'],
+                    'Code' => $samples['swift']['Subscriber Reload'],
+                    'Results' => $output['Subscriber Reload']
+                ],
+            ]
+        ],
+    ],
 ];

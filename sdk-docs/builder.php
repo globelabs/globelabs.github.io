@@ -1,9 +1,12 @@
 <?php
 $contents = include __DIR__ . '/copy.php';
 
+$individual    = [];
 $documentation = [];
 foreach ($contents as $language => $sections) {
     $encoding = '';
+    $individual = [];
+
     switch($language) {
         case 'Android':
             $encoding = 'java';
@@ -39,92 +42,118 @@ foreach ($contents as $language => $sections) {
             $encoding = 'csharp';
             break;
     }
-    $documentation[] = '';
+
+    $individual[] = $documentation[] = '';
+
+    $individual[] = '## Globe Connect for ' . $language;
     $documentation[] = '## '.$language;
     foreach($sections as $section => $content) {
-        $documentation[] = '';
-        $documentation[] = '### '.$section;
+        $individual[] = $documentation[] = '';
+        $individual[] = $documentation[] = '### '.$section;
 
         if(is_string($content)) {
-            $documentation[] = '';
+            $individual[] = $documentation[] = '';
             if($content) {
-                $documentation[] = $content;
+                $individual[] = $documentation[] = $content;
             } else {
-                $documentation[] = 'TODO';
+                $individual[] = $documentation[] = 'TODO';
             }
 
             continue;
         }
 
         if(isset($content['Overview'])) {
-            $documentation[] = '';
-            $documentation[] = '#### Overview';
-            $documentation[] = '';
+            $individual[] = $documentation[] = '';
+            $individual[] = $documentation[] = '#### Overview';
+            $individual[] = $documentation[] = '';
             if(!$content['Overview']) {
-                $documentation[] = 'TODO';
+                $individual[] = $documentation[] = 'TODO';
             } else {
-                $documentation[] = $content['Overview'];
+                $individual[] = $documentation[] = $content['Overview'];
             }
         }
 
         if(isset($content['Code'])) {
-            $documentation[] = '';
-            $documentation[] = '#### Sample Code';
-            $documentation[] = '';
-            $documentation[] = '```' . $encoding;
-            $documentation[] = $content['Code'];
-            $documentation[] = '```';
+            $individual[] = $documentation[] = '';
+            $individual[] = $documentation[] = '#### Sample Code';
+            $individual[] = $documentation[] = '';
+            $individual[] = $documentation[] = '```' . $encoding;
+            $individual[] = $documentation[] = $content['Code'];
+            $individual[] = $documentation[] = '```';
         }
 
         if(isset($content['Results'])) {
-            $documentation[] = '';
-            $documentation[] = '#### Sample Results';
-            $documentation[] = '';
+            $individual[] = $documentation[] = '';
+            $individual[] = $documentation[] = '#### Sample Results';
+            $individual[] = $documentation[] = '';
             if(!$content['Results']) {
-                $documentation[] = 'TODO';
+                $individual[] = $documentation[] = 'TODO';
             } else {
-                $documentation[] = '```json';
-                $documentation[] = $content['Results'];
-                $documentation[] = '```';
+                $individual[] = $documentation[] = '```json';
+                $individual[] = $documentation[] = $content['Results'];
+                $individual[] = $documentation[] = '```';
             }
         }
 
         if(isset($content['Calls'])) {
             foreach($content['Calls'] as $action => $content) {
-                $documentation[] = '';
-                $documentation[] = '#### '.$section . ' ' . $action;
+                $individual[] = $documentation[] = '';
+                $individual[] = $documentation[] = '#### '.$section . ' ' . $action;
                 if(isset($content['Overview'])) {
-                    $documentation[] = '';
+                    $individual[] = $documentation[] = '';
                     if(!$content['Overview']) {
-                        $documentation[] = 'TODO';
+                        $individual[] = $documentation[] = 'TODO';
                     } else {
-                        $documentation[] = $content['Overview'];
+                        $individual[] = $documentation[] = $content['Overview'];
                     }
                 }
 
                 if(isset($content['Code'])) {
-                    $documentation[] = '';
-                    $documentation[] = '##### Sample Code';
-                    $documentation[] = '';
-                    $documentation[] = '```' . $encoding;
-                    $documentation[] = $content['Code'];
-                    $documentation[] = '```';
+                    $individual[] = $documentation[] = '';
+                    $individual[] = $documentation[] = '##### Sample Code';
+                    $individual[] = $documentation[] = '';
+                    $individual[] = $documentation[] = '```' . $encoding;
+                    $individual[] = $documentation[] = $content['Code'];
+                    $individual[] = $documentation[] = '```';
                 }
 
                 if(isset($content['Results'])) {
-                    $documentation[] = '';
-                    $documentation[] = '##### Sample Results';
-                    $documentation[] = '';
+                    $individual[] = $documentation[] = '';
+                    $individual[] = $documentation[] = '##### Sample Results';
+                    $individual[] = $documentation[] = '';
                     if(!$content['Results']) {
-                        $documentation[] = 'TODO';
+                        $individual[] = $documentation[] = 'TODO';
                     } else {
-                        $documentation[] = '```json';
-                        $documentation[] = $content['Results'];
-                        $documentation[] = '```';
+                        $individual[] = $documentation[] = '```json';
+                        $individual[] = $documentation[] = $content['Results'];
+                        $individual[] = $documentation[] = '```';
                     }
                 }
             }
         }
+    }
+
+    $individual[] = '';
+    $lang = $language;
+
+    $lang = strtolower($lang);
+
+    if($lang == 'ios 10') {
+        $lang = 'ios';
+    }
+
+    if($lang == 'c sharp') {
+        $lang = 'csharp';
+    }
+
+    if($lang == 'react native') {
+        $lang = 'react-native';
+    }
+
+    $path = __DIR__ . '/../../connect-' . $lang;
+
+    if(file_exists($path)) {
+        file_put_contents($path . '/README.md', implode("\n", $individual));
     }
 }
 
