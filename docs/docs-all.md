@@ -29,7 +29,7 @@ In order to create an app, user must fill out a minimum of required fields which
 
   **Access Token**: required to use the API.
 
-  **Note**: The Redirect URI must be on a domain or on a web server, for example; **www.example.com/your_code.php** .
+  **Note**: The Redirect URI must be on a domain or on a web server, for example; **http://www.example.com/your_code.php** .
 
 
 - API Type - Upon selection of the API type, there are certain API's that may require new fields:
@@ -54,7 +54,7 @@ After creation, your app will have its own **Short Code**.
 
     **Welcome Message** - welcome message mentioned in the Create App Section.
 
-3.  After the subscriber replies (Yes), the **Access Token** and the **Subscriber’s mobile number** will be posted (POST) to your **Redirect URI**.
+3.  After the subscriber replies (Yes), the **Access Token** and the **Subscriber’s mobile number** will be posted (POST) to your **Redirect URI**, you can get these parameters via GET method.
 
 ###### Sample POST to Redirect URI
 
@@ -89,34 +89,47 @@ After creation, your app will have its own **Short Code**.
 }
 ```
 
+### Stop Subscription
+
+If ever a subscriber chooses to opt-out or unsubscribe to your application. They will need to text in STOP to your shortcode ('STOPSVC' for cross-telco). After stopping the subscription, a json data will be passed to your redirect_uri informing you that a subscriber had just unsubscribed to your service.
+
+json format:
+
+```javascript
+{
+   "unsubscribed":{
+          "subscriber_number":"9171234567",
+          "access_token":"abcdefghijklmnopqrstuvwxyz",
+          "time_stamp": "2014-10-19T12:00:00"
+   }
+}
+```
+
 SMS
 ========================
 
 **Overview**
 
 Short Message Service (SMS) enables your application or service to send and
-receive secure, targeted text messages and alerts to your Globe / TM subscribers.
-
-These interfaces are  RESTful interfaces based on [OneAPI GSMA SMS v3 (RESTFul
-NETAPI)](https://www.google.com/url?q=http://www.gsma.com/oneapi/sms-restful-netapi&sa=D&ust=1462235837323000&usg=AFQjCNHI9JQdV1z2-ahEM1NPMmmfRdb6jQ).
+receive secure, targeted text messages and alerts to your Globe / TM and other telco subscribers.
 
 Note: All API calls must include the access_token as one of the
 Universal Resource Identifier (URI) parameters.
 
 ### Resources and URIs
 
-OneAPI SMS may be accessed via a RESTful API.
-
 A RESTful API utilises HTTP commands POST, GET, PUT, and DELETE in order to
 perform an operation on a resource at the server. This resource is addressed by a URI;
 and what is returned by the server is a representation of that resource depending on its current state.
 
-HTTP POST, GET and DELETE commands are used in OneAPI SMS. The URIs of the resources are:
+HTTP POST and GET commonly used  in our services. The URIs of the resources are:
 
 
-### Sending SMS
+### Sending SMS (SMS-MT)
 
 Send an SMS message to one or more mobile terminals:
+
+(Mobile Terminating - Application to Subscriber)
 
 Use <span class="method">POST</span> method on this URI:
 ```
@@ -125,8 +138,7 @@ https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/{senderAddress}/request
 
 ###### Representation Formats
 
-OneAPI GSMA SMS API (v3) both supports application/json and application/xml content
-types for POST operations. For the Globe Labs API SMS (beta), it is implemented
+For the Globe Labs API SMS (beta), it is implemented
 using application/json.
 
 ###### Resource Parameters
@@ -141,19 +153,19 @@ using application/json.
 | Parameter        | Usage |
 | -----------------|-------|
 | _string_ **address** is the subscriber MSISDN (mobile number), including the ‘tel:’ identifier. Parameter format can include the ‘+’ followed by country code  +639xxxxxxxxx or 09xxxxxxxxx | Required |
-| _string_ **message** must be provided within the ```outboundSMSTextMessage``` element. Currently, the API implementation is limited a maximum of 160 characters. | Required |
+| _string_ **message** must be provided within the ```outboundSMSTextMessage``` element. Currently, the API implementation is limited a maximum of 160 characters. Also make sure that your language or framework's editor is encoding the HTTP parameters as UTF-8 | Required |
 | _string_ **clientCorrelator** uniquely identifies this create SMS request. If there is a communication failure during the request, using the same clientCorrelator when retrying the request allows the operator to avoid sending the same SMS twice. | Optional |
 
 ###### Sample POST Request
 
 ```
 curl -X POST
-"https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/5315/requests?access_token=3YM8xurK_IPdhvX4OUWXQljcHTIPgQDdTESLXDIes4g" -H "Content-Type: application/json" -d
+"https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/1234/requests?access_token=3YM8xurK_IPdhvX4OUWXQljcHTIPgQDdTESLXDIes4g" -H "Content-Type: application/json" -d
 {"outboundSMSMessageRequest": {
    "clientCorrelator": "123456",
-   "senderAddress": "tel:5315",
+   "senderAddress": "1234",
    "outboundSMSTextMessage": {"message": "Hello World"},
-   "address": ["tel:+639171234567"]
+   "address": "9171234567"
  }
 }
 ```
@@ -197,9 +209,12 @@ curl -X POST
 __Note:__ Response parameters deliveryInfo, callbackData, senderName are optional parameters that are not currently supported by the Globe Labs SMS (beta) API.
 
 
-### Receiving SMS
+### Receiving SMS (SMS-MO)
 
-In receiving SMS, globe will send a data to your Notify URL (that you provided when you created your app) when the subscriber sends an SMS or replied to your short code number.
+In receiving SMS, globe will send a data(POST) to your Notify URL (that you provided when you created your app) when the subscriber sends an SMS or replied to your short code number.
+
+(Mobile Originating - Subscriber to Application)
+
 
 ```javascript
 {
@@ -207,7 +222,7 @@ In receiving SMS, globe will send a data to your Notify URL (that you provided w
       "inboundSMSMessage":[
          {
             "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
-            "destinationAddress":"21581234",
+            "destinationAddress":"tel:21581234",
             "messageId":null,
             "message":"Hello",
             "resourceURL":null,
@@ -223,13 +238,150 @@ In receiving SMS, globe will send a data to your Notify URL (that you provided w
 
 In your Notify URL, create a script that will catch and save these data to a file or to the database.
 
+###Binary SMS
+
+Binary Short Messaging interface allows an application to send any generic binary object attachments to the network using SMS.
+
+Use <span class="method">POST</span> method on this URI:
+```
+https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}
+```
+#### Parameters
+
+Parameter | Description | Required
+----------|-------------|----------
+`userDataHeader` | UDH of the message | true
+`dataCodingScheme` | data coding of the message | true
+`address` | MSISDN of the recipient | true
+`outboundBinaryMessage.message` | message to be sent | true
+`senderAddress` | shortcode of the app | true
+`access_token` | access token of the subscriber | true
+
+Data Coding Value | Description
+------------------|------------
+0                 | SMSC Default
+1                 | IA5/ASCII
+3                 | Latin 1 (ISO-8859-1)
+4                 | Binary (8-bit)
+8                 | UCS2 (Unicode)
+
+```json
+{
+  "outboundBinaryMessageRequest": {
+    "address": "9171234567",
+    "deliveryInfoList": {
+      "deliveryInfo": [],
+      "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
+    "senderAddress": "21581234",
+    "userDataHeader": "06050423F423F4",
+    "dataCodingScheme": 1,
+    "outboundBinaryMessage": {
+      "message": "samplebinarymessage"
+    },
+    "receiptRequest": {
+      "notifyURL": "http://example.com/notify",
+      "callbackData": null,
+      "senderName": null
+    },
+  "resourceURL": "https://devapi.globelabs.com.ph/binarymessaging/v1/outbound/{senderAddress}/requests?access_token={access_token}",
+  }
+}
+```
+
+###Multi-Part SMS
+
+**Sending Multi-Part SMS**
+
+You can send multi-part sms like you would in sending a normal sms, just keep in mind that you will be charged per 160 characters.
+
+
+###### Sample POST Request
+
+```
+curl -X POST
+"https://devapi.globelabs.com.ph/smsmessaging/v1/outbound/1234/requests?access_token=3YM8xurK_IPdhvX4OUWXQljcHTIPgQDdTESLXDIes4g" -H "Content-Type: application/json" -d
+{"outboundSMSMessageRequest": {
+   "clientCorrelator": "123456",
+   "senderAddress": "1234",
+   "outboundSMSTextMessage": {"message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis commodo posuere dui vitae feugiat. Cras vehicula, elit eget commodo tristique, mi magna placerat turpis, quis ultrices massa odio vitae sapien. Proin elit diam, malesuada sit amet blandit id, fermentum eu orci."},
+   "address": "9171234567"]
+ }
+}
+```
+
+**Receiving Multi-Part SMS**
+
+There will be additional parameters whenever you receive an sms content exceeding 160 characters, this would be:
+
+Parameter | Description |
+----------|-------------|
+`multipartRefId` | ID of multi-part message
+`multipartSeqNum` | Sequence of multi-part message
+
+sample of expected format of multi-part content below:
+
+```json
+{
+   "inboundSMSMessageList":{
+      "inboundSMSMessage":[
+         {
+            "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
+            "destinationAddress":"tel:21581234",
+            "messageId":"57cd07d61a28d80100a26bc7",
+            "message":"AlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrigh",
+            "resourceURL":null,
+            "senderAddress":"tel:+639171234567",
+            "multipartRefId":"5476ddbba4e7d20c527c0f83422bf938",
+            "multipartSeqNum":"1"
+         }
+      ],
+      "numberOfMessagesInThisBatch":"2",
+      "resourceURL":null,
+      "totalNumberOfPendingMessages":0
+   }
+}
+
+{
+   "inboundSMSMessageList":{
+      "inboundSMSMessage":[
+         {
+            "dateTime":"Fri Nov 22 2013 12:12:13 GMT+0000 (UTC)",
+            "destinationAddress":"tel:21581234",
+            "messageId":"57cd07dab9d3660100cee8d2",
+            "message":"tAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightAlrightu",
+            "resourceURL":null,
+            "senderAddress":"tel:+639171234567",
+            "multipartRefId":"5476ddbba4e7d20c527c0f83422bf938",
+            "multipartSeqNum":"2"
+         }
+      ],
+      "numberOfMessagesInThisBatch":"2",
+      "resourceURL":null,
+      "totalNumberOfPendingMessages":0
+   }
+}
+```
+
+Batch of messages could be identified if they have the same `multipartRefId`.
+
+###SMS API HTTP Response
+
+|Code|Description|
+|----|-----------|
+|201|Request has been successful|
+|400/401|Request failed. Wrong or missing parameters, invalid subscriber_number format, wrong access_token. |
+|502/503|Platform Error. API Service is busy or down|
+
+API requests with a response code of 201, 400 or 401 will be chargeable against your developer wallet. Standard SMS API rates apply, unless otherwise stated.
+
+
 Location Based Services
 ========================
 
 **Overview**
 
 This API allows a web application to query the location of one or more mobile devices that are connected to a mobile operator network.
-The Globe Labs LBS is a RESTful interface based on OneAPI GSMA Location API v3 (RESTFul NETAPI).
+The Globe Labs LBS is a RESTful interface.
 
 Note: All API calls must include the access_token as one of the Universal Resource Identifier (URI) parameters. This can be requested beforehand via the Subscriber Consent Workflow.
 
@@ -237,11 +389,9 @@ Read more about the Subscriber Consent Workflow (http://goo.gl/EEEBO8) .
 
 ###Resources and URIs
 
-OneAPI LBS may be accessed via a RESTful API.
-
 A RESTful API utilises HTTP commands GET in order to perform an operation on a resource at the server. This resource is addressed by a URI; and what is returned by the server is a representation of that resource depending on its current state.
 
-HTTP GET  commands is  used in OneAPI GSMA  LBS. The URIs of the resources are:
+HTTP GET commnand is used in these resources below:
 
 ### LBS Query
 
@@ -254,7 +404,7 @@ https://devapi.globelabs.com.ph/location/v1/queries/location?access_token={acces
 
 ###### Representation Formats
 
-OneAPI GSMA LBS API (v3) both supports application/json and application/xml content types for GET operations. For the Globe Labs API LBS (beta), it is implemented using application/json.
+For the Globe Labs API LBS (beta), it is implemented using application/json.
 
 ###### Resource Parameters
 
@@ -310,6 +460,18 @@ curl "https://devapi.globelabs.com.ph/location/v1/queries/location?access_token=
 | **timestamp** time of event response. | |
 | **locationRetrievalStatus** status of location request. | |
 
+
+###LBS API HTTP Response
+
+|Code|Description|
+|----|-----------|
+|201|Request has been successful|
+|400/401|Request failed. Wrong or missing parameters.|
+|502/503|Platform Error. API Service is busy or down|
+
+API requests with a response code of 201, 400 or 401 will be chargeable against your developer wallet. Standard LBS API rates apply, unless otherwise stated.
+
+
 Charging
 ========================
 
@@ -317,11 +479,10 @@ Charging
 
 The Charging API directly charges for digital services to the bill of an Globe or TM subscriber. A developer creates new transactions or subscriptions, requests the status of the transaction or subscription, and authorizes refunds.
 
-These interfaces are  RESTful interfaces based on OneAPI GSMA Charging v1 (RESTFul API).
 
 ######CHARGING v2.1
 
-The OneAPI Payment interface allows you to charge mobile subscribers for use of your Web application or content. The API allows you to directly charge a user based on their consent (see ‘User consent and operator policies’ below).
+The API Payment interface allows you to charge mobile subscribers for use of your Web application or content. The API allows you to directly charge a user based on their consent (see ‘User consent and operator policies’ below).
 
 ### Charge Subscriber
 
@@ -337,8 +498,8 @@ https://devapi.globelabs.com.ph/payment/v1/transactions/amount?access_token={acc
 curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?access_token=3YM8xurK_IPdhvX4OUWXQljcHTIPcQDdTESLUDI4s4g" \
  -F "amount=0.00" \
  -F "description=my application" \
- -F "endUserId=9175595283" \
- -F "referenceCode=53151000022" \
+ -F "endUserId=9171234567" \
+ -F "referenceCode=12341000022" \
  -F "transactionOperationStatus=Charged"
  ```
 
@@ -348,8 +509,8 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 | ----------|-------|
 |**amount** (decimal) amount to be charged. Must be in decimal format. eg. 1.00, 2.50, 10.00 | Required |
 |**description**(string) is the human-readable text to appear on the bill, so the user can easily see what they bought| Required |
-| **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. OneAPI also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
-| **referenceCode** (string, unique per charge event) is your reference for reconciliation purposes. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: SUFFIX + Increment of 1 from 1000000 e.g. 29431,000,002 9,999,999 For your 1st transaction ref #:29431000001| Required |
+| **endUserId** URL-escaped end user ID; in this case their MSISDN including the ‘tel:’ protocol identifier and the country code preceded by ‘+’. i.e., tel:+16309700001. The API also supports the Anonymous Customer Reference (ACR) if provided by the operator. | Required |
+| **referenceCode** (string, unique alphanumeric) is your reference for reconciliation purposes. The operator should include it in reports so that you can match their view of what has been sold with yours by matching the referenceCodes. Required format: Unique combination of 7 alphanumeric string. or you can also do Increments of 1 from 1000000 e.g. [1234]1,000,001 to [1234]9,999,999]| Required |
 |**transactionOperationStatus** (enumeration). This indicates the desired resource state, in this case ‘Charged’. See ‘resource states’ section below for further explanation| Required |
 
 ###### Sample Response
@@ -358,7 +519,7 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 {
  "amountTransaction":
  {
-   "endUserId": "9175595283",
+   "endUserId": "9171234567",
    "paymentAmount":
    {
      "chargingInformation":
@@ -369,12 +530,14 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
      },
      "totalAmountCharged": "0.00"
    },
-   "referenceCode": "53151000023",
+   "referenceCode": "12341000023",
    "serverReferenceCode": "528f5369b390e16a62000006",
    "resourceURL": null
   }
 }
 ```
+
+
 
 ###### Error Codes:
 
@@ -389,6 +552,39 @@ curl -X POST "https://devapi.globelabs.com.ph/payment/v1/transactions/amount?acc
 |412 | TM Subscriber has insufficient balance.|
 |416 |Failure to check the subscriber's balance.|
 |503 | System is busy, please try again later.|
+
+
+### Get Last Reference Code
+In case you lost of track of your reference code,
+you can make a <span class="method">GET</span> request to this uri below:
+
+```
+https://devapi.globelabs.com.ph/payment/v1/transactions/getLastRefCode
+```
+
+|Parameter|Usage|
+|---------|-----|
+|app_id|required|
+|app_secret|required|
+
+###### Sample Response
+
+```
+{
+  "referenceCode": "12341000005",
+  "status": "SUCCESS",
+  "shortcode": "21581234"
+}
+```
+
+
+###Charging API HTTP Response
+
+|Code|Description|
+|----|-----------|
+|201|Request has been successful|
+|400/401|Request failed. Wrong or missing parameters|
+|502/503|Platform Error. API Service is busy or down|
 
 Voice
 ========================
@@ -446,7 +642,7 @@ http://bit.ly/VoiceAPIDocs_v2
 
 https://www.tropo.com/docs
 
-Subscriber Data Query
+Subscriber Data Query (Alpha)
 ========================
 
 **Overview**
