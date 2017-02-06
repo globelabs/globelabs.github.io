@@ -1,5 +1,6 @@
 var yargs = require('yargs');
 
+// initial argument helper
 yargs.usage('Usage: $0 <command> [args]')
     .command('ios', 'send an sms to the given subscriber / MSISDN number.')
     .command('android', 'send a binary sms to the given subscruber / MSISDN number.')
@@ -14,25 +15,35 @@ yargs.usage('Usage: $0 <command> [args]')
     })
     .epilog('Globe Labs - Copyright 2016 - https://developer.globelabs.com.ph');
 
+// parse arguments
 var argv = yargs.argv;
 
+// do we have arguments?
 if(argv._.length == 0) {
+    // show help
     yargs.showHelp();
 
     return;
 }
 
+// show help argument?
 if(argv.h || argv.help) {
+    // show help
     yargs.showHelp();
 
     return;
 }
 
+// get the command
 var command = argv._.shift();
+// command options
 var options = null;
 
+// switch between commands
 switch(command) {
+    // ios?
     case 'ios' :
+        // set ios options
         options = require('yargs')
         .usage('Usage: $0 ios [args]')
         .option('i', {
@@ -70,7 +81,10 @@ switch(command) {
         .argv;
 
         break;
+
+    // android?
     case 'android' :
+        // set android options
         options = require('yargs')
         .usage('Usage: $0 android [args]')
         .option('i', {
@@ -114,7 +128,10 @@ switch(command) {
         .argv;
 
         break;
+
+    // phonegap?
     case 'phonegap' :
+        // set phonegap options
         options = require('yargs')
         .usage('Usage: $0 phonegap [args]')
         .option('i', {
@@ -146,7 +163,10 @@ switch(command) {
         .argv;
 
         break;
+
+    // react?
     case 'react' :
+        // set react options
         options = require('yargs')
         .usage('Usage: $0 react [args]')
         .option('i', {
