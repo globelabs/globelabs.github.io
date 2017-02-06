@@ -19,13 +19,13 @@ var Ios = function(options) {
 
     // default files
     var defaults = [
-        'ConnectIOSAmax.swift',
-        'ConnectIOSAuthenticate.swift',
-        'ConnectIOSLocationQuery.swift',
-        'ConnectIOSPayment.swift',
-        'ConnectIOSSms.swift',
-        'ConnectIOSSubscriber.swift',
-        'ConnectIOSUssd.swift'
+        'GlobeConnectAmax.swift',
+        'GlobeConnectAuthenticate.swift',
+        'GlobeConnectLocationQuery.swift',
+        'GlobeConnectPayment.swift',
+        'GlobeConnectSms.swift',
+        'GlobeConnectSubscriber.swift',
+        'GlobeConnectUssd.swift'
     ];
 
     // files to include
