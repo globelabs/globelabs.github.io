@@ -87,6 +87,9 @@ class SdkZipGenerator {
 
         $this->log('Preparing sdk generator ...');
 
+        // generate size flag
+        $size = true;
+
         // iterate on each types
         foreach($this->types as $type) {
             // is argument set, are we generating specific type?
@@ -119,9 +122,21 @@ class SdkZipGenerator {
                 // unknown?
                 default :
                     $this->log('Unable to generate zip files for `unknown`.');
+
+                    // do not generate sizes
+                    $size = false;
+
                     break;
             }
         }
+
+        // generate size?
+        if($size) {
+            // generate zip sizes
+            $this->generateZipSizes();
+        }
+
+        $this->log('Done.');
     }
 
     /**
@@ -155,17 +170,17 @@ class SdkZipGenerator {
         }
 
         // if repo folder does not exists
-        // if(!file_exists($this->repo)) {
-        //     $this->log('Cloning repositories ...');
-        //
-        //     // checkout repositories
-        //     exec(__DIR__ . '/checkout-repo.sh');
-        // } else {
-        //     $this->log('Repositories exists, updating repositories ...');
-        //
-        //     // update repositories
-        //     exec(__DIR__ . '/update-repo.sh');
-        // }
+        if(!file_exists($this->repo)) {
+            $this->log('Cloning repositories ...');
+
+            // checkout repositories
+            exec(__DIR__ . '/checkout-repo.sh');
+        } else {
+            $this->log('Repositories exists, updating repositories ...');
+
+            // update repositories
+            exec(__DIR__ . '/update-repo.sh');
+        }
 
         $this->log('...');
         $this->log('Checking required directories ...');
@@ -287,8 +302,6 @@ class SdkZipGenerator {
             $this->log('===> *end zip* <===');
 
             $this->log($index + 1 . ' out of ' . count($permutations) . ' android zip files has been successfully generated ...');
-
-            break;
         }
 
         $this->log('Android zip files has been successfully generated ...');
@@ -383,7 +396,7 @@ class SdkZipGenerator {
             $this->log('  zip file generated for ios with id ' . $permutation);
             $this->log('===> *end zip* <===');
 
-            break;
+            $this->log($index + 1 . ' out of ' . count($permutations) . ' ios zip files has been successfully generated ...');
         }
 
         $this->log('iOS zip files has been successfully generated ...');
@@ -461,10 +474,10 @@ class SdkZipGenerator {
             // execute zip generation
             $this->log('===> *zip* <===');
             $this->log(exec($zip));
-            $this->log('  zip file generated for ios with id ' . $permutation);
+            $this->log('  zip file generated for phonegap with id ' . $permutation);
             $this->log('===> *end zip* <===');
 
-            break;
+            $this->log($index + 1 . ' out of ' . count($permutations) . ' phonegap zip files has been successfully generated ...');
         }
 
         $this->log('Phonegap zip files has been successfully generated ...');
@@ -503,11 +516,11 @@ class SdkZipGenerator {
             // formulate target repository folder
             $target = implode(array($this->repo, 'globe-connect-react-native', 'react-native-globeconnect'), DIRECTORY_SEPARATOR);
             // formulate sdk output folder
-            $sdkOut = implode(array($this->out, 'react'), DIRECTORY_SEPARATOR);
+            $sdkOut = implode(array($this->out, 'react-native'), DIRECTORY_SEPARATOR);
             // formulate output folder
             $folder = implode(array($sdkOut, 'react-' . $permutation, ''), DIRECTORY_SEPARATOR);
             // formulate zip output folder
-            $zipOut = implode(array($this->zips, 'react'), DIRECTORY_SEPARATOR);
+            $zipOut = implode(array($this->zips, 'react-native'), DIRECTORY_SEPARATOR);
             // zip name
             $zip    = sprintf('react-%s.zip', $permutation);
 
@@ -536,7 +549,7 @@ class SdkZipGenerator {
             $zip = sprintf(
                 'cd %s && zip -r %s %s',
                 $folder,
-                implode(array($this->zips, 'react', $zip), DIRECTORY_SEPARATOR),
+                implode(array($this->zips, 'react-native', $zip), DIRECTORY_SEPARATOR),
                 'react-native-globeconnect');
 
             // execute zip generation
@@ -545,7 +558,7 @@ class SdkZipGenerator {
             $this->log('  zip file generated for ios with id ' . $permutation);
             $this->log('===> *end zip* <===');
 
-            break;
+            $this->log($index + 1 . ' out of ' . count($permutations) . ' react zip files has been successfully generated ...');
         }
 
         $this->log('React Native zip files has been successfully generated ...');
@@ -602,6 +615,84 @@ class SdkZipGenerator {
         }
 
         return implode(',', $string);
+    }
+
+    /**
+     * Generate zip sizes.
+     *
+     * @return void
+     */
+    protected function generateZipSizes()
+    {
+        $this->log('Generating zip sizes ...');
+
+        // size data
+        $data = array();
+
+        // iterate on each zip types
+        foreach($this->types as $type) {
+            // formulate path
+            $path = implode(array($this->zips, $type), DIRECTORY_SEPARATOR);
+
+            // check if path exists
+            if(!file_exists($path)) {
+                $this->log($path . ' does not exists skipping ...');
+                continue;
+            }
+
+            // scan directory
+            $zips = scandir($path);
+
+            // filter zip files
+            $zips = array_filter($zips, function($zip) {
+                // exclude . and .. directories
+                if($zip !== '.' && $zip !== '..') {
+                    return $zip;
+                }
+            });
+
+            // iterate on each zip files
+            foreach($zips as $zip) {
+                // formulate file path
+                $file = implode(array($path, $zip), DIRECTORY_SEPARATOR);
+                // get format file size
+                $size = $this->formatBytes(filesize($file), 0);
+                // get file basename
+                $name = basename($zip, '.zip');
+
+                // save the size
+                $data[$type][substr($name, strpos($name, '-') + 1)] = $size;
+            }
+        }
+
+        // formulate output path
+        $path = $this->root . '/../sizes.js';
+
+        // if file does not exists
+        if(!file_exists($path)) {
+            touch($path);
+        }
+
+        // save contents
+        file_put_contents($path, 'window.sdkSize = ' . json_encode($data, JSON_PRETTY_PRINT));
+
+        $this->log('Zip sizes successfully generated ...');
+    }
+
+    /**
+     * Format the given bytes into human
+     * readable format.
+     *
+     * @param  int
+     * @param  int
+     * @return string
+     */
+    public function formatBytes($bytes, $decimals = 2) {
+        $size   = array('B','KB','MB','GB','TB','PB','EB','ZB','YB');
+        $factor = floor((strlen($bytes) - 1) / 3);
+        $total  = sprintf("%.{$decimals}f", $bytes / pow(1024, $factor));
+
+        return $total . ' ' . @$size[$factor];
     }
 
     /**
