@@ -296,11 +296,18 @@ class SdkZipGenerator {
         $this->log('...');
     }
 
+    /**
+     * Generate zip files for ios base
+     * on the given permutations.
+     *
+     * @param  array
+     * @return void
+     */
     protected function generateIos($permutations)
     {
         $this->log('Generating zip files for ios ...');
 
-        // iterate on each permuations
+        // iterate on each permutations
         foreach($permutations as $index => $permutation) {
             // formulate script
             $script = $this->script . ' ios -i %s -f %s -p %s -s %s -o %s';
@@ -384,16 +391,166 @@ class SdkZipGenerator {
         $this->log('...');
     }
 
+    /**
+     * Generate zip files for phonegap base
+     * on the given permutations.
+     *
+     * @param  array
+     * @return void
+     */
     protected function generatePhonegap($permutations)
     {
         $this->log('Generating zip files for phonegap ...');
 
+        // iterate on each permutations
+        foreach($permutations as $index => $permutation) {
+            // formulate script
+            $script = $this->script . ' phonegap -i %s -f %s -s %s -o %s';
+            // get the readable file names
+            $files  = $this->convertToString($permutation);
+
+            // copy files and explode it
+            $tmp = explode(' ', $files);
+
+            // iterate on each files and format it
+            foreach($tmp as $i => $v) {
+                $tmp[$i] = $v;
+            }
+
+            // join back the files
+            $files  = implode($tmp, ',');
+            // formulate target repository folder
+            $target = implode(array($this->repo, 'globe-connect-phonegap', 'cordova-plugin-globeconnect'), DIRECTORY_SEPARATOR);
+            // formulate sdk output folder
+            $sdkOut = implode(array($this->out, 'phonegap'), DIRECTORY_SEPARATOR);
+            // formulate output folder
+            $folder = implode(array($sdkOut, 'phonegap-' . $permutation, ''), DIRECTORY_SEPARATOR);
+            // formulate zip output folder
+            $zipOut = implode(array($this->zips, 'phonegap'), DIRECTORY_SEPARATOR);
+            // zip name
+            $zip    = sprintf('phonegap-%s.zip', $permutation);
+
+            // formulate script
+            $script = sprintf($script,
+                $permutation,
+                $files,
+                $target,
+                $sdkOut);
+
+            // execute script
+            exec($script);
+
+            // check for the output
+            if(!file_exists($folder)) {
+                $this->log($folder . ' does not exists, skipping ...');
+                return;
+            }
+
+            // check for the zip output folder
+            if(!file_exists($zipOut)) {
+                mkdir($zipOut);
+            }
+
+            // formulate script
+            $zip = sprintf(
+                'cd %s && zip -r %s %s',
+                $folder,
+                implode(array($this->zips, 'phonegap', $zip), DIRECTORY_SEPARATOR),
+                'cordova-plugin-globeconnect');
+
+            // execute zip generation
+            $this->log('===> *zip* <===');
+            $this->log(exec($zip));
+            $this->log('  zip file generated for ios with id ' . $permutation);
+            $this->log('===> *end zip* <===');
+
+            break;
+        }
+
+        $this->log('Phonegap zip files has been successfully generated ...');
+        $this->log('...');
+        $this->log('...');
     }
 
+    /**
+     * Generate zip files for react base
+     * on the given permutations.
+     *
+     * @param  array
+     * @return void
+     */
     protected function generateReact($permutations)
     {
         $this->log('Generating zip files for react ...');
 
+        // iterate on each permutations
+        foreach($permutations as $index => $permutation) {
+            // formulate script
+            $script = $this->script . ' react -i %s -f %s -s %s -o %s';
+            // get the readable file names
+            $files  = $this->convertToString($permutation);
+
+            // copy files and explode it
+            $tmp = explode(' ', $files);
+
+            // iterate on each file and format it
+            foreach($tmp as $i => $v) {
+                $tmp[$i] = $v;
+            }
+
+            // join back files
+            $files  = implode($tmp, ',');
+            // formulate target repository folder
+            $target = implode(array($this->repo, 'globe-connect-react-native', 'react-native-globeconnect'), DIRECTORY_SEPARATOR);
+            // formulate sdk output folder
+            $sdkOut = implode(array($this->out, 'react'), DIRECTORY_SEPARATOR);
+            // formulate output folder
+            $folder = implode(array($sdkOut, 'react-' . $permutation, ''), DIRECTORY_SEPARATOR);
+            // formulate zip output folder
+            $zipOut = implode(array($this->zips, 'react'), DIRECTORY_SEPARATOR);
+            // zip name
+            $zip    = sprintf('react-%s.zip', $permutation);
+
+            // formulate script
+            $script = sprintf($script,
+                $permutation,
+                $files,
+                $target,
+                $sdkOut);
+
+            // execute script
+            exec($script);
+
+            // check for the output
+            if(!file_exists($folder)) {
+                $this->log($folder . ' does not exists, skipping ...');
+                return;
+            }
+
+            // check for the zip output folder
+            if(!file_exists($zipOut)) {
+                mkdir($zipOut);
+            }
+
+            // formulate script
+            $zip = sprintf(
+                'cd %s && zip -r %s %s',
+                $folder,
+                implode(array($this->zips, 'react', $zip), DIRECTORY_SEPARATOR),
+                'react-native-globeconnect');
+
+            // execute zip generation
+            $this->log('===> *zip* <===');
+            $this->log(exec($zip));
+            $this->log('  zip file generated for ios with id ' . $permutation);
+            $this->log('===> *end zip* <===');
+
+            break;
+        }
+
+        $this->log('React Native zip files has been successfully generated ...');
+        $this->log('...');
+        $this->log('...');
     }
 
     /**
@@ -415,6 +572,7 @@ class SdkZipGenerator {
 
         // calculate permutations
         for ($i = 1; $i < $max; $i++) {
+            // push formatted binary
             $permutations[] = str_pad(decbin($i), $bits, '0', STR_PAD_LEFT);
         }
 
