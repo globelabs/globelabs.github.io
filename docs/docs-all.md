@@ -737,8 +737,8 @@ SDK's & Libraries
 
 ### Setting Up
 
-Please refer to this [link](https://github.com/globelabs/globe-connect-android/blob/master/instructions/manual-installation.md) for manual installation of the Globe Connect Android SDK.
-        <br />Please refer to this [link](https://github.com/globelabs/globe-connect-android/blob/master/instructions/installation-via-maven.md) to install the Globe Connect Android SDK via Maven Central.
+Please refer to this <a target="_blank" href="https://github.com/globelabs/globe-connect-android/blob/master/instructions/manual-installation.md">link</a> for manual installation of the Globe Connect Android SDK.
+        <br />Please refer to this <a target="_blank" href="https://github.com/globelabs/globe-connect-android/blob/master/instructions/installation-via-maven.md">link</a> to install the Globe Connect Android SDK via Maven Central.
 
 ### Authentication
 
@@ -1346,8 +1346,8 @@ try {
 
 ### Setting Up
 
-Please refer to this [link](https://github.com/globelabs/globe-connect-ios/blob/feature/documentation-installation/installation/manual.md) for manual installation of Globe Connect iOS SDK.
-        <br/>Please refer to this [link](https://github.com/globelabs/globe-connect-ios/blob/feature/documentation-installation/installation/cocoapods.md) for Globe Connect iOS SDK installtion via CocoaPods.
+Please refer to this <a target="_blank" href="https://github.com/globelabs/globe-connect-ios/blob/feature/documentation-installation/installation/manual.md">link</a> for manual installation of Globe Connect iOS SDK.
+        <br/>Please refer to this <a target="_blank" href="https://github.com/globelabs/globe-connect-ios/blob/feature/documentation-installation/installation/cocoapods.md">link</a> for Globe Connect iOS SDK installtion via CocoaPods.
 
 ### Authentication
 
@@ -1911,7 +1911,7 @@ globeConnect.getSubscriberReloadAmount(
 
 ### Setting Up
 
-Please refer to this [link](https://github.com/globelabs/globe-connect-react-native/blob/master/react-native-globeconnect/instructions/installation.md) for the detailed installation of Globe Connect React Native SDK.
+Please refer to this <a target="_blank" href="https://github.com/globelabs/globe-connect-react-native/blob/master/react-native-globeconnect/instructions/installation.md">link</a> for the detailed installation of Globe Connect React Native SDK.
 
 ### Authentication
 
@@ -2410,7 +2410,7 @@ subscriber
 
 ### Setting Up
 
-Please refer to this [link](https://github.com/globelabs/globe-connect-phonegap/blob/master/instructions/installation.md) for detailed installation instructions of Globe Connect Phonegap SDK.
+Please refer to this <a target="_blank" href="https://github.com/globelabs/globe-connect-phonegap/blob/master/instructions/installation.md">link</a> for detailed installation instructions of Globe Connect Phonegap SDK.
 
 ### Authentication
 
@@ -4656,7 +4656,7 @@ If you haven't signed up yet, please follow the instructions found in [Getting S
 ```python
 from globe.connect import oauth
 
-oauth = oauth.Oauth("[key]", "[secret]")
+oauth = oauth.Oauth("[app_id]", "[app_secret]")
 
 # get redirect url
 print oauth.getRedirectUrl()
@@ -5895,7 +5895,7 @@ payment = payment.Payment("[token]")
 payment.setAmount("[amount]")
 payment.setDescription("[description]")
 payment.setEndUserId("[number]")
-payment.setReferenceCode("[referenceCode]")
+payment.setReferenceCode("[reference]")
 payment.setTransactionOperationStatus("[status]")
 payment.sendPaymentRequest()
 
@@ -5936,7 +5936,7 @@ The following example shows how you can get the last reference of payment.
 from globe.connect import payment
 
 payment = payment.Payment("[token]")
-payment.setAppKey("[app_key]")
+payment.setAppKey("[app_id]")
 payment.setAppSecret("[app_secret]")
 payment.getLastReferenceCode()
 
@@ -12551,7 +12551,7 @@ Console.WriteLine(response);
 
 ### Setting Up
 
-Please refer to this [link](https://github.com/globelabs/globe-connect-swift/blob/master/instructions/cocoapods.md)
+Please refer to this <a target="_blank" href="https://github.com/globelabs/globe-connect-swift/blob/master/instructions/cocoapods.md">link</a>
         for the installation of Globe Connect Swift via CocoaPods.
 
 ### Authentication
