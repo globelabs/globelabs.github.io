@@ -10,6 +10,7 @@ var path  = require('path');
 // This file is part of the Globe Labs SDK Builder.
 //
 // @author Charles Zamora <czamora@openovate.com>
+//
 var Ios = function(options) {
     // short hand initialization
     if(!(this instanceof Ios)) {
