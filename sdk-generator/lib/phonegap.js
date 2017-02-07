@@ -73,6 +73,7 @@ var Phonegap = function(options) {
     // remove unnecessary files
     shell.rm('-rf', path.join(target, path.basename(source), '.git'));
     shell.rm('-rf', path.join(target, path.basename(source), 'nbproject'));
+    shell.rm('-rf', path.join(target, path.basename(source), 'instructions'));
 
     console.log('Files copied to ' + target);
 

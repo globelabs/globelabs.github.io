@@ -71,6 +71,7 @@ var Ios = function(options) {
 
     // remove unnecessary files
     shell.rm('-rf', path.join(target, path.basename(source), '.git'));
+    shell.rm('-rf', path.join(target, path.basename(source), 'installation'));
 
     console.log('Files copied to ' + target);
 

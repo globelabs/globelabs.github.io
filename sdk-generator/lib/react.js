@@ -77,6 +77,7 @@ var React = function(options) {
 
     // remove unecessary files
     shell.rm('-rf', path.join(target, path.basename(source), '.git'));
+    shell.rm('-rf', path.join(target, path.basename(source), 'instructions'));
 
     console.log('Files copied to ' + target);
 

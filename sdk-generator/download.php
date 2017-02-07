@@ -28,6 +28,12 @@ if(isset($_GET['type']) && isset($_GET['files'])) {
         exit;
     }
 
+    // replace the zip name's binary to hash
+    $hash = substr($name, strpos($name, '-') + 1);
+    $hash = str_replace('.zip', '', $hash);
+    $hash = substr(sha1($hash), -8);
+    $name = substr($name, 0, strpos($name, '-')) . '-' . $hash . '.zip';
+
     // set headers
     header("Content-type: application/zip");
     header("Content-Disposition: attachment; filename=$name");

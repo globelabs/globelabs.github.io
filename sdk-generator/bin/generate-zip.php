@@ -80,7 +80,7 @@ class SdkZipGenerator {
      */
     public function __construct($argv) {
         // prepare folders
-        $this->prepare();
+        $this->prepare($argv);
 
         // generate binary permutations
         $permutations = $this->generateBinaryPermutations();
@@ -143,9 +143,10 @@ class SdkZipGenerator {
      * Prepares folder and necessary files
      * for generating sdk zips e.g repos.
      *
+     * @param  array
      * @return void
      */
-    protected function prepare()
+    protected function prepare($argv)
     {
         $this->log('Preparing zip generator ...');
         $this->log('Checking repositories directory ...');
@@ -209,6 +210,20 @@ class SdkZipGenerator {
             mkdir($this->out);
         }
 
+        // is argument set, delete specific path
+        if(isset($argv[1]) && file_exists($this->zips . DIRECTORY_SEPARATOR . $argv[1])) {
+            // we are just making sure we'll not deleting root folders :p
+            if(strpos($this->zips, 'globelabs.github.io') !== false) {
+                exec('rm -rf ' . $this->zips . DIRECTORY_SEPARATOR . $argv[1]);
+            }
+
+            mkdir($this->zips . DIRECTORY_SEPARATOR . $argv[1]);
+
+            $this->log('Done processing required repositories and directories ...');
+
+            return;
+        }
+
         // create zips directory
         if(!file_exists($this->zips)) {
             mkdir($this->zips);
@@ -242,8 +257,10 @@ class SdkZipGenerator {
             // get the readable file names
             $files  = $this->convertToString($permutation);
 
+            $this->log('Files: ' . $files . ' - ID: ' . $permutation);
+
             // copy files and explode it
-            $tmp = explode(' ', $files);
+            $tmp = explode(',', $files);
 
             // iterate on each files and append type
             foreach($tmp as $i => $v) {
@@ -328,7 +345,7 @@ class SdkZipGenerator {
             $files  = $this->convertToString($permutation);
 
             // copy files and explode it
-            $tmp = explode(' ', $files);
+            $tmp = explode(',', $files);
 
             // iterate on each files and format it
             foreach($tmp as $i => $v) {
@@ -422,16 +439,6 @@ class SdkZipGenerator {
             // get the readable file names
             $files  = $this->convertToString($permutation);
 
-            // copy files and explode it
-            $tmp = explode(' ', $files);
-
-            // iterate on each files and format it
-            foreach($tmp as $i => $v) {
-                $tmp[$i] = $v;
-            }
-
-            // join back the files
-            $files  = implode($tmp, ',');
             // formulate target repository folder
             $target = implode(array($this->repo, 'globe-connect-phonegap', 'cordova-plugin-globeconnect'), DIRECTORY_SEPARATOR);
             // formulate sdk output folder
@@ -503,16 +510,6 @@ class SdkZipGenerator {
             // get the readable file names
             $files  = $this->convertToString($permutation);
 
-            // copy files and explode it
-            $tmp = explode(' ', $files);
-
-            // iterate on each file and format it
-            foreach($tmp as $i => $v) {
-                $tmp[$i] = $v;
-            }
-
-            // join back files
-            $files  = implode($tmp, ',');
             // formulate target repository folder
             $target = implode(array($this->repo, 'globe-connect-react-native', 'react-native-globeconnect'), DIRECTORY_SEPARATOR);
             // formulate sdk output folder
@@ -522,7 +519,7 @@ class SdkZipGenerator {
             // formulate zip output folder
             $zipOut = implode(array($this->zips, 'react-native'), DIRECTORY_SEPARATOR);
             // zip name
-            $zip    = sprintf('react-%s.zip', $permutation);
+            $zip    = sprintf('react-native-%s.zip', $permutation);
 
             // formulate script
             $script = sprintf($script,
@@ -687,9 +684,13 @@ class SdkZipGenerator {
      * @param  int
      * @return string
      */
-    public function formatBytes($bytes, $decimals = 2) {
+    public function formatBytes($bytes, $decimals = 2)
+    {
+        // readable size
         $size   = array('B','KB','MB','GB','TB','PB','EB','ZB','YB');
+        // get the factor
         $factor = floor((strlen($bytes) - 1) / 3);
+        // calculate readable size
         $total  = sprintf("%.{$decimals}f", $bytes / pow(1024, $factor));
 
         return $total . ' ' . @$size[$factor];
