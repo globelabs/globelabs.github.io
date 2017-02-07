@@ -17,6 +17,7 @@ var Collapse = function() {
     // Window on load collapse target sections
     //
     var onload = function() {
+        console.log($('a[id^="sdks-libraries-"].level-2'));
         // get the parent links
         $('a[id^="sdks-libraries-"].level-2').each(function(index, el) {
             // customize text
@@ -53,6 +54,6 @@ var Collapse = function() {
 
     // on load make target links collapsible
     $(window).on('load', function() {
-        setTimeout(onload, 500);
+        setTimeout(onload, 1000);
     });
 }();
