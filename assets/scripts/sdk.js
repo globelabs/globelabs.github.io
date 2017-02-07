@@ -121,7 +121,7 @@
         var size = window.sdkSize[this.type][selection];
 
         // update size
-        $('.panel-footer .text-info').css('display', 'inline').html(size);
+        $('.panel-footer .text-info').css('display', 'inline-block').html(size);
         // enable button
         $('.panel-footer .btn').attr('disabled', false);
 
