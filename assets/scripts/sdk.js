@@ -36,10 +36,6 @@
         $('input[name="api[]"]').on('change', this.update.bind(this));
         // on download button click
         $('.panel-footer .btn').on('click', this.download.bind(this));
-
-        // swap template
-        var template = $('#success-template').html();
-        $('div.sdk-builder-ui div.panel').html(template);
     };
 
     // on platform and api files change
