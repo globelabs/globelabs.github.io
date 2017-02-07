@@ -773,7 +773,7 @@ window.sdkSize = {
     "react-native": {
         "native-00000001": "520 KB",
         "native-00000010": "519 KB",
-        "native-00000011": "523 KB",
+        "native-00000011": "535 KB",
         "native-00000100": "519 KB",
         "native-00000101": "524 KB",
         "native-00000110": "523 KB",
