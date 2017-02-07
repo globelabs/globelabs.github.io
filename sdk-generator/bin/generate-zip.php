@@ -162,7 +162,7 @@ class SdkZipGenerator {
         // formulate zips directory
         $this->zips     = $this->root . '/zips';
         // formulate script path
-        $this->script  = $this->root . '/bin/gl-sdk-build.js';
+        $this->script   = $this->root . '/bin/gl-sdk-build.js';
 
         // check script file first
         if(!file_exists($this->script)) {
@@ -552,7 +552,7 @@ class SdkZipGenerator {
             // execute zip generation
             $this->log('===> *zip* <===');
             $this->log(exec($zip));
-            $this->log('  zip file generated for ios with id ' . $permutation);
+            $this->log('  zip file generated for react with id ' . $permutation);
             $this->log('===> *end zip* <===');
 
             $this->log($index + 1 . ' out of ' . count($permutations) . ' react zip files has been successfully generated ...');
