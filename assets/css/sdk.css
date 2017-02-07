@@ -157,6 +157,18 @@ body, html {
     color: #FFFFFF;
 }
 
+.sdk-builder-ui .body-success .download-again {
+    border-radius: 30px;
+    background: #00AFEC;
+    border-color: #00AFEC;
+    color: #FFFFFF;
+    display: block;
+    margin: 40px auto 10px;
+    padding: 12px;
+    text-align: center;
+    width: 80%;
+}
+
 .sdk-builder-ui .body-success .step em {
     color: #041435;
     display: block;
