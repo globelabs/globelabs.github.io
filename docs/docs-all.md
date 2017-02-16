@@ -4695,6 +4695,7 @@ sms = sms.Sms("[shortcode]","[token]")
 sms.setReceiverAddress("[receiver_address]")
 sms.setMessage("[message]")
 sms.setClientCorrelator("[correlator]")
+sms.sendMessage()
 
 print sms.getResponse()
 ```
