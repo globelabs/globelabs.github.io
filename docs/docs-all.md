@@ -7611,7 +7611,7 @@ response = subscriber.get_subscriber_reload_amount('[subscriber_number]')
 
 ### Setting Up
 
-```npm install globe-connect-nodejs```
+```npm install globe-connect```
 
 ### Authentication
 
