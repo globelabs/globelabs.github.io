@@ -1279,9 +1279,9 @@ try {
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -1329,9 +1329,9 @@ try {
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -1854,9 +1854,9 @@ globeConnect.getSubscriberBalance(
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -1894,9 +1894,9 @@ globeConnect.getSubscriberReloadAmount(
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -2356,9 +2356,9 @@ subscriber
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -2393,9 +2393,9 @@ subscriber
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -2837,9 +2837,9 @@ subscriber
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -2872,9 +2872,9 @@ subscriber
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -3201,9 +3201,9 @@ globe-connect subscr-bal -a [subscriber_number] -t "[access_token]" --verbose
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -3228,9 +3228,9 @@ globe-connect subscr-reload-amt -a [subscriber_number] -t "[access_token]" --ver
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -4593,9 +4593,9 @@ print $subscriber->getSubscriberBalance();
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -4624,9 +4624,9 @@ print $subscriber->getReloadAmount();
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -6052,9 +6052,9 @@ print subscriber.getResponse()
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -6085,9 +6085,9 @@ print subscriber.getResponse()
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -7564,9 +7564,9 @@ puts response
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -7594,9 +7594,9 @@ response = subscriber.get_subscriber_reload_amount('[subscriber_number]')
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -9060,9 +9060,9 @@ subscriber.getSubscriberBalance(function(resCode, body) {
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -9096,9 +9096,9 @@ subscriber.getReloadAmount(function(resCode, body) {
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -10874,9 +10874,9 @@ System.out.println(response);
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -10911,9 +10911,9 @@ System.out.println(response);
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -12499,9 +12499,9 @@ Console.WriteLine(response);
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -12535,9 +12535,9 @@ Console.WriteLine(response);
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -12566,7 +12566,7 @@ If you haven't signed up yet, please follow the instructions found in [Getting S
 #### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 Authentication().getAccessToken(
     appId: "[app_id]",
@@ -12607,7 +12607,7 @@ Send an SMS message to one or more mobile terminals:
 ##### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let sms = Sms(
     accessToken: "[access_token]",
@@ -12657,7 +12657,7 @@ Send binary data through SMS:
 ##### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let sms = Sms(
     accessToken: "[access_token]",
@@ -12714,7 +12714,7 @@ The following example shows how to send a USSD request.
 ##### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let ussd = Ussd(
     accessToken: "[access_token]",
@@ -12763,7 +12763,7 @@ The following example shows how to send a USSD reply.
 ##### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let ussd = Ussd(
     accessToken: "[access_token]",
@@ -12820,7 +12820,7 @@ The following example shows how you can request for a payment from a customer.
 ##### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let payment = Payment(
     appId: "[app_id]",
@@ -12873,7 +12873,7 @@ The following example shows how you can get the last reference of payment.
 ##### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let payment = Payment(
     appId: "[app_id]",
@@ -12909,7 +12909,7 @@ Amax is an automated promo builder you can use with your app to award customers 
 #### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let amax = Amax(
     appId: "[app_id]",
@@ -12950,7 +12950,7 @@ To determine a general area (lat,lng) of your customers you can utilize this fea
 #### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let locationQuery = LocationQuery(accessToken: "[access_token]")
 
@@ -12998,7 +12998,7 @@ The following example shows how you can get the subscriber balance.
 ##### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let subscriber = Subscriber(accessToken: "[access_token]")
 
@@ -13016,9 +13016,9 @@ subscriber.getSubscriberBalance(
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
@@ -13036,7 +13036,7 @@ The following example shows how you can get the subscriber reload amount.
 ##### Sample Code
 
 ```
-import ConnectSwift
+import GlobeConnect
 
 let subscriber = Subscriber(accessToken: "[access_token]")
 
@@ -13055,9 +13055,9 @@ subscriber
 
 ```json
 {
-    terminalLocationList:
+    "terminalLocationList":
     {
-        terminalLocation:
+        "terminalLocation":
         [
             {
                 address: "639171234567",
