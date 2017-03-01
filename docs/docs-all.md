@@ -12619,10 +12619,9 @@ sms.sendMessage(
     message: "[message]",
     success: { json in
         dump(json)
-        expectation.fulfill()
     },
     failure: { error in
-        expectation.fulfill()
+        print(error)
     })
 ```
 
