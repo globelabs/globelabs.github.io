@@ -2,10 +2,10 @@ var yargs = require('yargs');
 
 // initial argument helper
 yargs.usage('Usage: $0 <command> [args]')
-    .command('ios', 'send an sms to the given subscriber / MSISDN number.')
-    .command('android', 'send a binary sms to the given subscruber / MSISDN number.')
-    .command('react', 'get the subscribers location.')
-    .command('phonegap', 'charge the given subscriber with the given amount.')
+    .command('ios', 'generates an ios sdk.')
+    .command('android', 'generates an android sdk.')
+    .command('react', 'generates a react native sdk.')
+    .command('phonegap', 'generates a phonegap sdk.')
     .option('verbose', {
         describe : 'enable verbose logging.'
     })
